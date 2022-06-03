@@ -1,12 +1,12 @@
-// Angular modules
+/* Angular modules */
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-// Ionic modules
+/* Ionic modules */
 import { IonicModule } from '@ionic/angular';
 
-// Other modules
+/* Other modules */
 import { TranslocoModule } from '@ngneat/transloco';
 
 @NgModule({

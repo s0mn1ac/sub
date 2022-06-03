@@ -1,11 +1,11 @@
-// Angular modules
+/* Angular modules */
 import { NgModule } from '@angular/core';
 
-// Other modules
+/* Other modules */
 import { SettingsPageRoutingModule } from './settings-routing.module';
 import { SharedModule } from 'src/app/shared/modules/shared.module';
 
-// Pages
+/* Pages */
 import { SettingsPage } from './settings.page';
 
 @NgModule({

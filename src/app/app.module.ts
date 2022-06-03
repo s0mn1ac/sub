@@ -1,20 +1,24 @@
-// Angular modules
+/* Angular modules */
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 
-// Ionic modules
+/* Ionic modules */
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-// App modules
-import { AppComponent } from './app.component';
+/* App modules */
 import { AppRoutingModule } from './app-routing.module';
-import { databaseName } from './shared/constants/database.constants';
 
-// Other modules
-import { TranslocoRootModule } from './transloco-root.module';
+/* Other modules */
+import { TranslocoRootModule } from './shared/modules/transloco-root.module';
+
+/* Components */
+import { AppComponent } from './app.component';
+
+/* Constants */
+import { databaseName } from './shared/constants/database.constants';
 
 @NgModule({
   declarations: [AppComponent],
