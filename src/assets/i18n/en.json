@@ -1,1 +1,12 @@
-{}
+{
+    "appName": "Sub",
+    "version": "1.0.0",
+
+    "board": {
+        "title": "Board"
+    },
+
+    "settings": {
+        "title": "Settings"
+    }
+}
