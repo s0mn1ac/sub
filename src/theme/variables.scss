@@ -70,10 +70,10 @@
 	--ion-color-paypal-shade: #dea52c;
 	--ion-color-paypal-tint: #fcc247;
 
-  --shadow-low: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  --shadow-medium: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
-  --shadow-high:  0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  --shadow-higher:  0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  --box-shadow-low: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --box-shadow-medium: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+  --box-shadow-high:  0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --box-shadow-higher:  0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
   --background-color: #FFFFFF;
 
@@ -85,6 +85,11 @@
 
   --ion-text-color: #262626;
   --ion-text-color-rgb: 38,38,38;
+  
+  --ion-text-color-dark: #262626;
+  --ion-text-color-light: #ffffff;
+
+  --custom-border-radius: 10px;
 }
 
 /** Ionic Dark Theme **/
@@ -159,10 +164,10 @@ body.dark {
 	--ion-color-paypal-shade: #dea52c;
 	--ion-color-paypal-tint: #fcc247;
 
-  --shadow-low: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
-  --shadow-medium: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
-  --shadow-high:  0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-  --shadow-higher:  0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+  --box-shadow-low: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  --box-shadow-medium: 0 3px 5px rgba(0,0,0,0.16), 0 3px 5px rgba(0,0,0,0.23);
+  --box-shadow-high:  0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  --box-shadow-higher:  0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 
   --background-color: #121212;
 
@@ -202,22 +207,4 @@ body.dark {
   --ion-color-step-950: #f2f2f2;
 
   --ion-item-background: #000000;
-}
-
-body.paypal {
-  --ion-color-primary: #FCBB32 !important;
-  --ion-color-primary-rgb: 252,187,50 !important;
-  --ion-color-primary-contrast: #ffffff !important;
-  --ion-color-primary-contrast-rgb: 255,255,255 !important;
-  --ion-color-primary-shade: #dea52c !important;
-  --ion-color-primary-tint: #fcc247 !important;
-}
-
-.ion-color-paypal {
-  --ion-color-base: var(--ion-color-paypal) !important;
-  --ion-color-base-rgb: var(--ion-color-paypal-rgb) !important;
-  --ion-color-contrast: var(--ion-color-paypal-contrast) !important;
-  --ion-color-contrast-rgb: var(--ion-color-paypal-contrast-rgb) !important;
-  --ion-color-shade: var(--ion-color-paypal-shade) !important;
-  --ion-color-tint: var(--ion-color-paypal-tint) !important;
 }

@@ -9,6 +9,9 @@ import { IonicModule } from '@ionic/angular';
 /* Other modules */
 import { TranslocoModule } from '@ngneat/transloco';
 
+/* App modules */
+import { ComponentsModule } from './components.module';
+
 @NgModule({
   declarations: [],
   imports: [
@@ -16,14 +19,16 @@ import { TranslocoModule } from '@ngneat/transloco';
     TranslocoModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule
+    IonicModule,
+    ComponentsModule
   ],
   exports: [
     CommonModule,
     TranslocoModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicModule
+    IonicModule,
+    ComponentsModule
   ],
   providers: []
 })

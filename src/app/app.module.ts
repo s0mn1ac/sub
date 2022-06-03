@@ -8,11 +8,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-/* App modules */
-import { AppRoutingModule } from './app-routing.module';
-
 /* Other modules */
 import { TranslocoRootModule } from './shared/modules/transloco-root.module';
+
+/* App modules */
+import { AppRoutingModule } from './app-routing.module';
 
 /* Components */
 import { AppComponent } from './app.component';
