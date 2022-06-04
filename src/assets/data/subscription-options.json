@@ -1,0 +1,55 @@
+[
+    {
+        "id": "1",
+        "name": "netflix",
+        "logo": "logo-amazon",
+        "color": "#E50914",
+        "hasPlans": "true",
+        "plans": [
+            {
+                "id": "1",
+                "name": "basic",
+                "price": "7.99",
+                "isDefault": true,
+                "isPricePerYear": false
+            },
+            {
+                "id": "2",
+                "name": "standard",
+                "price": "12.99",
+                "isDefault": false,
+                "isPricePerYear": false
+            },
+            {
+                "id": "3",
+                "name": "premium",
+                "price": "17.99",
+                "isDefault": false,
+                "isPricePerYear": false
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "name": "amazonPrimeVideo",
+        "logo": "logo-amazon",
+        "color": "#00A8E1",
+        "hasPlans": "true",
+        "plans": [
+            {
+                "id": "1",
+                "name": "yearly",
+                "price": "3",
+                "isDefault": true,
+                "isPricePerYear": true
+            },
+            {
+                "id": "2",
+                "name": "monthly",
+                "price": "3.99",
+                "isDefault": false,
+                "isPricePerYear": false
+            }
+        ]
+    }
+]

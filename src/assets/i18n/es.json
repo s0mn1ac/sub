@@ -6,7 +6,29 @@
         "title": "Tablón"
     },
 
+    "sub": {
+        "title": "Sub",
+        "form": {
+            "name": "Nombre",
+            "platform": "Plataforma",
+            "plan": "Plan de suscripción"
+        }
+    },
+
     "settings": {
         "title": "Ajustes"
+    },
+
+    "subscriptionOptions": {
+        "netflix": "Netflix",
+        "amazonPrimeVideo": "Amazon Prime Video",
+        "plans": {
+            "basic": "Básico",
+            "standard": "Estándar",
+            "premium": "Premium",
+            "weekly": "Semanal",
+            "monthly": "Mensual",
+            "yearly": "Anual"
+        }
     }
 }

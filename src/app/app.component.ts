@@ -20,7 +20,6 @@ import { ThemeEnum } from './shared/enums/theme.enum';
 import { LanguageEnum } from './shared/enums/language.enum';
 import { TranslocoService } from '@ngneat/transloco';
 
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',

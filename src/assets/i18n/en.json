@@ -6,7 +6,29 @@
         "title": "Board"
     },
 
+    "sub": {
+        "title": "Sub",
+        "form": {
+            "name": "Name",
+            "platform": "Platform",
+            "plan": "Subscription plan"
+        }
+    },
+
     "settings": {
         "title": "Settings"
+    },
+
+    "subscriptionOptions": {
+        "netflix": "Netflix",
+        "amazonPrimeVideo": "Amazon Prime Video",
+        "plans": {
+            "basic": "Basic",
+            "standard": "Standard",
+            "premium": "Premium",
+            "weekly": "Weekly",
+            "monthly": "Monthly",
+            "yearly": "Yearly"
+        }
     }
 }
