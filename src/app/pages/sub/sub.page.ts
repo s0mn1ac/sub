@@ -3,9 +3,9 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
-import { SubscriptionTypeEnum } from 'src/app/shared/enums/subscription-type.enum';
-import { SubscriptionOption } from 'src/app/shared/models/subscription-option.model';
-import { SubscriptionPlan } from 'src/app/shared/models/subscription-plan.model';
+import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
+import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platform.model';
+import { PlatformPlan } from 'src/app/shared/models/platform-plan.model';
 import { SubscriptionOptionsService } from 'src/app/shared/services/subscription-options.service';
 
 @Component({
@@ -17,10 +17,10 @@ export class SubPage implements OnInit, OnDestroy {
 
   public subForm: FormGroup;
 
-  public subscriptionOptions: SubscriptionOption[] = [];
-  public subscriptionPlanOptions: SubscriptionPlan[] = [];
+  public subscriptionPlatforms: SubscriptionPlatform[] = [];
+  public platformPlans: PlatformPlan[] = [];
 
-  public subscriptionTypeEnum: typeof SubscriptionTypeEnum = SubscriptionTypeEnum;
+  public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;
 
   private params$: Subscription;
   private platform$: Subscription;
@@ -49,7 +49,7 @@ export class SubPage implements OnInit, OnDestroy {
   private async initSubPage(id: string): Promise<void> {
     this.initForm();
     this.initFormSubscriptions();
-    this.subscriptionOptions = await this.subscriptionOptionsService.getSubscriptionOptions();
+    this.subscriptionPlatforms = await this.subscriptionOptionsService.getSubscriptionPlatforms();
   }
 
   private initForm(): void {
@@ -65,16 +65,16 @@ export class SubPage implements OnInit, OnDestroy {
   private initFormSubscriptions(): void {
 
     this.platform$ = this.subForm.get('platform').valueChanges
-      .subscribe((subscriptionOption: SubscriptionOption) => {
-        this.subscriptionPlanOptions = subscriptionOption.plans;
+      .subscribe((subscriptionOption: SubscriptionPlatform) => {
+        this.platformPlans = subscriptionOption.plans;
         this.setValue('name', this.translocoService.translate(`subscriptionOptions.${subscriptionOption.name}`));
-        this.setValue('plan', subscriptionOption.plans.find((plan: SubscriptionPlan) => plan.isDefault));
+        this.setValue('plan', subscriptionOption.plans.find((plan: PlatformPlan) => plan.isDefault));
         this.setDisabledState('type', false);
         this.setDisabledState('plan', false);
       });
 
     this.plan$ = this.subForm.get('plan').valueChanges
-      .subscribe((subscriptionPlan: SubscriptionPlan) => {
+      .subscribe((subscriptionPlan: PlatformPlan) => {
         this.setValue('price', subscriptionPlan.price);
         this.setValue('type', subscriptionPlan.type);
       });

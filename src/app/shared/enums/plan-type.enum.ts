@@ -1,4 +1,4 @@
-export enum SubscriptionTypeEnum {
+export enum PlanTypeEnum {
     daily = 'daily',
     weekly = 'weekly',
     monthly = 'monthly',

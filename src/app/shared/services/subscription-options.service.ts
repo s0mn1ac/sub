@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 import { BaseService } from 'src/app/shared/services/base.service';
 
 /* Models */
-import { SubscriptionOption } from '../models/subscription-option.model';
+import { SubscriptionPlatform } from '../models/subscription-platform.model';
 
 @Injectable({
   providedIn: 'root'
@@ -17,15 +17,15 @@ export class SubscriptionOptionsService extends BaseService {
     super(http);
   }
 
-  public async getSubscriptionOptions(): Promise<SubscriptionOption[]> {
-    return await this.getSubscriptionOptionsReport() as SubscriptionOption[];
+  public async getSubscriptionPlatforms(): Promise<SubscriptionPlatform[]> {
+    return await this.getSubscriptionPlatformsReport() as SubscriptionPlatform[];
   }
 
   // ---------------------------------------------------------------------------------------------------------------------------------------
 
-  private async getSubscriptionOptionsReport(): Promise<any> {
+  private async getSubscriptionPlatformsReport(): Promise<any> {
     return this.serviceGet({
-      url: 'assets/data/subscription-options.json',
+      url: 'assets/data/subscription-platforms.json',
       callback: (response: any) => response.body,
       result: null
     });

@@ -25,7 +25,7 @@
       <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.platform') }} </ion-label>
         <ion-select formControlName="platform" interface="action-sheet">
-          <ion-select-option [value]="option" *ngFor="let option of subscriptionOptions">
+          <ion-select-option [value]="option" *ngFor="let option of subscriptionPlatforms">
             {{ t('subscriptionOptions.' + option.name) }}
           </ion-select-option>
         </ion-select>
@@ -34,7 +34,7 @@
       <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.plan') }} </ion-label>
         <ion-select formControlName="plan" interface="action-sheet">
-          <ion-select-option [value]="option" *ngFor="let option of subscriptionPlanOptions">
+          <ion-select-option [value]="option" *ngFor="let option of platformPlans">
             {{ t('subscriptionOptions.plan.' + option.name) }}
           </ion-select-option>
         </ion-select>
@@ -43,10 +43,10 @@
       <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.type') }} </ion-label>
         <ion-select formControlName="type" interface="action-sheet">
-          <ion-select-option [value]="subscriptionTypeEnum.daily"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.daily) }} </ion-select-option>
-          <ion-select-option [value]="subscriptionTypeEnum.weekly"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.weekly) }} </ion-select-option>
-          <ion-select-option [value]="subscriptionTypeEnum.monthly"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.monthly) }} </ion-select-option>
-          <ion-select-option [value]="subscriptionTypeEnum.yearly"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.yearly) }} </ion-select-option>
+          <ion-select-option [value]="planTypeEnum.daily"> {{ t('subscriptionOptions.plan.type.' + planTypeEnum.daily) }} </ion-select-option>
+          <ion-select-option [value]="planTypeEnum.weekly"> {{ t('subscriptionOptions.plan.type.' + planTypeEnum.weekly) }} </ion-select-option>
+          <ion-select-option [value]="planTypeEnum.monthly"> {{ t('subscriptionOptions.plan.type.' + planTypeEnum.monthly) }} </ion-select-option>
+          <ion-select-option [value]="planTypeEnum.yearly"> {{ t('subscriptionOptions.plan.type.' + planTypeEnum.yearly) }} </ion-select-option>
         </ion-select>
       </ion-item>
 
