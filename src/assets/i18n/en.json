@@ -9,6 +9,7 @@
     "sub": {
         "title": "Sub",
         "form": {
+            "price": "Price",
             "name": "Name",
             "platform": "Platform",
             "plan": "Subscription plan",
@@ -23,13 +24,14 @@
     "subscriptionOptions": {
         "netflix": "Netflix",
         "amazonPrimeVideo": "Amazon Prime Video",
-        "unknown": "Unknown",
+        "other": "Other",
         "plan": {
             "basic": "Basic",
             "standard": "Standard",
             "premium": "Premium",
             "monthly": "Monthly",
             "yearly": "Yearly",
+            "other": "Other",
             "type": {
                 "daily": "Daily",
                 "weekly": "Weekly",

@@ -1,63 +1,82 @@
 [
     {
-        "id": "1",
+        "id": 1,
         "name": "netflix",
         "logo": "help-circle-outline",
         "color": "#E50914",
-        "hasPlans": true,
         "plans": [
             {
-                "id": "1",
+                "id": 1,
                 "name": "basic",
-                "price": "7.99",
+                "price": 7.99,
                 "isDefault": true,
                 "type": "monthly"
             },
             {
-                "id": "2",
+                "id": 2,
                 "name": "standard",
-                "price": "12.99",
+                "price": 12.99,
                 "isDefault": false,
                 "type": "monthly"
             },
             {
-                "id": "3",
+                "id": 3,
                 "name": "premium",
-                "price": "17.99",
+                "price": 17.99,
                 "isDefault": false,
+                "type": "monthly"
+            },
+            {
+                "id": 4,
+                "name": "other",
+                "price": 0,
+                "isDefault": true,
                 "type": "monthly"
             }
         ]
     },
     {
-        "id": "2",
+        "id": 2,
         "name": "amazonPrimeVideo",
         "logo": "logo-amazon",
         "color": "#00A8E1",
-        "hasPlans": true,
         "plans": [
             {
-                "id": "1",
+                "id": 1,
                 "name": "yearly",
-                "price": "3",
+                "price": 3,
                 "isDefault": true,
                 "type": "yearly"
             },
             {
-                "id": "2",
+                "id": 2,
                 "name": "monthly",
-                "price": "3.99",
+                "price": 3.99,
                 "isDefault": false,
+                "type": "monthly"
+            },
+            {
+                "id": 3,
+                "name": "other",
+                "price": 0,
+                "isDefault": true,
                 "type": "monthly"
             }
         ]
     },
     {
-        "id": "3",
-        "name": "unknown",
+        "id": 3,
+        "name": "other",
         "logo": "help-circle-outline",
         "color": "#D1495B",
-        "hasPlans": false,
-        "plans": []
+        "plans": [
+            {
+                "id": 1,
+                "name": "other",
+                "price": 0,
+                "isDefault": true,
+                "type": "monthly"
+            }
+        ]
     }
 ]

@@ -6,6 +6,5 @@ export class SubscriptionOption {
     name: string;
     logo: string;
     color: string;
-    hasPlans: boolean;
     plans: SubscriptionPlan[];
 }

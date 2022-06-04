@@ -13,8 +13,13 @@
     <form [formGroup]="subForm">
 
       <ion-item lines="full">
+        <ion-label position="floating"> {{ t('sub.form.price') }} </ion-label>
+        <ion-input formControlName="price" inputmode="decimal" type="number" [min]="-1"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.name') }} </ion-label>
-        <ion-input formControlName="name" inputmode="text" name="name" type="text"></ion-input>
+        <ion-input formControlName="name" inputmode="text" type="text"></ion-input>
       </ion-item>
   
       <ion-item lines="full">

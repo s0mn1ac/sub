@@ -57,6 +57,7 @@ export class SubPage implements OnInit, OnDestroy {
 
   private initForm(): void {
     this.subForm = new FormGroup({
+      price: new FormControl(0, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(0)])),
       name: new FormControl(null, Validators.compose([Validators.required, Validators.nullValidator, Validators.maxLength(75)])),
       platform: new FormControl(null, Validators.compose([Validators.required, Validators.nullValidator])),
       plan: new FormControl({ value: null, disabled: true }, Validators.compose([Validators.required, Validators.nullValidator])),
@@ -68,20 +69,16 @@ export class SubPage implements OnInit, OnDestroy {
 
     this.platform$ = this.subForm.get('platform').valueChanges
       .subscribe((subscriptionOption: SubscriptionOption) => {
-        this.setDisabledState('type', false);
-        this.setValue('name', this.translocoService.translate(`subscriptionOptions.${subscriptionOption.name}`));
-        if (!subscriptionOption.hasPlans) {
-          this.setValue('plan', null);
-          this.setDisabledState('plan', true);
-          return;
-        }
         this.subscriptionPlanOptions = subscriptionOption.plans;
+        this.setValue('name', this.translocoService.translate(`subscriptionOptions.${subscriptionOption.name}`));
         this.setValue('plan', subscriptionOption.plans.find((plan: SubscriptionPlan) => plan.isDefault));
+        this.setDisabledState('type', false);
         this.setDisabledState('plan', false);
       });
 
     this.plan$ = this.subForm.get('plan').valueChanges
       .subscribe((subscriptionPlan: SubscriptionPlan) => {
+        this.setValue('price', subscriptionPlan === null ? 0 : subscriptionPlan.price);
         this.setValue('type', subscriptionPlan === null ? SubscriptionTypeEnum.monthly : subscriptionPlan.type);
       });
   }
