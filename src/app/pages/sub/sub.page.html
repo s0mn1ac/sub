@@ -12,12 +12,12 @@
 
     <form [formGroup]="subForm">
 
-      <ion-item>
+      <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.name') }} </ion-label>
         <ion-input formControlName="name" inputmode="text" name="name" type="text"></ion-input>
       </ion-item>
   
-      <ion-item>
+      <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.platform') }} </ion-label>
         <ion-select formControlName="platform" interface="action-sheet">
           <ion-select-option [value]="option" *ngFor="let option of subscriptionOptions">
@@ -26,12 +26,22 @@
         </ion-select>
       </ion-item>
   
-      <ion-item>
+      <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.plan') }} </ion-label>
         <ion-select formControlName="plan" interface="action-sheet">
           <ion-select-option [value]="option" *ngFor="let option of subscriptionPlanOptions">
-            {{ t('subscriptionOptions.plans.' + option.name) }}
+            {{ t('subscriptionOptions.plan.' + option.name) }}
           </ion-select-option>
+        </ion-select>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating"> {{ t('sub.form.type') }} </ion-label>
+        <ion-select formControlName="type" interface="action-sheet">
+          <ion-select-option [value]="subscriptionTypeEnum.daily"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.daily) }} </ion-select-option>
+          <ion-select-option [value]="subscriptionTypeEnum.weekly"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.weekly) }} </ion-select-option>
+          <ion-select-option [value]="subscriptionTypeEnum.monthly"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.monthly) }} </ion-select-option>
+          <ion-select-option [value]="subscriptionTypeEnum.yearly"> {{ t('subscriptionOptions.plan.type.' + subscriptionTypeEnum.yearly) }} </ion-select-option>
         </ion-select>
       </ion-item>
 

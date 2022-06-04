@@ -15,7 +15,7 @@ export class BoardPage implements OnInit {
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAllSubs();
   }
 

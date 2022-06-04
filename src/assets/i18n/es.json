@@ -11,7 +11,8 @@
         "form": {
             "name": "Nombre",
             "platform": "Plataforma",
-            "plan": "Plan de suscripción"
+            "plan": "Plan de suscripción",
+            "type": "Tipo de suscripción"
         }
     },
 
@@ -22,13 +23,19 @@
     "subscriptionOptions": {
         "netflix": "Netflix",
         "amazonPrimeVideo": "Amazon Prime Video",
-        "plans": {
+        "unknown": "Desconocida",
+        "plan": {
             "basic": "Básico",
             "standard": "Estándar",
             "premium": "Premium",
-            "weekly": "Semanal",
             "monthly": "Mensual",
-            "yearly": "Anual"
+            "yearly": "Anual",
+            "type": {
+                "daily": "Diario",
+                "weekly": "Semanal",
+                "monthly": "Mensual",
+                "yearly": "Anual"
+            }
         }
     }
 }

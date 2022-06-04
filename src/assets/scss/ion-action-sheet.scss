@@ -1,0 +1,14 @@
+ion-action-sheet {
+
+    .action-sheet-cancel {
+        background: var(--ion-color-danger) !important;
+        color: var(--ion-text-color-light) !important;
+        opacity: 1 !important;
+
+        &::after {
+            background: var(--ion-color-danger) !important;
+            color: var(--ion-text-color-light) !important;
+            opacity: 1 !important;
+        }
+    }
+}
