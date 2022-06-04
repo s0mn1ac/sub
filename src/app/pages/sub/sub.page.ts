@@ -47,9 +47,6 @@ export class SubPage implements OnInit, OnDestroy {
   }
 
   private async initSubPage(id: string): Promise<void> {
-    if (id === undefined) {
-      // return;
-    }
     this.initForm();
     this.initFormSubscriptions();
     this.subscriptionOptions = await this.subscriptionOptionsService.getSubscriptionOptions();
@@ -78,8 +75,8 @@ export class SubPage implements OnInit, OnDestroy {
 
     this.plan$ = this.subForm.get('plan').valueChanges
       .subscribe((subscriptionPlan: SubscriptionPlan) => {
-        this.setValue('price', subscriptionPlan === null ? 0 : subscriptionPlan.price);
-        this.setValue('type', subscriptionPlan === null ? SubscriptionTypeEnum.monthly : subscriptionPlan.type);
+        this.setValue('price', subscriptionPlan.price);
+        this.setValue('type', subscriptionPlan.type);
       });
   }
 
