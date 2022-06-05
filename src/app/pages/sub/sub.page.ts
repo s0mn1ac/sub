@@ -1,12 +1,15 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TranslocoService } from '@ngneat/transloco';
 import { Subscription } from 'rxjs';
 import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platform.model';
 import { PlatformPlan } from 'src/app/shared/models/platform-plan.model';
 import { SubscriptionOptionsService } from 'src/app/shared/services/subscription-options.service';
+import { Sub } from 'src/app/shared/models/sub.model';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { ModeEnum } from 'src/app/shared/enums/mode.enum';
 
 @Component({
   selector: 'app-sub',
@@ -21,14 +24,21 @@ export class SubPage implements OnInit, OnDestroy {
   public platformPlans: PlatformPlan[] = [];
 
   public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;
+  public modeEnum: typeof ModeEnum = ModeEnum;
+
+  public mode: ModeEnum;
 
   private params$: Subscription;
   private platform$: Subscription;
   private plan$: Subscription;
 
+  private id: number | undefined;
+
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private translocoService: TranslocoService,
+    private storageService: StorageService,
     private subscriptionOptionsService: SubscriptionOptionsService
   ) { }
 
@@ -42,14 +52,31 @@ export class SubPage implements OnInit, OnDestroy {
     this.plan$?.unsubscribe();
   }
 
-  private initParamsSubscription(): void {
-    this.params$ = this.activatedRoute.params.subscribe((params: Params) => this.initSubPage(params.id));
+  public onClickAddNewSub(): void {
+    const sub: Sub = new Sub(this.subForm.value);
+    this.storageService.addNewSub(sub);
+    this.router.navigate(['/board']);
   }
 
-  private async initSubPage(id: string): Promise<void> {
+  public onClickModifySub(): void {
+    const sub: Sub = new Sub(this.subForm.value);
+    this.storageService.modifySub(this.id, sub);
+    this.router.navigate(['/board']);
+  }
+
+  private initParamsSubscription(): void {
+    this.params$ = this.activatedRoute.params.subscribe((params: Params) => this.initPage(params.id ? parseInt(params.id, 10) : undefined));
+  }
+
+  private async initPage(id: number): Promise<void> {
+    console.log(id);
+    this.mode = id !== undefined ? ModeEnum.modify : ModeEnum.new;
+    this.id = id;
     this.initForm();
     this.initFormSubscriptions();
     this.subscriptionPlatforms = await this.subscriptionOptionsService.getSubscriptionPlatforms();
+    const sub: Sub | undefined = id !== undefined ? this.storageService.getSubById(id) : undefined;
+    this.setFormValues(sub);
   }
 
   private initForm(): void {
@@ -60,6 +87,19 @@ export class SubPage implements OnInit, OnDestroy {
       plan: new FormControl({ value: null, disabled: true }, Validators.compose([Validators.required, Validators.nullValidator])),
       type: new FormControl({ value: null, disabled: true }, Validators.compose([Validators.required, Validators.nullValidator]))
     });
+  }
+
+  private setFormValues(sub: Sub | undefined): void {
+    if (sub === undefined) {
+      return;
+    }
+    const subscriptionPlatform: SubscriptionPlatform = this.subscriptionPlatforms.find(platform => platform.id === sub.platformId);
+    const platformPlan: PlatformPlan = subscriptionPlatform.plans.find(plan => plan.id === sub.planId);
+    this.setValue('price', sub.price);
+    this.setValue('name', sub.name);
+    this.setValue('platform', subscriptionPlatform);
+    this.setValue('plan', platformPlan);
+    this.setValue('type', sub.type);
   }
 
   private initFormSubscriptions(): void {

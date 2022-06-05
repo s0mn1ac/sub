@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage-angular';
 
 /* Models */
 import { UserData } from '../models/user-data.model';
+import { Sub } from '../models/sub.model';
 
 /* Constants */
 import { subUserData } from '../constants/database.constants';
@@ -27,7 +28,7 @@ export class StorageService {
     private storage: Storage
   ) { }
 
-  // ---- STORAGE --------------------------------------------------------------------------------------------------------------------------
+  // ---- USER DATA ------------------------------------------------------------------------------------------------------------------------
 
   get userData() {
     return this._userData;
@@ -66,6 +67,41 @@ export class StorageService {
 
   public async retrieveUserData(): Promise<UserData> {
     return await this._storage.get(subUserData);
+  }
+
+  // ---- SUBS -----------------------------------------------------------------------------------------------------------------------------
+
+  public getAllSubs(): Sub[] {
+    return this._userData.subs;
+  }
+
+  public getSubById(id: number): Sub {
+    return this._userData.subs.find((sub: Sub) => sub.id === id);
+  }
+
+  public addNewSub(newSub: Sub): void {
+    this._userData.subs.push(newSub);
+    this.storeUserData();
+  }
+
+  public modifySub(id: number, sub: Sub): void {
+    const foundSub: Sub = this._userData.subs.find((subToFind: Sub) => subToFind.id === id);
+    if (foundSub !== null) {
+      foundSub.name = sub.name;
+      foundSub.description = sub.description;
+      foundSub.logo = sub.logo;
+      foundSub.color = sub.color;
+      foundSub.platformId = sub.platformId;
+      foundSub.planId = sub.planId;
+      foundSub.type = sub.type;
+      this.storeUserData();
+    }
+  }
+
+  public deleteSub(id: number): void {
+    const subs: Sub[] = this._userData.subs.filter((sub: Sub) => sub.id !== id);
+    this._userData.subs = subs;
+    this.storeUserData();
   }
 
 }

@@ -1,33 +1,33 @@
 [
     {
-        "id": 1,
+        "id": 1001,
         "name": "netflix",
         "logo": "help-circle-outline",
         "color": "#E50914",
         "plans": [
             {
-                "id": 1,
+                "id": 2001,
                 "name": "basic",
                 "price": 7.99,
                 "isDefault": true,
                 "type": "monthly"
             },
             {
-                "id": 2,
+                "id": 2002,
                 "name": "standard",
                 "price": 12.99,
                 "isDefault": false,
                 "type": "monthly"
             },
             {
-                "id": 3,
+                "id": 2003,
                 "name": "premium",
                 "price": 17.99,
                 "isDefault": false,
                 "type": "monthly"
             },
             {
-                "id": 4,
+                "id": 2004,
                 "name": "other",
                 "price": 0,
                 "isDefault": true,
@@ -36,27 +36,27 @@
         ]
     },
     {
-        "id": 2,
+        "id": 1002,
         "name": "amazonPrimeVideo",
         "logo": "logo-amazon",
         "color": "#00A8E1",
         "plans": [
             {
-                "id": 1,
+                "id": 2005,
                 "name": "yearly",
                 "price": 3,
                 "isDefault": true,
                 "type": "yearly"
             },
             {
-                "id": 2,
+                "id": 2006,
                 "name": "monthly",
                 "price": 3.99,
                 "isDefault": false,
                 "type": "monthly"
             },
             {
-                "id": 3,
+                "id": 2007,
                 "name": "other",
                 "price": 0,
                 "isDefault": true,
@@ -65,13 +65,13 @@
         ]
     },
     {
-        "id": 3,
+        "id": 1003,
         "name": "other",
         "logo": "help-circle-outline",
         "color": "#D1495B",
         "plans": [
             {
-                "id": 1,
+                "id": 2008,
                 "name": "other",
                 "price": 0,
                 "isDefault": true,

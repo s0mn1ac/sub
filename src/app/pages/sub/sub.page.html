@@ -50,6 +50,13 @@
         </ion-select>
       </ion-item>
 
+      <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+        <ion-fab-button mode="ios" color="primary" [disabled]="subForm.invalid"
+          (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()">
+          <ion-icon name="save-outline"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
     </form>
   
   </ion-content>

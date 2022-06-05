@@ -11,8 +11,8 @@ export class UserData {
     subs: Sub[];
 
     constructor(language: LanguageEnum, theme: ThemeEnum) {
-        this.language = LanguageEnum.es;
-        this.theme = ThemeEnum.light;
+        this.language = language;
+        this.theme = theme;
         this.subs = [];
     }
 }
