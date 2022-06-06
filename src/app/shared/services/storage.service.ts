@@ -91,8 +91,8 @@ export class StorageService {
       foundSub.description = sub.description;
       foundSub.logo = sub.logo;
       foundSub.color = sub.color;
-      foundSub.platformId = sub.platformId;
-      foundSub.planId = sub.planId;
+      foundSub.platform = sub.platform;
+      foundSub.plan = sub.plan;
       foundSub.type = sub.type;
       this.storeUserData();
     }

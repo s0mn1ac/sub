@@ -17,15 +17,32 @@ div.sub-card-layout {
             flex-direction: row;
             justify-content: space-between;
             color: var(--ion-text-color-light);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
+            gap: 1rem;
 
-            h2.title {
-                margin: 0;
+            div.header-container {
+                display: flex;
+                flex-direction: column;
+
+                h2.header-title, span.header-sub-title {
+                    margin: 0;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                    display: -webkit-box;
+                    -webkit-line-clamp: 1;
+                    -webkit-box-orient: vertical;
+                }
+
+                span.header-sub-title {
+                    font-size: 12px;
+                    margin: 0.2rem 0;
+                }
             }
 
             ion-icon.logo {
                 height: 2rem;
                 width: 2rem;
+                min-width: 2rem;
                 color: var(--ion-text-color-light);
             }
         }

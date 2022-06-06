@@ -1,0 +1,10 @@
+div.fab-buttons-container {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    gap: 28px;
+    bottom: 10px;
+    left: 50%;
+    margin-inline-start: -70px;
+    z-index: 999;
+}

@@ -5,7 +5,10 @@
     <div class="sub-card" [style.background]="sub.color">
 
       <div class="card-header">
-        <h2 class="title"> {{ sub.name }} </h2>
+        <div class="header-container">
+          <h2 class="header-title"> {{ sub.name }} </h2>
+          <span class="header-sub-title"> {{ t('subscriptionPlatform.plan.' + sub.plan.name) | uppercase }} </span>
+        </div>
         <ion-icon [name]="sub.logo" class="logo"></ion-icon>
       </div>
 

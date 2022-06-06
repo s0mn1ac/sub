@@ -64,6 +64,7 @@ export class AppComponent implements OnInit, OnDestroy {
     const language: GetLanguageCodeResult = await Device.getLanguageCode();
     userData = new UserData(language.value.startsWith('es') ? LanguageEnum.es : LanguageEnum.en, theme);
   }
+  // userData.theme = ThemeEnum.light;
   this.storageService.userData = userData;
   this.themeService.updateTheme(userData.theme);
   this.languageService.updateLanguage(userData.language);
@@ -73,7 +74,7 @@ private async setTheme(theme: ThemeEnum): Promise<void> {
   console.log(theme === ThemeEnum.dark ? '💡 Lights OFF!' : '💡 Lights ON!');
   document.body.classList.toggle('dark', theme === ThemeEnum.dark);
   if (isPlatform('mobile')) {
-    // await StatusBar.setBackgroundColor({ color: theme ? '#000000' : '#FFFFFF' });
+    await StatusBar.setBackgroundColor({ color: '#D1495B' });
     await StatusBar.setStyle({ style: theme ? Style.Dark : Style.Light });
   }
 }
