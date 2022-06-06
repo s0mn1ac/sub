@@ -1,33 +1,33 @@
 [
     {
-        "id": 1001,
+        "id": 100000001,
         "name": "netflix",
-        "logo": "help-circle-outline",
+        "logo": "logo-netflix",
         "color": "#E50914",
         "plans": [
             {
-                "id": 2001,
+                "id": 200000001,
                 "name": "basic",
                 "price": 7.99,
                 "isDefault": true,
                 "type": "monthly"
             },
             {
-                "id": 2002,
+                "id": 200000002,
                 "name": "standard",
                 "price": 12.99,
                 "isDefault": false,
                 "type": "monthly"
             },
             {
-                "id": 2003,
+                "id": 200000003,
                 "name": "premium",
                 "price": 17.99,
                 "isDefault": false,
                 "type": "monthly"
             },
             {
-                "id": 2004,
+                "id": 200000004,
                 "name": "other",
                 "price": 0,
                 "isDefault": true,
@@ -36,27 +36,27 @@
         ]
     },
     {
-        "id": 1002,
-        "name": "amazonPrimeVideo",
-        "logo": "logo-amazon",
+        "id": 100000002,
+        "name": "amazonPrime",
+        "logo": "logo-amazon-prime",
         "color": "#00A8E1",
         "plans": [
             {
-                "id": 2005,
+                "id": 200000005,
                 "name": "yearly",
                 "price": 3,
                 "isDefault": true,
                 "type": "yearly"
             },
             {
-                "id": 2006,
+                "id": 200000006,
                 "name": "monthly",
                 "price": 3.99,
                 "isDefault": false,
                 "type": "monthly"
             },
             {
-                "id": 2007,
+                "id": 200000007,
                 "name": "other",
                 "price": 0,
                 "isDefault": true,
@@ -65,13 +65,136 @@
         ]
     },
     {
-        "id": 1003,
+        "id": 100000003,
+        "name": "amazonPrimeVideo",
+        "logo": "logo-amazon-prime-video",
+        "color": "#00A8E1",
+        "plans": [
+            {
+                "id": 200000008,
+                "name": "yearly",
+                "price": 3,
+                "isDefault": true,
+                "type": "yearly"
+            },
+            {
+                "id": 200000009,
+                "name": "monthly",
+                "price": 3.99,
+                "isDefault": false,
+                "type": "monthly"
+            },
+            {
+                "id": 200000010,
+                "name": "other",
+                "price": 0,
+                "isDefault": true,
+                "type": "monthly"
+            }
+        ]
+    },
+    {
+        "id": 100000004,
+        "name": "hboMax",
+        "logo": "logo-hbo-max",
+        "color": "#490CB0",
+        "plans": [
+            {
+                "id": 200000011,
+                "name": "monthly",
+                "price": 8.99,
+                "isDefault": true,
+                "type": "monthly"
+            },
+            {
+                "id": 200000012,
+                "name": "yearly",
+                "price": 69.99,
+                "isDefault": false,
+                "type": "yearly"
+            },
+            {
+                "id": 200000013,
+                "name": "other",
+                "price": 0,
+                "isDefault": true,
+                "type": "monthly"
+            }
+        ]
+    },
+    {
+        "id": 100000005,
+        "name": "disneyPlus",
+        "logo": "logo-disney",
+        "color": "#0063E5",
+        "plans": [
+            {
+                "id": 200000014,
+                "name": "monthly",
+                "price": 8.99,
+                "isDefault": true,
+                "type": "monthly"
+            },
+            {
+                "id": 200000015,
+                "name": "yearly",
+                "price": 89.90,
+                "isDefault": false,
+                "type": "yearly"
+            },
+            {
+                "id": 200000016,
+                "name": "other",
+                "price": 0,
+                "isDefault": true,
+                "type": "monthly"
+            }
+        ]
+    },
+    {
+        "id": 100000006,
+        "name": "youtubePremium",
+        "logo": "logo-youtube",
+        "color": "#FF0000",
+        "plans": [
+            {
+                "id": 200000017,
+                "name": "basic",
+                "price": 11.99,
+                "isDefault": true,
+                "type": "monthly"
+            },
+            {
+                "id": 200000018,
+                "name": "family",
+                "price": 17.99,
+                "isDefault": false,
+                "type": "monthly"
+            },
+            {
+                "id": 200000019,
+                "name": "student",
+                "price": 6.99,
+                "isDefault": false,
+                "type": "monthly"
+            },
+            {
+                "id": 200000020,
+                "name": "other",
+                "price": 0,
+                "isDefault": true,
+                "type": "monthly"
+            }
+        ]
+    },
+    {
+        "id": 199999999,
         "name": "other",
         "logo": "help-circle-outline",
         "color": "#D1495B",
         "plans": [
             {
-                "id": 2008,
+                "id": 299999999,
                 "name": "other",
                 "price": 0,
                 "isDefault": true,

@@ -21,14 +21,20 @@
         "title": "Ajustes"
     },
 
-    "subscriptionOptions": {
+    "subscriptionPlatform": {
         "netflix": "Netflix",
+        "amazonPrime": "Amazon Prime",
         "amazonPrimeVideo": "Amazon Prime Video",
+        "hboMax": "HBO Max",
+        "disneyPlus": "Disney+",
+        "youtubePremium": "YouTube Premium",
         "other": "Otra",
         "plan": {
             "basic": "Básico",
             "standard": "Estándar",
             "premium": "Premium",
+            "student": "Estudiante",
+            "family": "Familiar",
             "monthly": "Mensual",
             "yearly": "Anual",
             "other": "Otro",

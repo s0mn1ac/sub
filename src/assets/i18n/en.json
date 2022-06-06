@@ -21,14 +21,20 @@
         "title": "Settings"
     },
 
-    "subscriptionOptions": {
+    "subscriptionPlatform": {
         "netflix": "Netflix",
+        "amazonPrime": "Amazon Prime",
         "amazonPrimeVideo": "Amazon Prime Video",
+        "hboMax": "HBO Max",
+        "disneyPlus": "Disney+",
+        "youtubePremium": "YouTube Premium",
         "other": "Other",
         "plan": {
             "basic": "Basic",
             "standard": "Standard",
             "premium": "Premium",
+            "student": "Student",
+            "family": "Family",
             "monthly": "Monthly",
             "yearly": "Yearly",
             "other": "Other",
