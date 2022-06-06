@@ -1,15 +1,15 @@
 <ng-container *transloco="let t">
 
-  <div class="sub-card-layout" [routerLink]="'/sub/' + sub.id">
+  <div class="sub-card-layout">
 
-    <div class="sub-card" [style.background]="sub.color">
+    <div class="sub-card" [style.background]="platform?.color">
 
       <div class="card-header">
         <div class="header-container">
-          <h2 class="header-title"> {{ sub.name }} </h2>
-          <span class="header-sub-title"> {{ t('subscriptionPlatform.plan.' + sub.plan.name) | uppercase }} </span>
+          <h2 class="header-title"> {{ name }} </h2>
+          <span class="header-sub-title"> {{ t('subscriptionPlatform.plan.' + plan?.name) | uppercase }} </span>
         </div>
-        <ion-icon [name]="sub.logo" class="logo"></ion-icon>
+        <ion-icon [name]="platform?.logo" class="logo"></ion-icon>
       </div>
 
       <div class="card-content">

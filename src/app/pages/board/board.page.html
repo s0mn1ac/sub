@@ -13,7 +13,12 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="4" *ngFor="let sub of subs">
-          <app-sub-card [sub]="sub"></app-sub-card>
+          <app-sub-card
+            [routerLink]="'/sub/' + sub.id"
+            [name]="sub.name"
+            [platform]="sub.platform"
+            [plan]="sub.plan">
+          </app-sub-card>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -12,6 +12,14 @@
 
     <form [formGroup]="subForm">
 
+      <div class="sub-card-container">
+        <app-sub-card
+          [name]="subForm.value.name"
+          [platform]="subForm.value.platform"
+          [plan]="subForm.value.plan">
+        </app-sub-card>
+      </div>
+
       <ion-item lines="full">
         <ion-label position="floating"> {{ t('sub.form.price') }} </ion-label>
         <ion-input formControlName="price" inputmode="decimal" type="number" [min]="-1"></ion-input>

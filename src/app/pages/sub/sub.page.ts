@@ -20,6 +20,8 @@ export class SubPage implements OnInit, OnDestroy {
 
   public subForm: FormGroup;
 
+  public sub: Sub;
+
   public subscriptionPlatforms: SubscriptionPlatform[] = [];
   public platformPlans: PlatformPlan[] = [];
 
@@ -43,6 +45,7 @@ export class SubPage implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit(): void {
+    this.sub = new Sub();
     this.initParamsSubscription();
   }
 
@@ -97,6 +100,7 @@ export class SubPage implements OnInit, OnDestroy {
     if (sub === undefined) {
       return;
     }
+    this.sub = sub;
     const subscriptionPlatform: SubscriptionPlatform = this.subscriptionPlatforms.find(platform => platform.id === sub.platform.id);
     const platformPlan: PlatformPlan = subscriptionPlatform.plans.find(plan => plan.id === sub.plan.id);
     this.setValue('platform', subscriptionPlatform);
