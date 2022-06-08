@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
+import { registerLocaleData } from '@angular/common';
 
 /* Ionic modules */
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
@@ -19,6 +20,11 @@ import { AppComponent } from './app.component';
 
 /* Constants */
 import { databaseName } from './shared/constants/database.constants';
+
+/* Locales */
+import es from '@angular/common/locales/es';
+
+registerLocaleData(es);
 
 @NgModule({
   declarations: [AppComponent],

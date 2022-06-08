@@ -27,6 +27,8 @@ import { TranslocoService } from '@ngneat/transloco';
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+  public isLoading: boolean = true;
+
   private theme$: Subscription;
   private language$: Subscription;
 
@@ -57,31 +59,37 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   private async initApp(): Promise<void> {
-  await this.storageService.initStorage();
-  let userData: UserData = await this.storageService.retrieveUserData();
-  if (userData === null) {
-    const theme: ThemeEnum = window.matchMedia('(prefers-color-scheme: dark)').matches ? ThemeEnum.dark : ThemeEnum.light;
-    const language: GetLanguageCodeResult = await Device.getLanguageCode();
-    userData = new UserData(language.value.startsWith('es') ? LanguageEnum.es : LanguageEnum.en, theme);
+    this.setLoading(true);
+    await this.storageService.initStorage();
+    let userData: UserData = await this.storageService.retrieveUserData();
+    if (userData === null) {
+      const theme: ThemeEnum = window.matchMedia('(prefers-color-scheme: dark)').matches ? ThemeEnum.dark : ThemeEnum.light;
+      const language: GetLanguageCodeResult = await Device.getLanguageCode();
+      userData = new UserData(language.value.startsWith('es') ? LanguageEnum.es : LanguageEnum.en, theme);
+    }
+    // userData.theme = ThemeEnum.light;
+    this.storageService.userData = userData;
+    this.themeService.updateTheme(userData.theme);
+    this.languageService.updateLanguage(userData.language);
+    this.setLoading(false);
   }
-  // userData.theme = ThemeEnum.light;
-  this.storageService.userData = userData;
-  this.themeService.updateTheme(userData.theme);
-  this.languageService.updateLanguage(userData.language);
-}
 
-private async setTheme(theme: ThemeEnum): Promise<void> {
-  console.log(theme === ThemeEnum.dark ? '💡 Lights OFF!' : '💡 Lights ON!');
-  document.body.classList.toggle('dark', theme === ThemeEnum.dark);
-  if (isPlatform('mobile')) {
-    await StatusBar.setBackgroundColor({ color: '#D1495B' });
-    await StatusBar.setStyle({ style: theme ? Style.Dark : Style.Light });
+  private async setTheme(theme: ThemeEnum): Promise<void> {
+    console.log(theme === ThemeEnum.dark ? '💡 Lights OFF!' : '💡 Lights ON!');
+    document.body.classList.toggle('dark', theme === ThemeEnum.dark);
+    if (isPlatform('mobile')) {
+      await StatusBar.setBackgroundColor({ color: '#D1495B' });
+      await StatusBar.setStyle({ style: theme ? Style.Dark : Style.Light });
+    }
   }
-}
 
-private async setLanguage(language: LanguageEnum): Promise<void> {
-  console.log(language === LanguageEnum.es ? '🇪🇸 App language set to spanish' : '🇬🇧 App language set to english');
-  this.translocoService.setActiveLang(language);
-}
+  private async setLanguage(language: LanguageEnum): Promise<void> {
+    console.log(language === LanguageEnum.es ? '🇪🇸 App language set to spanish' : '🇬🇧 App language set to english');
+    this.translocoService.setActiveLang(language);
+  }
+
+  private setLoading(value: boolean): void {
+    this.isLoading = value;
+  }
 
 }

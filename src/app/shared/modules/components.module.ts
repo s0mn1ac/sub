@@ -10,14 +10,17 @@ import { IonicModule } from '@ionic/angular';
 import { TranslocoModule } from '@ngneat/transloco';
 
 /* Components */
-import { SubCardComponent } from 'src/app/components/subscription-card/sub-card.component';
+import { SubCardComponent } from 'src/app/components/sub-card/sub-card.component';
+import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-skeleton/sub-card-skeleton.component';
 
 @NgModule({
   declarations: [
-    SubCardComponent
+    SubCardComponent,
+    SubCardSkeletonComponent
   ],
   exports: [
-    SubCardComponent
+    SubCardComponent,
+    SubCardSkeletonComponent
   ],
   imports: [
     CommonModule,

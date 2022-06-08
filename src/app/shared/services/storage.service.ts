@@ -62,11 +62,11 @@ export class StorageService {
   }
 
   public async storeUserData(): Promise<void> {
-    await this._storage.set(subUserData, this._userData);
+    this._storage.set(subUserData, this._userData);
   }
 
   public async retrieveUserData(): Promise<UserData> {
-    return await this._storage.get(subUserData);
+    return this._storage.get(subUserData);
   }
 
   // ---- SUBS -----------------------------------------------------------------------------------------------------------------------------

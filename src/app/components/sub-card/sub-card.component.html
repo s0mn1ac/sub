@@ -2,7 +2,7 @@
 
   <div class="sub-card-layout">
 
-    <div class="sub-card" [style.background]="platform?.color">
+    <div class="sub-card" [style.background]="platform?.color" *ngIf="!isLoading">
 
       <div class="card-header">
         <div class="header-container">
@@ -13,7 +13,14 @@
       </div>
 
       <div class="card-content">
-        content
+
+        <div class="price-container">
+          <div class="price">
+            <span> {{ price | currency: 'USD':'symbol-narrow':undefined:'es-ES' }} </span>
+          </div>
+          <span class="periodicity"> CADA MES </span>
+        </div>
+
       </div>
 
     </div>

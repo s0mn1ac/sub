@@ -30,6 +30,8 @@ export class SubPage implements OnInit, OnDestroy {
 
   public mode: ModeEnum;
 
+  public isLoading: boolean = true;
+
   private params$: Subscription;
   private platform$: Subscription;
   private plan$: Subscription;
@@ -44,7 +46,7 @@ export class SubPage implements OnInit, OnDestroy {
     private subscriptionOptionsService: SubscriptionOptionsService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.sub = new Sub();
     this.initParamsSubscription();
   }
@@ -77,6 +79,8 @@ export class SubPage implements OnInit, OnDestroy {
   }
 
   private async initPage(id: number): Promise<void> {
+    this.setLoading(true);
+    await this.storageService.retrieveUserData();
     this.mode = id !== undefined ? ModeEnum.modify : ModeEnum.new;
     this.id = id;
     this.initForm();
@@ -84,6 +88,7 @@ export class SubPage implements OnInit, OnDestroy {
     this.subscriptionPlatforms = await this.subscriptionOptionsService.getSubscriptionPlatforms();
     const sub: Sub | undefined = id !== undefined ? this.storageService.getSubById(id) : undefined;
     this.setFormValues(sub);
+    this.setLoading(false);
   }
 
   private initForm(): void {
@@ -134,6 +139,10 @@ export class SubPage implements OnInit, OnDestroy {
 
   private setDisabledState(name: string, isDisabled: boolean): void {
     this.subForm.get(name)[isDisabled ? 'disable' : 'enable']({ emitEvent: false });
+  }
+
+  private setLoading(value: boolean): void {
+    this.isLoading = value;
   }
 
 }
