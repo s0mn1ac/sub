@@ -11,6 +11,8 @@ import { TranslocoModule } from '@ngneat/transloco';
 
 /* App modules */
 import { ComponentsModule } from './components.module';
+import { PipesModule } from './pipes.module';
+
 
 @NgModule({
   declarations: [],
@@ -20,7 +22,8 @@ import { ComponentsModule } from './components.module';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   exports: [
     CommonModule,
@@ -28,7 +31,8 @@ import { ComponentsModule } from './components.module';
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    ComponentsModule
+    ComponentsModule,
+    PipesModule
   ],
   providers: []
 })

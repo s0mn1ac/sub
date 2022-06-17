@@ -14,6 +14,7 @@ export class BoardPage {
 
   public subs: Sub[] = [];
 
+  public isLoading: boolean = true;
   public isBoardEmpty: boolean;
 
   constructor(
@@ -24,9 +25,16 @@ export class BoardPage {
     this.getAllSubs();
   }
 
-  private getAllSubs(): void {
+  private async getAllSubs(): Promise<void> {
+    this.setLoading(true);
+    await this.storageService.retrieveUserData();
     this.subs = this.storageService.getAllSubs();
     this.isBoardEmpty = this.subs.length === 0;
+    this.setLoading(false);
+  }
+
+  private setLoading(value: boolean): void {
+    this.isLoading = value;
   }
 
 }

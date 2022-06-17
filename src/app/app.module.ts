@@ -1,5 +1,5 @@
 /* Angular modules */
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
@@ -15,6 +15,9 @@ import { TranslocoRootModule } from './shared/modules/transloco-root.module';
 /* App modules */
 import { AppRoutingModule } from './app-routing.module';
 
+/* Services */
+import { TranslocoService } from '@ngneat/transloco';
+
 /* Components */
 import { AppComponent } from './app.component';
 
@@ -23,8 +26,10 @@ import { databaseName } from './shared/constants/database.constants';
 
 /* Locales */
 import es from '@angular/common/locales/es';
+import en from '@angular/common/locales/en';
 
-registerLocaleData(es);
+registerLocaleData(es, 'es');
+registerLocaleData(en, 'en');
 
 @NgModule({
   declarations: [AppComponent],
@@ -37,7 +42,17 @@ registerLocaleData(es);
     HttpClientModule,
     TranslocoRootModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    },
+    {
+      provide: LOCALE_ID,
+      useFactory: (translocoService: TranslocoService) => translocoService.getActiveLang(),
+      deps: [TranslocoService]
+    }
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

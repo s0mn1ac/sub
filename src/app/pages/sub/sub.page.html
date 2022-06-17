@@ -18,52 +18,94 @@
 
       <div class="sub-card-container">
         <app-sub-card
-          [isLoading]="isLoading"
           [name]="subForm.value.name"
           [platform]="subForm.value.platform"
           [plan]="subForm.value.plan"
+          [type]="subForm.value.type"
+          [firstPayment]="subForm.value.firstPayment"
           [price]="subForm.value.price"
-          [currency]="'€'">
+          [currency]="subForm.value.currency">
         </app-sub-card>
       </div>
 
-      <ion-item lines="full">
-        <ion-label position="floating"> {{ t('sub.form.price') }} </ion-label>
-        <ion-input formControlName="price" inputmode="decimal" type="number" [min]="0"></ion-input>
-      </ion-item>
+      <ion-list>
 
-      <ion-item lines="full">
-        <ion-label position="floating"> {{ t('sub.form.platform') }} </ion-label>
-        <ion-select formControlName="platform" interface="action-sheet">
-          <ion-select-option [value]="option" *ngFor="let option of subscriptionPlatforms">
-            {{ t('subscriptionPlatform.' + option.name) }}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating"> {{ t('sub.form.price') }} </ion-label>
+          <ion-input formControlName="price" inputmode="decimal" type="number" [min]="0"></ion-input>
+        </ion-item>
 
-      <ion-item lines="full">
-        <ion-label position="floating"> {{ t('sub.form.name') }} </ion-label>
-        <ion-input formControlName="name" inputmode="text" type="text"></ion-input>
-      </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating"> {{ t('sub.form.currency') }} </ion-label>
+          <ion-input formControlName="currency" inputmode="text" type="text"></ion-input>
+        </ion-item>
   
-      <ion-item lines="full">
-        <ion-label position="floating"> {{ t('sub.form.plan') }} </ion-label>
-        <ion-select formControlName="plan" interface="action-sheet">
-          <ion-select-option [value]="option" *ngFor="let option of platformPlans">
-            {{ t('subscriptionPlatform.plan.' + option.name) }}
-          </ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating"> {{ t('sub.form.platform') }} </ion-label>
+          <ion-select formControlName="platform" interface="action-sheet">
+            <ion-select-option [value]="option" *ngFor="let option of subscriptionPlatforms">
+              {{ t('subscriptionPlatform.' + option.name) }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
   
-      <ion-item lines="full">
-        <ion-label position="floating"> {{ t('sub.form.type') }} </ion-label>
-        <ion-select formControlName="type" interface="action-sheet">
-          <ion-select-option [value]="planTypeEnum.daily"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.daily) }} </ion-select-option>
-          <ion-select-option [value]="planTypeEnum.weekly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.weekly) }} </ion-select-option>
-          <ion-select-option [value]="planTypeEnum.monthly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.monthly) }} </ion-select-option>
-          <ion-select-option [value]="planTypeEnum.yearly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.yearly) }} </ion-select-option>
-        </ion-select>
-      </ion-item>
+        <ion-item lines="full">
+          <ion-label position="floating"> {{ t('sub.form.name') }} </ion-label>
+          <ion-input formControlName="name" inputmode="text" type="text"></ion-input>
+        </ion-item>
+    
+        <ion-item lines="full">
+          <ion-label position="floating"> {{ t('sub.form.plan') }} </ion-label>
+          <ion-select formControlName="plan" interface="action-sheet">
+            <ion-select-option [value]="option" *ngFor="let option of platformPlans">
+              {{ t('subscriptionPlatform.plan.' + option.name) }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-list>
+
+        <ion-list-header>
+          <ion-label> {{ t('sub.form.billingPeriod') }} </ion-label>
+        </ion-list-header>
+
+        <ion-item lines="full">
+          <ion-label position="floating"> {{ t('sub.form.every') }} </ion-label>
+          <ion-input formControlName="every" inputmode="number" type="number" [min]="1"></ion-input>
+        </ion-item>
+
+        <ion-item lines="full">
+          <ion-label position="floating"> {{ t('sub.form.period') }} </ion-label>
+          <ion-select formControlName="type" interface="action-sheet">
+            <ion-select-option [value]="planTypeEnum.daily"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.daily) }} </ion-select-option>
+            <ion-select-option [value]="planTypeEnum.weekly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.weekly) }} </ion-select-option>
+            <ion-select-option [value]="planTypeEnum.monthly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.monthly) }} </ion-select-option>
+            <ion-select-option [value]="planTypeEnum.yearly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.yearly) }} </ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item id="open-modal">
+          <ion-label> {{ t('sub.form.firstPayment') }} </ion-label>
+          <ion-note slot="end" id="datetimeValue"> {{ subForm.value.firstPayment | dateFormat}} </ion-note>
+        </ion-item>
+        <ion-modal trigger="open-modal">
+          <ng-template>
+            <ion-content>
+              <ion-datetime
+                #datePicker
+                formControlName="firstPayment"
+                presentation="date"
+                [showDefaultButtons]="true"
+                min="1989-06-04"
+                mode="ios">
+              </ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+      </ion-list>
 
       <div class="fab-buttons-container">
         <ion-fab-button mode="ios" color="danger" *ngIf="mode === modeEnum.modify"

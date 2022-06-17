@@ -12,6 +12,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 /* Components */
 import { SubCardComponent } from 'src/app/components/sub-card/sub-card.component';
 import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-skeleton/sub-card-skeleton.component';
+import { PipesModule } from './pipes.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-
     CommonModule,
     IonicModule,
     RouterModule,
-    TranslocoModule
+    TranslocoModule,
+    PipesModule
   ]
 })
 export class ComponentsModule { }

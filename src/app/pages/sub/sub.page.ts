@@ -10,7 +10,8 @@ import { SubscriptionOptionsService } from 'src/app/shared/services/subscription
 import { Sub } from 'src/app/shared/models/sub.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
 import { ModeEnum } from 'src/app/shared/enums/mode.enum';
-
+import * as moment from 'moment';
+import { Moment } from 'moment';
 @Component({
   selector: 'app-sub',
   templateUrl: './sub.page.html',
@@ -92,12 +93,16 @@ export class SubPage implements OnInit, OnDestroy {
   }
 
   private initForm(): void {
+    const today: Moment = moment(moment().format('DD/MM/YYYY'), 'DD/MM/YYYY');
     this.subForm = new FormGroup({
       price: new FormControl(0, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(0)])),
+      currency: new FormControl('EUR', Validators.compose([Validators.required, Validators.nullValidator, Validators.min(0)])),
       name: new FormControl(null, Validators.compose([Validators.required, Validators.nullValidator, Validators.maxLength(75)])),
       platform: new FormControl(null, Validators.compose([Validators.required, Validators.nullValidator])),
       plan: new FormControl({ value: null, disabled: true }, Validators.compose([Validators.required, Validators.nullValidator])),
-      type: new FormControl({ value: null, disabled: true }, Validators.compose([Validators.required, Validators.nullValidator]))
+      type: new FormControl(PlanTypeEnum.monthly, Validators.compose([Validators.required, Validators.nullValidator])),
+      every: new FormControl(1, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(1)])),
+      firstPayment: new FormControl(today.format('YYYY-MM-DD'), Validators.compose([Validators.required, Validators.nullValidator]))
     });
   }
 
@@ -111,7 +116,11 @@ export class SubPage implements OnInit, OnDestroy {
     this.setValue('platform', subscriptionPlatform);
     this.setValue('plan', platformPlan);
     this.setValue('type', sub.type);
+    this.setValue('every', sub.every);
+    this.setValue('type', sub.type);
+    this.setValue('firstPayment', sub.firstPayment);
     this.setValue('price', sub.price);
+    this.setValue('currency', sub.currency);
     this.setValue('name', sub.name);
   }
 
@@ -122,14 +131,12 @@ export class SubPage implements OnInit, OnDestroy {
         this.platformPlans = platform.plans;
         this.setValue('name', this.translocoService.translate(`subscriptionPlatform.${platform.name}`));
         this.setValue('plan', platform.plans.find((plan: PlatformPlan) => plan.isDefault));
-        this.setDisabledState('type', false);
         this.setDisabledState('plan', false);
       });
 
     this.plan$ = this.subForm.get('plan').valueChanges
       .subscribe((plan: PlatformPlan) => {
         this.setValue('price', plan.price);
-        this.setValue('type', plan.type);
       });
   }
 

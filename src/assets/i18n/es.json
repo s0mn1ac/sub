@@ -8,12 +8,19 @@
 
     "sub": {
         "title": "Sub",
+        "dayUntil": "1 día",
+        "daysUntil": "{{days}} días",
         "form": {
             "price": "Precio",
+            "currency": "Moneda",
             "name": "Nombre",
             "platform": "Plataforma",
             "plan": "Plan de suscripción",
-            "type": "Tipo de suscripción"
+            "type": "Tipo de suscripción",
+            "billingPeriod": "Período de facturación",
+            "every": "Cada",
+            "period": "Período",
+            "firstPayment": "Primer pago"
         }
     },
 

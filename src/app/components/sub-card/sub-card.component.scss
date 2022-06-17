@@ -49,26 +49,48 @@ div.sub-card-layout {
         }
 
         div.card-content {
+            padding: 1rem;
+            background: rgb(0 0 0 / 20%);
+            border-radius: var(--custom-border-radius);
             color: var(--ion-text-color-light);
+
+            div.flex-row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+            }
+
+            div.next-payment-container {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                // border-right: 1px solid var(--ion-text-color-light);
+                flex: 1;
+
+                span.days {
+                    font-size: 30px;
+                    font-weight: bold;
+                }
+
+                span.next-payment {
+                    font-size: 12px;
+                }
+            }
 
             div.price-container {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
+                border-left: 1px solid var(--ion-text-color-light);
+                flex: 1;
 
-                div.price {
-                    display: flex;
-                    gap: 5px;
-                    
-                    span {
-                        font-size: 30px;
-                        font-weight: bold;
-                    }
+                span.price {
+                    font-size: 30px;
+                    font-weight: bold;
                 }
 
                 span.periodicity {
                     font-size: 12px;
-
                 }
             }
         }

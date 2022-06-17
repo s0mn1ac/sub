@@ -8,7 +8,18 @@ div.fab-buttons-container {
     flex-direction: row;
     gap: 28px;
     bottom: 10px;
-    left: 50%;
-    margin-inline-start: -70px;
-    z-index: 999;
+    justify-content: center;
+    width: 100%;
+}
+
+ion-modal {
+    --width: 290px;
+    --height: 382px;
+    --border-radius: 8px;
+}
+
+ion-modal ion-datetime {
+    width: auto;
+    max-width: 350px;
+    height: 382px;
 }

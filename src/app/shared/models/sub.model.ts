@@ -14,6 +14,8 @@ export class Sub {
     platform: SubscriptionPlatform;
     plan: PlatformPlan;
     type: PlanTypeEnum;
+    every: number;
+    firstPayment: string;
     price: number;
     currency: string;
 
@@ -27,6 +29,8 @@ export class Sub {
             this.platform = formValue.platform;
             this.plan = formValue.plan;
             this.type = formValue.type;
+            this.every = formValue.every;
+            this.firstPayment = formValue.firstPayment;
             this.price = formValue.price;
             this.currency = formValue.currency;
         }

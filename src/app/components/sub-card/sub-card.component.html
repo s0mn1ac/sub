@@ -2,23 +2,30 @@
 
   <div class="sub-card-layout">
 
-    <div class="sub-card" [style.background]="platform?.color" *ngIf="!isLoading">
+    <div class="sub-card" [style.background]="platform?.color ?? '#D1495B'">
 
       <div class="card-header">
         <div class="header-container">
-          <h2 class="header-title"> {{ name }} </h2>
-          <span class="header-sub-title"> {{ t('subscriptionPlatform.plan.' + plan?.name) | uppercase }} </span>
+          <h2 class="header-title"> {{ name ?? '-' }} </h2>
+          <span class="header-sub-title"> {{ plan?.name ? (t('subscriptionPlatform.plan.' + plan?.name) | uppercase) : '-' }} </span>
         </div>
-        <ion-icon [name]="platform?.logo" class="logo"></ion-icon>
+        <ion-icon [name]="platform?.logo ?? 'help-circle-outline'" class="logo"></ion-icon>
       </div>
 
       <div class="card-content">
 
-        <div class="price-container">
-          <div class="price">
-            <span> {{ price | currency: 'USD':'symbol-narrow':undefined:'es-ES' }} </span>
+        <div class="flex-row">
+
+          <div class="next-payment-container">
+            <span class="days"> {{ firstPayment | daysUntil: type }} </span>
+            <span class="next-payment"> PRÓXIMO PAGO </span>
           </div>
-          <span class="periodicity"> CADA MES </span>
+
+          <div class="price-container">
+            <span class="price"> {{ price | currency: currency:'symbol-narrow':undefined:language }} </span>
+            <span class="periodicity"> CADA MES </span>
+          </div>
+
         </div>
 
       </div>
