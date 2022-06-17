@@ -18,12 +18,17 @@
 
           <div class="next-payment-container">
             <span class="days"> {{ firstPayment | daysUntil: type }} </span>
-            <span class="next-payment"> PRÓXIMO PAGO </span>
+            <span class="next-payment"> {{ t('sub.nextPayment') | uppercase }} </span>
           </div>
 
           <div class="price-container">
             <span class="price"> {{ price | currency: currency:'symbol-narrow':undefined:language }} </span>
-            <span class="periodicity"> CADA MES </span>
+            <div [ngSwitch]="type">
+              <span class="periodicity" *ngSwitchCase="planTypeEnum.daily"> {{ t('sub.eachDay') | uppercase }} </span>
+              <span class="periodicity" *ngSwitchCase="planTypeEnum.weekly"> {{ t('sub.eachWeek') | uppercase }} </span>
+              <span class="periodicity" *ngSwitchCase="planTypeEnum.monthly"> {{ t('sub.eachMonth') | uppercase }} </span>
+              <span class="periodicity" *ngSwitchCase="planTypeEnum.yearly"> {{ t('sub.eachYear') | uppercase }} </span>
+            </div>
           </div>
 
         </div>

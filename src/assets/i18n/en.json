@@ -10,7 +10,13 @@
         "title": "Sub",
         "dayUntil": "1 day",
         "daysUntil": "{{days}} days",
+        "nextPayment": "Nex payment",
+        "eachDay": "Each day",
+        "eachWeek": "Each week",
+        "eachMonth": "Each month",
+        "eachYear": "Each year",
         "form": {
+            "subscriptionData": "Subscription data",
             "price": "Price",
             "currency": "Currency",
             "name": "Name",
@@ -20,7 +26,8 @@
             "billingPeriod": "Billing period",
             "every": "Each",
             "period": "Period",
-            "firstPayment": "First payment"
+            "firstPayment": "First payment",
+            "additionalInformation": "Additional information"
         }
     },
 

@@ -5,20 +5,24 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Device, GetLanguageCodeResult } from '@capacitor/device';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
+/* Others */
+import { Subscription } from 'rxjs';
+
 /* Ionic */
 import { isPlatform } from '@ionic/angular';
 
 /* Services */
+import { TranslocoService } from '@ngneat/transloco';
 import { StorageService } from './shared/services/storage.service';
 import { LanguageService } from './shared/services/language.service';
 import { ThemeService } from './shared/services/theme.service';
 
-/* Others */
-import { Subscription } from 'rxjs';
+/* Models */
 import { UserData } from './shared/models/user-data.model';
+
+/* Enums */
 import { ThemeEnum } from './shared/enums/theme.enum';
 import { LanguageEnum } from './shared/enums/language.enum';
-import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
@@ -67,7 +71,7 @@ export class AppComponent implements OnInit, OnDestroy {
       const language: GetLanguageCodeResult = await Device.getLanguageCode();
       userData = new UserData(language.value.startsWith('es') ? LanguageEnum.es : LanguageEnum.en, theme);
     }
-    // userData.theme = ThemeEnum.light;
+    userData.theme = ThemeEnum.light; // TODO: Borrar
     this.storageService.userData = userData;
     this.themeService.updateTheme(userData.theme);
     this.languageService.updateLanguage(userData.language);

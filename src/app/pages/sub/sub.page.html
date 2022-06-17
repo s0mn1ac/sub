@@ -5,8 +5,27 @@
       <ion-buttons slot="start">
         <ion-back-button defaultHref="/board" text=""></ion-back-button>
       </ion-buttons>
+      <ion-buttons slot="end">
+        <ion-button (click)="onClickDeleteSub()" *ngIf="mode === modeEnum.modify">
+          <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+        </ion-button>
+        <ion-button (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()">
+          <ion-icon slot="icon-only" name="save-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
+
+  <!-- <div class="fab-buttons-container">
+    <ion-fab-button mode="ios" color="danger" *ngIf="mode === modeEnum.modify"
+      (click)="onClickDeleteSub()">
+      <ion-icon name="trash-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button mode="ios" color="primary" [disabled]="subForm.invalid"
+      (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()">
+      <ion-icon name="save-outline"></ion-icon>
+    </ion-fab-button>
+  </div> -->
   
   <ion-content mode="ios">
 
@@ -30,6 +49,10 @@
 
       <ion-list>
 
+        <ion-list-header>
+          <ion-label> {{ t('sub.form.subscriptionData') }} </ion-label>
+        </ion-list-header>
+
         <ion-item lines="full">
           <ion-label position="floating"> {{ t('sub.form.price') }} </ion-label>
           <ion-input formControlName="price" inputmode="decimal" type="number" [min]="0"></ion-input>
@@ -37,7 +60,11 @@
 
         <ion-item lines="full">
           <ion-label position="floating"> {{ t('sub.form.currency') }} </ion-label>
-          <ion-input formControlName="currency" inputmode="text" type="text"></ion-input>
+          <ion-select formControlName="currency" interface="action-sheet" (ionChange)="onChangeCurrency($event)">
+            <ion-select-option [value]="currency.code" *ngFor="let currency of currencies">
+              {{ currency.currency }}
+            </ion-select-option>
+          </ion-select>
         </ion-item>
   
         <ion-item lines="full">
@@ -106,17 +133,6 @@
         </ion-modal>
 
       </ion-list>
-
-      <div class="fab-buttons-container">
-        <ion-fab-button mode="ios" color="danger" *ngIf="mode === modeEnum.modify"
-          (click)="onClickDeleteSub()">
-          <ion-icon name="trash-outline"></ion-icon>
-        </ion-fab-button>
-        <ion-fab-button mode="ios" color="primary" [disabled]="subForm.invalid"
-          (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()">
-          <ion-icon name="save-outline"></ion-icon>
-        </ion-fab-button>
-      </div>
 
     </form>
   

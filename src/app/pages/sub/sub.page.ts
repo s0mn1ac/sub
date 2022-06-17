@@ -1,17 +1,30 @@
+/* Angular */
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { TranslocoService } from '@ngneat/transloco';
+
+/* Others */
 import { Subscription } from 'rxjs';
-import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
+import { Moment } from 'moment';
+import { CurrencyCodeRecord } from 'currency-codes';
+import * as moment from 'moment';
+import * as cc from 'currency-codes';
+
+/* Services */
+import { TranslocoService } from '@ngneat/transloco';
+import { StorageService } from 'src/app/shared/services/storage.service';
+import { SubscriptionOptionsService } from 'src/app/shared/services/subscription-options.service';
+
+/* Models */
+import { Sub } from 'src/app/shared/models/sub.model';
 import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platform.model';
 import { PlatformPlan } from 'src/app/shared/models/platform-plan.model';
-import { SubscriptionOptionsService } from 'src/app/shared/services/subscription-options.service';
-import { Sub } from 'src/app/shared/models/sub.model';
-import { StorageService } from 'src/app/shared/services/storage.service';
+
+/* Enums */
 import { ModeEnum } from 'src/app/shared/enums/mode.enum';
-import * as moment from 'moment';
-import { Moment } from 'moment';
+import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
+import { UserData } from 'src/app/shared/models/user-data.model';
+
 @Component({
   selector: 'app-sub',
   templateUrl: './sub.page.html',
@@ -22,6 +35,8 @@ export class SubPage implements OnInit, OnDestroy {
   public subForm: FormGroup;
 
   public sub: Sub;
+
+  public currencies: CurrencyCodeRecord[] = [];
 
   public subscriptionPlatforms: SubscriptionPlatform[] = [];
   public platformPlans: PlatformPlan[] = [];
@@ -58,6 +73,12 @@ export class SubPage implements OnInit, OnDestroy {
     this.plan$?.unsubscribe();
   }
 
+  public onChangeCurrency(event: any): void {
+    const userData: UserData = this.storageService.userData;
+    userData.currency = event.detail.value;
+    this.storageService.userData = userData;
+  }
+
   public onClickAddNewSub(): void {
     const sub: Sub = new Sub(this.subForm.value);
     this.storageService.addNewSub(sub);
@@ -86,6 +107,7 @@ export class SubPage implements OnInit, OnDestroy {
     this.id = id;
     this.initForm();
     this.initFormSubscriptions();
+    this.currencies = cc.data;
     this.subscriptionPlatforms = await this.subscriptionOptionsService.getSubscriptionPlatforms();
     const sub: Sub | undefined = id !== undefined ? this.storageService.getSubById(id) : undefined;
     this.setFormValues(sub);
@@ -93,10 +115,11 @@ export class SubPage implements OnInit, OnDestroy {
   }
 
   private initForm(): void {
+    const userData: UserData = this.storageService.userData;
     const today: Moment = moment(moment().format('DD/MM/YYYY'), 'DD/MM/YYYY');
     this.subForm = new FormGroup({
       price: new FormControl(0, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(0)])),
-      currency: new FormControl('EUR', Validators.compose([Validators.required, Validators.nullValidator, Validators.min(0)])),
+      currency: new FormControl(userData.currency, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(0)])),
       name: new FormControl(null, Validators.compose([Validators.required, Validators.nullValidator, Validators.maxLength(75)])),
       platform: new FormControl(null, Validators.compose([Validators.required, Validators.nullValidator])),
       plan: new FormControl({ value: null, disabled: true }, Validators.compose([Validators.required, Validators.nullValidator])),
