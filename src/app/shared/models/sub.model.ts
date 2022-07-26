@@ -24,7 +24,7 @@ export class Sub {
         if (formValue !== null) {
             this.name = formValue.name;
             this.description = formValue.description;
-            this.logo = formValue.platform.logo;
+            this.logo = formValue.logo;
             this.color = formValue.platform.color;
             this.platform = formValue.platform;
             this.plan = formValue.plan;

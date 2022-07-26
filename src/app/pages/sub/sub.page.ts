@@ -125,7 +125,8 @@ export class SubPage implements OnInit, OnDestroy {
       plan: new FormControl({ value: null, disabled: true }, Validators.compose([Validators.required, Validators.nullValidator])),
       type: new FormControl(PlanTypeEnum.monthly, Validators.compose([Validators.required, Validators.nullValidator])),
       every: new FormControl(1, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(1)])),
-      firstPayment: new FormControl(today.format('YYYY-MM-DD'), Validators.compose([Validators.required, Validators.nullValidator]))
+      firstPayment: new FormControl(today.format('YYYY-MM-DD'), Validators.compose([Validators.required, Validators.nullValidator])),
+      logo: new FormControl('help-circle-outline')
     });
   }
 
@@ -154,6 +155,7 @@ export class SubPage implements OnInit, OnDestroy {
         this.platformPlans = platform.plans;
         this.setValue('name', this.translocoService.translate(`subscriptionPlatform.${platform.name}`));
         this.setValue('plan', platform.plans.find((plan: PlatformPlan) => plan.isDefault));
+        this.setValue('logo', platform.logo);
         this.setDisabledState('plan', false);
       });
 

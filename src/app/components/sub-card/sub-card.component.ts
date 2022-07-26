@@ -21,6 +21,7 @@ export class SubCardComponent {
   @Input() firstPayment: string;
   @Input() price: number;
   @Input() currency: string;
+  @Input() logo: string;
   @Input() showMoreInfo: boolean = true;
 
   public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;

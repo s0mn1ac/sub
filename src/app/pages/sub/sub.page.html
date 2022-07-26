@@ -24,7 +24,8 @@
           [type]="subForm.value.type"
           [firstPayment]="subForm.value.firstPayment"
           [price]="subForm.value.price"
-          [currency]="subForm.value.currency">
+          [currency]="subForm.value.currency"
+          [logo]="subForm.value.logo">
         </app-sub-card>
       </div>
 
@@ -120,6 +121,19 @@
             </ion-content>
           </ng-template>
         </ion-modal>
+
+      </ion-list>
+
+      <ion-list>
+
+        <ion-list-header>
+          <ion-label> {{ t('sub.form.additionalInformation') }} </ion-label>
+        </ion-list-header>
+
+        <ion-item lines="inset">
+          <ion-label> {{ t('sub.form.logo') }} </ion-label>
+          <ion-icon [name]="subForm.value.logo" class="logo"></ion-icon>
+        </ion-item>
 
       </ion-list>
 
