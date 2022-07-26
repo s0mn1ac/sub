@@ -6,8 +6,12 @@
 
       <div class="card-header">
         <div class="header-container">
-          <h2 class="header-title"> {{ name ?? '-' }} </h2>
-          <span class="header-sub-title"> {{ plan?.name ? (t('subscriptionPlatform.plan.' + plan?.name) | uppercase) : '-' }} </span>
+          <h2 class="header-title">
+            {{ name !== null && name !== '' ? name : t('sub.form.name') }}
+          </h2>
+          <span class="header-sub-title">
+            {{ plan?.name ? (t('subscriptionPlatform.plan.' + plan?.name) | uppercase) : t('sub.form.plan') | uppercase }}
+          </span>
         </div>
         <ion-icon [name]="platform?.logo ?? 'help-circle-outline'" class="logo"></ion-icon>
       </div>
@@ -22,7 +26,9 @@
           </div>
 
           <div class="price-container">
-            <span class="price"> {{ price | currency: currency:'symbol-narrow':undefined:language }} </span>
+            <span class="price">
+              {{ (price ?? 0) | currency: currency : 'symbol-narrow' : undefined : language }}
+            </span>
             <div [ngSwitch]="type">
               <span class="periodicity" *ngSwitchCase="planTypeEnum.daily"> {{ t('sub.eachDay') | uppercase }} </span>
               <span class="periodicity" *ngSwitchCase="planTypeEnum.weekly"> {{ t('sub.eachWeek') | uppercase }} </span>

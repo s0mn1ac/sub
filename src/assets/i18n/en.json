@@ -2,6 +2,11 @@
     "appName": "Sub",
     "version": "1.0.0",
 
+    "buttons": {
+        "saveSub": "Save subscription",
+        "deleteSub": "Delete subscription"
+    },
+
     "board": {
         "title": "Board"
     },
@@ -16,11 +21,12 @@
         "eachMonth": "Each month",
         "eachYear": "Each year",
         "form": {
+            "subscriptionType": "Subscription type",
+            "platform": "Platform",
+            "name": "Name",
             "subscriptionData": "Subscription data",
             "price": "Price",
             "currency": "Currency",
-            "name": "Name",
-            "platform": "Platform",
             "plan": "Subscription plan",
             "type": "Subscription type",
             "billingPeriod": "Billing period",

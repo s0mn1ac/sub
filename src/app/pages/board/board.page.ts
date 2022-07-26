@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 
 /* Models */
 import { Sub } from 'src/app/shared/models/sub.model';
+import { UserData } from 'src/app/shared/models/user-data.model';
 import { StorageService } from 'src/app/shared/services/storage.service';
 
 @Component({
@@ -25,12 +26,16 @@ export class BoardPage {
     this.getAllSubs();
   }
 
-  private async getAllSubs(): Promise<void> {
+  private getAllSubs(): void {
     this.setLoading(true);
-    await this.storageService.retrieveUserData();
-    this.subs = this.storageService.getAllSubs();
-    this.isBoardEmpty = this.subs.length === 0;
-    this.setLoading(false);
+    this.storageService.retrieveUserData()
+      .then((userData: UserData) => {
+        if (userData !== null && userData !== undefined) {
+          this.subs = userData.subs;
+          this.isBoardEmpty = this.subs.length === 0;
+        }
+      })
+      .finally(() => this.setLoading(false));
   }
 
   private setLoading(value: boolean): void {
