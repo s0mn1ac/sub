@@ -13,6 +13,8 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 })
 export class BoardPage {
 
+  public userData: UserData;
+
   public subs: Sub[] = [];
 
   public isLoading: boolean = true;
@@ -31,6 +33,7 @@ export class BoardPage {
     this.storageService.retrieveUserData()
       .then((userData: UserData) => {
         if (userData !== null && userData !== undefined) {
+          this.userData = userData;
           this.subs = userData.subs;
           this.isBoardEmpty = this.subs.length === 0;
         }

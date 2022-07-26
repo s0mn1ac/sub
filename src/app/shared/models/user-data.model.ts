@@ -9,12 +9,14 @@ export class UserData {
     language: LanguageEnum;
     theme: ThemeEnum;
     currency: string;
+    showMoreInfo: boolean;
     subs: Sub[];
 
     constructor(language: LanguageEnum, theme: ThemeEnum) {
         this.language = language;
         this.theme = theme;
-        this.subs = [];
         this.currency = 'EUR';
+        this.showMoreInfo = true;
+        this.subs = [];
     }
 }

@@ -160,6 +160,12 @@ export class SubPage implements OnInit, OnDestroy {
     this.plan$ = this.subForm.get('plan').valueChanges
       .subscribe((plan: PlatformPlan) => {
         this.setValue('price', plan.price);
+        if (plan.type === PlanTypeEnum.daily
+          || plan.type === PlanTypeEnum.weekly
+          || plan.type === PlanTypeEnum.monthly
+          || plan.type === PlanTypeEnum.yearly) {
+            this.setValue('type', plan.type);
+        }
       });
   }
 

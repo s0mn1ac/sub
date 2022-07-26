@@ -44,7 +44,7 @@
             {
                 "id": 200000005,
                 "name": "yearly",
-                "price": 3,
+                "price": 36,
                 "isDefault": true,
                 "type": "yearly"
             },
@@ -73,7 +73,7 @@
             {
                 "id": 200000008,
                 "name": "yearly",
-                "price": 3,
+                "price": 36,
                 "isDefault": true,
                 "type": "yearly"
             },

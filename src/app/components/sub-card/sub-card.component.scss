@@ -15,14 +15,21 @@ div.sub-card-layout {
         div.card-header {
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
+            align-items: center;
             color: var(--ion-text-color-light);
-            margin-bottom: 0.5rem;
             gap: 1rem;
+
+            ion-icon.logo {
+                height: 2rem;
+                width: 2rem;
+                min-width: 2rem;
+                color: var(--ion-text-color-light);
+            }
 
             div.header-container {
                 display: flex;
                 flex-direction: column;
+                flex-grow: 1;
 
                 h2.header-title, span.header-sub-title {
                     margin: 0;
@@ -38,13 +45,6 @@ div.sub-card-layout {
                     margin: 0.2rem 0;
                 }
             }
-
-            ion-icon.logo {
-                height: 2rem;
-                width: 2rem;
-                min-width: 2rem;
-                color: var(--ion-text-color-light);
-            }
         }
 
         div.card-content {
@@ -52,6 +52,7 @@ div.sub-card-layout {
             background: rgb(0 0 0 / 20%);
             border-radius: var(--custom-border-radius);
             color: var(--ion-text-color-light);
+            margin-top: 0.5rem;
 
             div.flex-row {
                 display: flex;
@@ -63,7 +64,6 @@ div.sub-card-layout {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                // border-right: 1px solid var(--ion-text-color-light);
                 flex: 1;
 
                 span.days {

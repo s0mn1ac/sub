@@ -13,7 +13,7 @@ export class DaysUntilPipe implements PipeTransform {
     private translocoService: TranslocoService
   ) { }
 
-  transform(value: string, period: PlanTypeEnum): string {
+  transform(value: string, period: PlanTypeEnum, asNumber: boolean = false): string | number {
     const firstPayment: Moment = moment(value, 'YYYY-MM-DD');
     const today: Moment = moment(moment().format('DD/MM/YYYY'), 'DD/MM/YYYY');
     let nextPayment: Moment = this.getDefaultNextPaymentDate(firstPayment, today, period);
@@ -22,7 +22,9 @@ export class DaysUntilPipe implements PipeTransform {
       nextPayment = nextPayment.add(1, this.getUnitOfTymeByPeriod(period));
       daysUntil = nextPayment.diff(today, 'days');
     }
-    return this.translocoService.translate(daysUntil === 1 ? 'sub.dayUntil' : 'sub.daysUntil', { days: daysUntil});
+    return asNumber
+      ? daysUntil
+      : this.translocoService.translate(daysUntil === 1 ? 'sub.dayUntil' : 'sub.daysUntil', { days: daysUntil});
   }
 
   private getDefaultNextPaymentDate(firstPayment: Moment, today: Moment, period: PlanTypeEnum): Moment {
