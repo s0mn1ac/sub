@@ -130,9 +130,11 @@
           <ion-label> {{ t('sub.form.additionalInformation') }} </ion-label>
         </ion-list-header>
 
-        <ion-item lines="inset">
+        <ion-item lines="inset" class="logo-selection">
           <ion-label> {{ t('sub.form.logo') }} </ion-label>
-          <ion-icon [name]="subForm.value.logo" class="logo"></ion-icon>
+          <div class="icon-container" [style.background]="subForm.value.platform?.color ?? '#D1495B'">
+            <ion-icon [name]="subForm.value.logo" class="logo"></ion-icon>
+          </div>
         </ion-item>
 
       </ion-list>
