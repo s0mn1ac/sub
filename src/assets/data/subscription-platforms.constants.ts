@@ -10,6 +10,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'netflix',
         logo: 'logo-netflix',
         color: '#E50914',
+        theme: 'netflix',
         plans: [
             {
                 id: 200000001,
@@ -46,6 +47,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'amazonPrime',
         logo: 'logo-amazon-prime',
         color: '#00A8E1',
+        theme: 'amazon-prime',
         plans: [
             {
                 id: 200000005,
@@ -75,6 +77,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'amazonPrimeVideo',
         logo: 'logo-amazon-prime-video',
         color: '#00A8E1',
+        theme: 'amazon-prime',
         plans: [
             {
                 id: 200000008,
@@ -104,6 +107,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'hboMax',
         logo: 'logo-hbo-max',
         color: '#490CB0',
+        theme: 'hbo-max',
         plans: [
             {
                 id: 200000011,
@@ -133,6 +137,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'disneyPlus',
         logo: 'logo-disney',
         color: '#0063E5',
+        theme: 'disney-plus',
         plans: [
             {
                 id: 200000014,
@@ -162,6 +167,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'youtubePremium',
         logo: 'logo-youtube',
         color: '#FF0000',
+        theme: 'youtube-premium',
         plans: [
             {
                 id: 200000017,
@@ -197,7 +203,8 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         id: 199999999,
         name: 'other',
         logo: 'help-circle-outline',
-        color: '#D1495B',
+        color: '#5260ff',
+        theme: 'other',
         plans: [
             {
                 id: 299999999,

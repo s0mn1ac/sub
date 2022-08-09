@@ -45,6 +45,30 @@ ion-modal ion-datetime {
     height: 382px;
 }
 
-ion-item.logo-selection {
-    cursor: pointer;
+ion-item {
+    --border-width: 2px;
+    --border-color: #5260ff;
+    --inner-border-width: 0;
+    padding: 10px 20px;
+
+    &.logo-selection {
+        cursor: pointer;
+    }
+
+    &::part(native) {
+        border-radius: var(--custom-border-radius);
+        min-height: 56px;
+    }
+}
+
+ion-select {
+    transform: translate3d(0px, -9px, 0px);
+}
+
+:host ::ng-deep ion-input input {
+    transform: translate3d(0px, 4px, 0px);
+}
+
+ion-note {
+    padding: 10px 0 10px 0;
 }

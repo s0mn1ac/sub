@@ -6,5 +6,6 @@ export class SubscriptionPlatform {
     name: string;
     logo: string;
     color: string;
+    theme: string;
     plans: PlatformPlan[];
 }
