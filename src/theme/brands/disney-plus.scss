@@ -1,0 +1,17 @@
+:root {
+	--ion-color-disney-plus: #0063E5;
+	--ion-color-disney-plus-rgb: 0,99,229;
+	--ion-color-disney-plus-contrast: #ffffff;
+	--ion-color-disney-plus-contrast-rgb: 255,255,255;
+	--ion-color-disney-plus-shade: #0057ca;
+	--ion-color-disney-plus-tint: #1a73e8;
+}
+
+.ion-color-disney-plus {
+	--ion-color-base: var(--ion-color-disney-plus);
+	--ion-color-base-rgb: var(--ion-color-disney-plus-rgb);
+	--ion-color-contrast: var(--ion-color-disney-plus-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-disney-plus-contrast-rgb);
+	--ion-color-shade: var(--ion-color-disney-plus-shade);
+	--ion-color-tint: var(--ion-color-disney-plus-tint);
+}

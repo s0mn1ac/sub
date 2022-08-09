@@ -1,0 +1,17 @@
+:root {
+	--ion-color-youtube-premium: #FF0000;
+	--ion-color-youtube-premium-rgb: 255,0,0;
+	--ion-color-youtube-premium-contrast: #ffffff;
+	--ion-color-youtube-premium-contrast-rgb: 255,255,255;
+	--ion-color-youtube-premium-shade: #e00000;
+	--ion-color-youtube-premium-tint: #ff1a1a;
+}
+
+.ion-color-youtube-premium {
+	--ion-color-base: var(--ion-color-youtube-premium);
+	--ion-color-base-rgb: var(--ion-color-youtube-premium-rgb);
+	--ion-color-contrast: var(--ion-color-youtube-premium-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-youtube-premium-contrast-rgb);
+	--ion-color-shade: var(--ion-color-youtube-premium-shade);
+	--ion-color-tint: var(--ion-color-youtube-premium-tint);
+}

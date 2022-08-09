@@ -1,0 +1,17 @@
+:root {
+	--ion-color-hbo-max: #490CB0;
+	--ion-color-hbo-max-rgb: 73,12,176;
+	--ion-color-hbo-max-contrast: #ffffff;
+	--ion-color-hbo-max-contrast-rgb: 255,255,255;
+	--ion-color-hbo-max-shade: #400b9b;
+	--ion-color-hbo-max-tint: #5b24b8;
+}
+
+.ion-color-hbo-max {
+	--ion-color-base: var(--ion-color-hbo-max);
+	--ion-color-base-rgb: var(--ion-color-hbo-max-rgb);
+	--ion-color-contrast: var(--ion-color-hbo-max-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-hbo-max-contrast-rgb);
+	--ion-color-shade: var(--ion-color-hbo-max-shade);
+	--ion-color-tint: var(--ion-color-hbo-max-tint);
+}

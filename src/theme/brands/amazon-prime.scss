@@ -1,0 +1,17 @@
+:root {
+	--ion-color-amazon-prime: #00A8E1;
+	--ion-color-amazon-prime-rgb: 0,168,225;
+	--ion-color-amazon-prime-contrast: #ffffff;
+	--ion-color-amazon-prime-contrast-rgb: 255,255,255;
+	--ion-color-amazon-prime-shade: #0094c6;
+	--ion-color-amazon-prime-tint: #1ab1e4;
+}
+
+.ion-color-amazon-prime {
+	--ion-color-base: var(--ion-color-amazon-prime);
+	--ion-color-base-rgb: var(--ion-color-amazon-prime-rgb);
+	--ion-color-contrast: var(--ion-color-amazon-prime-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-amazon-prime-contrast-rgb);
+	--ion-color-shade: var(--ion-color-amazon-prime-shade);
+	--ion-color-tint: var(--ion-color-amazon-prime-tint);
+}

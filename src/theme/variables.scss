@@ -1,3 +1,10 @@
+@import './brands/amazon-prime.scss';
+@import './brands/disney-plus.scss';
+@import './brands/hbo-max.scss';
+@import './brands/netflix.scss';
+@import './brands/other.scss';
+@import './brands/youtube-premium.scss';
+
 /** Ionic CSS Variables **/
 :root {
 
@@ -95,26 +102,26 @@
 
 /** Ionic Dark Theme **/
 body.dark {
-  --ion-color-primary: #d1495b;
-	--ion-color-primary-rgb: 209,73,91;
-	--ion-color-primary-contrast: #ffffff;
-	--ion-color-primary-contrast-rgb: 255,255,255;
-	--ion-color-primary-shade: #b84050;
-	--ion-color-primary-tint: #d65b6b;
+  // --ion-color-primary: #d1495b;
+	// --ion-color-primary-rgb: 209,73,91;
+	// --ion-color-primary-contrast: #ffffff;
+	// --ion-color-primary-contrast-rgb: 255,255,255;
+	// --ion-color-primary-shade: #b84050;
+	// --ion-color-primary-tint: #d65b6b;
 
-  --ion-color-secondary: #428cff;
-  --ion-color-secondary-rgb: 66,140,255;
-  --ion-color-secondary-contrast: #ffffff;
-  --ion-color-secondary-contrast-rgb: 255,255,255;
-  --ion-color-secondary-shade: #3a7be0;
-  --ion-color-secondary-tint: #5598ff;
+  // --ion-color-secondary: #428cff;
+  // --ion-color-secondary-rgb: 66,140,255;
+  // --ion-color-secondary-contrast: #ffffff;
+  // --ion-color-secondary-contrast-rgb: 255,255,255;
+  // --ion-color-secondary-shade: #3a7be0;
+  // --ion-color-secondary-tint: #5598ff;
 
-  --ion-color-tertiary: #6a64ff;
-  --ion-color-tertiary-rgb: 106,100,255;
-  --ion-color-tertiary-contrast: #ffffff;
-  --ion-color-tertiary-contrast-rgb: 255,255,255;
-  --ion-color-tertiary-shade: #5d58e0;
-  --ion-color-tertiary-tint: #7974ff;
+  // --ion-color-tertiary: #6a64ff;
+  // --ion-color-tertiary-rgb: 106,100,255;
+  // --ion-color-tertiary-contrast: #ffffff;
+  // --ion-color-tertiary-contrast-rgb: 255,255,255;
+  // --ion-color-tertiary-shade: #5d58e0;
+  // --ion-color-tertiary-tint: #7974ff;
 
   --ion-color-success: #2dd36f;
   --ion-color-success-rgb: 45, 211, 111;

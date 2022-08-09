@@ -1,0 +1,17 @@
+:root {
+	--ion-color-netflix: #E50914;
+	--ion-color-netflix-rgb: 229,9,20;
+	--ion-color-netflix-contrast: #ffffff;
+	--ion-color-netflix-contrast-rgb: 255,255,255;
+	--ion-color-netflix-shade: #ca0812;
+	--ion-color-netflix-tint: #e8222c;
+}
+
+.ion-color-netflix {
+	--ion-color-base: var(--ion-color-netflix);
+	--ion-color-base-rgb: var(--ion-color-netflix-rgb);
+	--ion-color-contrast: var(--ion-color-netflix-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-netflix-contrast-rgb);
+	--ion-color-shade: var(--ion-color-netflix-shade);
+	--ion-color-tint: var(--ion-color-netflix-tint);
+}
