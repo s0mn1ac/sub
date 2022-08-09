@@ -63,8 +63,10 @@ export class StorageService {
     console.log(theme === ThemeEnum.dark ? '💡 Lights OFF!' : '💡 Lights ON!');
     document.body.classList.toggle('dark', theme === ThemeEnum.dark);
     if (isPlatform('mobile')) {
-      StatusBar.setBackgroundColor({ color: '#D1495B' });
-      StatusBar.setStyle({ style: theme ? Style.Dark : Style.Light });
+      StatusBar.setBackgroundColor({ color: '#D1495B' })
+        .catch(() => console.log('⛔️ Status bar background color coulnd\'t be modified...'));
+      StatusBar.setStyle({ style: theme ? Style.Dark : Style.Light })
+        .catch(() => console.log('⛔️ Status bar style coulnd\'t be modified...'));
     }
     const userData: UserData = await this._storage.get(subAppUserData);
     userData.theme = theme;
