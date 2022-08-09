@@ -1,48 +1,48 @@
 /* Angular */
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+/* NgRx */
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
+import { selectSubsDataLoading, selectUserDataLoading } from 'src/app/state/selectors/loading.selectors';
+import { selectSubs } from 'src/app/state/selectors/subs-data.selectors';
+import { selectUserData } from 'src/app/state/selectors/user-data.selectors';
+
+/* Others */
+import { Observable } from 'rxjs';
 
 /* Models */
 import { Sub } from 'src/app/shared/models/sub.model';
 import { UserData } from 'src/app/shared/models/user-data.model';
-import { StorageService } from 'src/app/shared/services/storage.service';
+import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-board',
   templateUrl: './board.page.html',
   styleUrls: ['./board.page.scss'],
 })
-export class BoardPage {
+export class BoardPage implements OnInit {
 
-  public userData: UserData;
+  public subs$: Observable<Sub[]> = new Observable<Sub[]>();
+  public userData$: Observable<UserData> = new Observable<UserData>();
 
-  public subs: Sub[] = [];
-
-  public isLoading: boolean = true;
-  public isBoardEmpty: boolean;
+  public subsDataLoading$: Observable<boolean> = new Observable<boolean>();
+  public userDataLoading$: Observable<boolean> = new Observable<boolean>();
 
   constructor(
-    private storageService: StorageService
+    private store: Store<AppState>,
+    private translocoService: TranslocoService
   ) { }
 
-  ionViewWillEnter(): void {
-    this.getAllSubs();
+  ngOnInit(): void {
+    this.initStoreSelectors();
   }
 
-  private getAllSubs(): void {
-    this.setLoading(true);
-    this.storageService.retrieveUserData()
-      .then((userData: UserData) => {
-        if (userData !== null && userData !== undefined) {
-          this.userData = userData;
-          this.subs = userData.subs;
-          this.isBoardEmpty = this.subs.length === 0;
-        }
-      })
-      .finally(() => this.setLoading(false));
-  }
-
-  private setLoading(value: boolean): void {
-    this.isLoading = value;
+  private initStoreSelectors(): void {
+    this.subs$ = this.store.select(selectSubs);
+    this.userData$ = this.store.select(selectUserData);
+    this.subsDataLoading$ = this.store.select(selectSubsDataLoading);
+    this.userDataLoading$ = this.store.select(selectUserDataLoading);
   }
 
 }

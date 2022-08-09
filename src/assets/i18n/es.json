@@ -4,7 +4,9 @@
 
     "buttons": {
         "saveSub": "Guardar suscripción",
-        "deleteSub": "Eliminar suscripción"
+        "deleteSub": "Eliminar suscripción",
+        "discardChanges": "Descartar cambios",
+        "cancel": "Cancelar"
     },
 
     "board": {
@@ -20,6 +22,10 @@
         "eachWeek": "Cada semana",
         "eachMonth": "Cada mes",
         "eachYear": "Cada año",
+        "eachMultipleDays": "Cada {{total}} días",
+        "eachMultipleWeeks": "Cada {{total}} semanas",
+        "eachMultipleMonths": "Cada {{total}} meses",
+        "eachMultipleYears": "Cada {{total}} años",
         "form": {
             "subscriptionType": "Tipo de suscripción",
             "platform": "Plataforma",
@@ -50,6 +56,7 @@
         "disneyPlus": "Disney+",
         "youtubePremium": "YouTube Premium",
         "other": "Otra",
+        "newSubscription": "Nueva suscripción",
         "plan": {
             "basic": "Básico",
             "standard": "Estándar",

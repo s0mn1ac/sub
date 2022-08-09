@@ -1,11 +1,9 @@
 /* Angular */
 import { Injectable } from '@angular/core';
+import { isPlatform } from '@ionic/angular';
 
-/* Others */
-import { Observable, Subject } from 'rxjs';
-
-/* Services */
-import { StorageService } from './storage.service';
+/* Capacitor */
+import { StatusBar, Style } from '@capacitor/status-bar';
 
 /* Enums */
 import { ThemeEnum } from '../enums/theme.enum';
@@ -15,19 +13,13 @@ import { ThemeEnum } from '../enums/theme.enum';
 })
 export class ThemeService {
 
-  private theme$ = new Subject<ThemeEnum>();
-
-  constructor(
-    private storageService: StorageService
-  ) { }
-
-  public getDarkModeObservable(): Observable<ThemeEnum> {
-    return this.theme$.asObservable();
-  }
-
-  public updateTheme(theme: ThemeEnum): void {
-    this.storageService.theme = theme;
-    this.theme$.next(theme);
+  public setTheme(theme: ThemeEnum): void {
+    console.log(theme === ThemeEnum.dark ? '💡 Lights OFF!' : '💡 Lights ON!');
+    document.body.classList.toggle('dark', theme === ThemeEnum.dark);
+    if (isPlatform('mobile')) {
+      StatusBar.setBackgroundColor({ color: '#D1495B' });
+      StatusBar.setStyle({ style: theme ? Style.Dark : Style.Light });
+    }
   }
 
 }

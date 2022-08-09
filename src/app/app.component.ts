@@ -1,24 +1,21 @@
 /* Angular */
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+/* NgRx */
+import { Store } from '@ngrx/store';
+import { AppState } from './state/app.state';
+import { initUserData } from './state/actions/user-data.actions';
+import { initSubsData } from './state/actions/subs-data.actions';
 
 /* Capacitor */
 import { Device, GetLanguageCodeResult } from '@capacitor/device';
-import { StatusBar, Style } from '@capacitor/status-bar';
-
-/* Others */
-import { Subscription } from 'rxjs';
-
-/* Ionic */
-import { isPlatform } from '@ionic/angular';
 
 /* Services */
-import { TranslocoService } from '@ngneat/transloco';
 import { StorageService } from './shared/services/storage.service';
-import { LanguageService } from './shared/services/language.service';
-import { ThemeService } from './shared/services/theme.service';
 
 /* Models */
 import { UserData } from './shared/models/user-data.model';
+import { SubsData } from './shared/models/subs-data.model';
 
 /* Enums */
 import { ThemeEnum } from './shared/enums/theme.enum';
@@ -29,71 +26,37 @@ import { LanguageEnum } from './shared/enums/language.enum';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent implements OnInit, OnDestroy {
-
-  public isLoading: boolean = true;
-
-  private theme$: Subscription;
-  private language$: Subscription;
+export class AppComponent implements OnInit {
 
   constructor(
-    private translocoService: TranslocoService,
     private storageService: StorageService,
-    private languageService: LanguageService,
-    private themeService: ThemeService
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {
-    this.initSubscriptions();
     this.initApp();
   }
 
-  ngOnDestroy(): void {
-    this.cancelSubscriptions();
-  }
-
-  private initSubscriptions(): void {
-    this.theme$ = this.themeService.getDarkModeObservable().subscribe((theme: ThemeEnum) => this.setTheme(theme));
-    this.language$ = this.languageService.getLanguageObservable().subscribe((language: LanguageEnum) => this.setLanguage(language));
-  }
-
-  private cancelSubscriptions(): void {
-    this.theme$?.unsubscribe();
-    this.language$?.unsubscribe();
-  }
-
   private async initApp(): Promise<void> {
-    this.setLoading(true);
     await this.storageService.initStorage();
-    let userData: UserData = await this.storageService.retrieveUserData();
-    if (userData === null) {
-      const theme: ThemeEnum = window.matchMedia('(prefers-color-scheme: dark)').matches ? ThemeEnum.dark : ThemeEnum.light;
-      const language: GetLanguageCodeResult = await Device.getLanguageCode();
-      userData = new UserData(language.value.startsWith('es') ? LanguageEnum.es : LanguageEnum.en, theme);
-    }
-    userData.theme = ThemeEnum.light; // TODO: Borrar
-    this.storageService.userData = userData;
-    this.themeService.updateTheme(userData.theme);
-    this.languageService.updateLanguage(userData.language);
-    this.setLoading(false);
+    const subsData: SubsData = await this.storageService.getSubsData() ?? await this.initSubsData();
+    const userData: UserData = await this.storageService.getUserData() ?? await this.initUserData();
+    this.storageService.setLanguage(userData.language);
+    this.storageService.setTheme(userData.theme);
+    this.store.dispatch(initSubsData({ subsData }));
+    this.store.dispatch(initUserData({ userData }));
   }
 
-  private async setTheme(theme: ThemeEnum): Promise<void> {
-    console.log(theme === ThemeEnum.dark ? '💡 Lights OFF!' : '💡 Lights ON!');
-    document.body.classList.toggle('dark', theme === ThemeEnum.dark);
-    if (isPlatform('mobile')) {
-      await StatusBar.setBackgroundColor({ color: '#D1495B' });
-      await StatusBar.setStyle({ style: theme ? Style.Dark : Style.Light });
-    }
+  private async initSubsData(): Promise<SubsData> {
+    const subsData: SubsData = new SubsData();
+    return this.storageService.setSubsData(subsData);
   }
 
-  private async setLanguage(language: LanguageEnum): Promise<void> {
-    console.log(language === LanguageEnum.es ? '🇪🇸 App language set to spanish' : '🇬🇧 App language set to english');
-    this.translocoService.setActiveLang(language);
-  }
-
-  private setLoading(value: boolean): void {
-    this.isLoading = value;
+  private async initUserData(): Promise<UserData> {
+    const theme: ThemeEnum = window.matchMedia('(prefers-color-scheme: dark)').matches ? ThemeEnum.dark : ThemeEnum.light;
+    const language: GetLanguageCodeResult = await Device.getLanguageCode();
+    const userData: UserData = new UserData(language.value.startsWith('es') ? LanguageEnum.es : LanguageEnum.en, theme);
+    return await this.storageService.setUserData(userData);
   }
 
 }

@@ -1,15 +1,23 @@
-/* Angular modules */
+/* Angular */
 import { NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 
-/* Ionic modules */
+/* NgRx */
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ROOT_REDUCERS } from './state/app.state';
+import { UserDataEffects } from './state/effects/user-data.effects';
+import { SubsDataEffects } from './state/effects/subs-data.effects';
+
+/* Ionic */
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-/* Other modules */
+/* Other */
 import { TranslocoRootModule } from './shared/modules/transloco-root.module';
 
 /* App modules */
@@ -40,7 +48,13 @@ registerLocaleData(en, 'en');
     IonicStorageModule.forRoot({ name: databaseName }),
     AppRoutingModule,
     HttpClientModule,
-    TranslocoRootModule
+    TranslocoRootModule,
+    StoreModule.forRoot(ROOT_REDUCERS),
+    StoreDevtoolsModule.instrument({ name: 'app-sub-devtools' }),
+    EffectsModule.forRoot([
+      SubsDataEffects,
+      UserDataEffects
+    ])
   ],
   providers: [
     {
