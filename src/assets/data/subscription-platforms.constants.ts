@@ -10,7 +10,8 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'netflix',
         logo: 'logo-netflix',
         color: '#E50914',
-        theme: 'netflix',
+        textColor: 'white',
+        theme: 'red',
         plans: [
             {
                 id: 200000001,
@@ -47,7 +48,8 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'amazonPrime',
         logo: 'logo-amazon-prime',
         color: '#00A8E1',
-        theme: 'amazon-prime',
+        textColor: 'white',
+        theme: 'cyan',
         plans: [
             {
                 id: 200000005,
@@ -73,41 +75,12 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         ]
     },
     {
-        id: 100000003,
-        name: 'amazonPrimeVideo',
-        logo: 'logo-amazon-prime-video',
-        color: '#00A8E1',
-        theme: 'amazon-prime',
-        plans: [
-            {
-                id: 200000008,
-                name: 'yearly',
-                price: 36,
-                isDefault: true,
-                type: PlanTypeEnum.yearly
-            },
-            {
-                id: 200000009,
-                name: 'monthly',
-                price: 3.99,
-                isDefault: false,
-                type: PlanTypeEnum.monthly
-            },
-            {
-                id: 200000010,
-                name: 'other',
-                price: 0,
-                isDefault: true,
-                type: PlanTypeEnum.monthly
-            }
-        ]
-    },
-    {
         id: 100000004,
         name: 'hboMax',
         logo: 'logo-hbo-max',
         color: '#490CB0',
-        theme: 'hbo-max',
+        textColor: 'white',
+        theme: 'violet',
         plans: [
             {
                 id: 200000011,
@@ -137,7 +110,8 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'disneyPlus',
         logo: 'logo-disney',
         color: '#0063E5',
-        theme: 'disney-plus',
+        textColor: 'white',
+        theme: 'blue',
         plans: [
             {
                 id: 200000014,
@@ -167,7 +141,8 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'youtubePremium',
         logo: 'logo-youtube',
         color: '#FF0000',
-        theme: 'youtube-premium',
+        textColor: 'white',
+        theme: 'red',
         plans: [
             {
                 id: 200000017,
@@ -204,7 +179,8 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
         name: 'other',
         logo: 'help-circle-outline',
         color: '#5260ff',
-        theme: 'other',
+        textColor: 'white',
+        theme: 'violet',
         plans: [
             {
                 id: 299999999,

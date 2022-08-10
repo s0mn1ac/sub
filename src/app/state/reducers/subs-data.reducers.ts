@@ -31,6 +31,7 @@ export const subsDataReducer = createReducer(
             description: action.sub.description,
             logo: action.sub.logo,
             color: action.sub.color,
+            textColor: action.sub.textColor,
             platform: action.sub.platform,
             plan: action.sub.plan,
             type: action.sub.type,

@@ -15,14 +15,14 @@ div.sub-card-layout {
             display: flex;
             flex-direction: row;
             align-items: center;
-            color: var(--ion-text-color-light);
+            // color: var(--ion-text-color-light);
             gap: 1rem;
 
             ion-icon.logo {
                 height: 2rem;
                 width: 2rem;
                 min-width: 2rem;
-                color: var(--ion-text-color-light);
+                // color: var(--ion-text-color-light);
             }
 
             div.header-container {
@@ -50,7 +50,7 @@ div.sub-card-layout {
             padding: 1rem;
             background: rgb(0 0 0 / 20%);
             border-radius: var(--custom-border-radius);
-            color: var(--ion-text-color-light);
+            // color: var(--ion-text-color-light);
             margin-top: 0.5rem;
 
             div.flex-row {

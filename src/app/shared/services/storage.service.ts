@@ -108,6 +108,7 @@ export class StorageService {
     foundSub.description = sub.description;
     foundSub.logo = sub.logo;
     foundSub.color = sub.color;
+    foundSub.textColor = sub.textColor;
     foundSub.platform = sub.platform;
     foundSub.plan = sub.plan;
     foundSub.type = sub.type;

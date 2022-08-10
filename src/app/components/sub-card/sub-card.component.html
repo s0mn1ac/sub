@@ -1,8 +1,8 @@
 <ng-container *transloco="let t">
 
-  <div class="sub-card-layout">
+  <div class="sub-card-layout" [style.color]="'var(--ion-color-' + textColor + ')'">
 
-    <div class="sub-card" [style.background]="platform?.color ?? '#5260ff'">
+    <div class="sub-card" [style.background]="'var(--ion-color-' + color + ')'">
 
       <div class="card-header">
         <ion-icon [name]="logo" class="logo"></ion-icon>

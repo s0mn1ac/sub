@@ -18,7 +18,9 @@
           [price]="subForm.value.price"
           [currency]="subForm.value.currency"
           [every]="subForm.value.every"
-          [logo]="subForm.value.logo">
+          [logo]="subForm.value.logo"
+          [color]="subForm.value.color"
+          [textColor]="subForm.value.textColor">
         </app-sub-card>
       </div>
 
@@ -96,11 +98,11 @@
           </ion-select>
         </ion-item>
 
-        <ion-item fill="outline" class="form-item" id="open-modal" mode="md">
+        <ion-item fill="outline" class="form-item first-payment" id="open-date-picker-modal" mode="md">
           <ion-label> {{ t('sub.form.firstPayment') }} </ion-label>
           <ion-note slot="end" id="datetimeValue" mode="md"> {{ subForm.value.firstPayment | dateFormat}} </ion-note>
         </ion-item>
-        <ion-modal trigger="open-modal">
+        <ion-modal trigger="open-date-picker-modal" class="datetime-selector-modal">
           <ng-template>
             <ion-content>
               <ion-datetime
@@ -123,12 +125,50 @@
           <ion-label> {{ t('sub.form.additionalInformation') }} </ion-label>
         </ion-list-header>
 
-        <ion-item fill="outline" class="form-item logo-selection" mode="md">
+        <ion-item fill="outline" class="form-item logo-selection" id="open-logo-selector-modal" mode="md">
           <ion-label> {{ t('sub.form.logo') }} </ion-label>
-          <ion-fab-button size="small" [color]="subForm.value.platform?.theme ?? 'other'">
+          <ion-fab-button size="small" color="white">
             <ion-icon [name]="subForm.value.logo"></ion-icon>
           </ion-fab-button>
         </ion-item>
+        <ion-modal #logoSelectorModal trigger="open-logo-selector-modal" class="logo-selector-modal" [canDismiss]="true">
+          <ng-template>
+            <app-logo-selector
+              [modal]="logoSelectorModal"
+              [selected]="subForm.value.logo"
+              [theme]="subForm.value.platform?.theme"
+              (onSelectIcon)="onChangeLogo($event)">
+            </app-logo-selector>
+          </ng-template>
+        </ion-modal>
+
+        <ion-item fill="outline" class="form-item color-selection" id="open-color-selector-modal" mode="md">
+          <ion-label> {{ t('sub.form.color') }} </ion-label>
+          <ion-fab-button size="small" [color]="subForm.value.color"></ion-fab-button>
+        </ion-item>
+        <ion-modal #colorSelectorModal trigger="open-color-selector-modal" class="color-selector-modal" [canDismiss]="true">
+          <ng-template>
+            <app-color-selector
+              [modal]="colorSelectorModal"
+              [selected]="subForm.value.color"
+              (onSelectColor)="onChangeColor($event)">
+            </app-color-selector>
+          </ng-template>
+        </ion-modal>
+
+        <ion-item fill="outline" class="form-item text-color-selection" id="open-text-color-selector-modal" mode="md">
+          <ion-label> {{ t('sub.form.textColor') }} </ion-label>
+          <ion-fab-button size="small" [color]="subForm.value.textColor"></ion-fab-button>
+        </ion-item>
+        <ion-modal #textColorSelectorModal trigger="open-text-color-selector-modal" class="color-selector-modal" [canDismiss]="true">
+          <ng-template>
+            <app-color-selector
+              [modal]="textColorSelectorModal"
+              [selected]="subForm.value.textColor"
+              (onSelectColor)="onChangeTextColor($event)">
+            </app-color-selector>
+          </ng-template>
+        </ion-modal>
 
       </ion-list>
 
@@ -137,8 +177,7 @@
         <ion-button (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()"
           color="primary"
           [disabled]="subForm.invalid"
-          mode="ios"
-          shape="round">
+          mode="ios">
           <ion-icon slot="start" name="save-outline"></ion-icon>
           {{ t('buttons.saveSub') }}
         </ion-button>
@@ -147,7 +186,6 @@
           color="danger"
           [disabled]="subForm.invalid"
           mode="ios"
-          shape="round"
           *ngIf="mode === modeEnum.modify">
           <ion-icon slot="start" name="trash-outline"></ion-icon>
           {{ t('buttons.deleteSub') }}
@@ -156,8 +194,7 @@
         <ion-button routerLink="/board"
           color="secondary"
           fill="outline" mode="md"
-          mode="ios"
-          shape="round">
+          mode="ios">
           <ion-icon slot="start" name="close-outline"></ion-icon>
           {{ t('buttons.discardChanges') }}
         </ion-button>

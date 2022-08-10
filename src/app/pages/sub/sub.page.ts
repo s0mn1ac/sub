@@ -81,7 +81,6 @@ export class SubPage implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    // this.sub = new Sub();
     this.initStoreSelectors();
     this.initParamsSubscription();
   }
@@ -98,6 +97,18 @@ export class SubPage implements OnInit, OnDestroy {
     const currency: string = event.detail.value;
     this.store.dispatch(setCurrency({ currency }))
     this.storageService.setCurrency(currency);
+  }
+
+  public onChangeLogo(icon: string): void {
+    this.setValue('logo', icon);
+  }
+
+  public onChangeColor(color: string): void {
+    this.setValue('color', color);
+  }
+
+  public onChangeTextColor(color: string): void {
+    this.setValue('textColor', color);
   }
 
   public onClickAddNewSub(): void {
@@ -171,7 +182,9 @@ export class SubPage implements OnInit, OnDestroy {
       type: new FormControl(PlanTypeEnum.monthly, Validators.compose([Validators.required, Validators.nullValidator])),
       every: new FormControl(1, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(1)])),
       firstPayment: new FormControl(today.format('YYYY-MM-DD'), Validators.compose([Validators.required, Validators.nullValidator])),
-      logo: new FormControl('help-circle-outline')
+      logo: new FormControl('help-circle-outline'),
+      color: new FormControl('violet'),
+      textColor: new FormControl('white')
     });
   }
 
@@ -191,6 +204,9 @@ export class SubPage implements OnInit, OnDestroy {
     this.setValue('price', sub.price);
     this.setValue('currency', sub.currency);
     this.setValue('name', sub.name);
+    this.setValue('logo', sub.logo);
+    this.setValue('color', sub.color);
+    this.setValue('textColor', sub.textColor);
   }
 
   private initFormSubscriptions(): void {
@@ -201,6 +217,8 @@ export class SubPage implements OnInit, OnDestroy {
         this.setValue('name', this.translocoService.translate(`subscriptionPlatform.${platform.name}`));
         this.setValue('plan', platform.plans.find((plan: PlatformPlan) => plan.isDefault));
         this.setValue('logo', platform.logo);
+        this.setValue('color', platform.theme);
+        this.setValue('textColor', platform.textColor);
         this.setDisabledState('plan', false);
       });
 

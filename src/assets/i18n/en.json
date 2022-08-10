@@ -40,7 +40,9 @@
             "period": "Period",
             "firstPayment": "First payment",
             "additionalInformation": "Additional information",
-            "logo": "Logo"
+            "logo": "Logo",
+            "color": "Color",
+            "textColor": "Text color"
         }
     },
 

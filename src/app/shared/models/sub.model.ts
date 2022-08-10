@@ -11,6 +11,7 @@ export class Sub {
     description?: string;
     logo: string;
     color: string;
+    textColor: string;
     platform: SubscriptionPlatform;
     plan: PlatformPlan;
     type: PlanTypeEnum;
@@ -25,7 +26,8 @@ export class Sub {
             this.name = formValue.name;
             this.description = formValue.description;
             this.logo = formValue.logo;
-            this.color = formValue.platform.color;
+            this.color = formValue.color;
+            this.textColor = formValue.textColor;
             this.platform = formValue.platform;
             this.plan = formValue.plan;
             this.type = formValue.type;

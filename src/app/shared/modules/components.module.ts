@@ -11,15 +11,21 @@ import { PipesModule } from './pipes.module';
 import { TranslocoModule } from '@ngneat/transloco';
 
 /* Components */
+import { ColorSelectorComponent } from 'src/app/components/color-selector/color-selector.component';
+import { LogoSelectorComponent } from 'src/app/components/logo-selector/logo-selector.component';
 import { SubCardComponent } from 'src/app/components/sub-card/sub-card.component';
 import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-skeleton/sub-card-skeleton.component';
 
 @NgModule({
   declarations: [
+    ColorSelectorComponent,
+    LogoSelectorComponent,
     SubCardComponent,
     SubCardSkeletonComponent
   ],
   exports: [
+    ColorSelectorComponent,
+    LogoSelectorComponent,
     SubCardComponent,
     SubCardSkeletonComponent
   ],
