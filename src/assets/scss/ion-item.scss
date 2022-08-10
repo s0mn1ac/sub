@@ -5,7 +5,7 @@ ion-item {
         --border-color: var(--ion-color-secondary);
         --inner-border-width: 0;
         --highlight-background: var(--ion-color-primary);
-        padding: 10px 20px;
+        padding: 0.5rem 1rem;
     
         &.logo-selection, &.first-payment {
             cursor: pointer;
@@ -14,10 +14,30 @@ ion-item {
         &.ion-invalid {
             --highlight-background: var(--highlight-color-invalid);
         }
+
+        &.item-has-focus {
+
+            ion-icon.custom-select-icon {
+                transform: translate(0, -50%) rotate(180deg);
+            }
+        }
     
         &::part(native) {
             border-radius: var(--custom-border-radius);
             min-height: 56px;
+        }
+
+        ion-select::part(icon) {
+            display: none !important;
+        }
+    
+        ion-icon.custom-select-icon {
+            position: absolute;
+            right: 16px;
+            top: 50%;
+            transform: translate(0, -50%);
+            color: var(--ion-color-secondary);
+            transition: all 0.2s ease-in-out;
         }
     }
 }

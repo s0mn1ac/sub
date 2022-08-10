@@ -37,6 +37,7 @@
               {{ t('subscriptionPlatform.' + option.name) }}
             </ion-select-option>
           </ion-select>
+          <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
         </ion-item>
   
         <ion-item fill="outline" class="form-item" mode="md">
@@ -51,6 +52,7 @@
               {{ t('subscriptionPlatform.plan.' + option.name) }}
             </ion-select-option>
           </ion-select>
+          <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
         </ion-item>
         
       </ion-list>
@@ -73,6 +75,7 @@
               {{ currency.currency }}
             </ion-select-option>
           </ion-select>
+          <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
         </ion-item>
 
       </ion-list>
@@ -96,6 +99,7 @@
             <ion-select-option [value]="planTypeEnum.monthly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.monthly) }} </ion-select-option>
             <ion-select-option [value]="planTypeEnum.yearly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.yearly) }} </ion-select-option>
           </ion-select>
+          <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
         </ion-item>
 
         <ion-item fill="outline" class="form-item first-payment" id="open-date-picker-modal" mode="md">
