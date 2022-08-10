@@ -1,9 +1,21 @@
+/** Brands **/
 @import './brands/amazon-prime.scss';
 @import './brands/disney-plus.scss';
 @import './brands/hbo-max.scss';
 @import './brands/netflix.scss';
 @import './brands/other.scss';
 @import './brands/youtube-premium.scss';
+
+/** Colors **/
+@import './colors/black.scss';
+@import './colors/blue.scss';
+@import './colors/cyan.scss';
+@import './colors/green.scss';
+@import './colors/grey.scss';
+@import './colors/red.scss';
+@import './colors/violet.scss';
+@import './colors/white.scss';
+@import './colors/yellow.scss';
 
 /** Ionic CSS Variables **/
 :root {
@@ -97,7 +109,7 @@
   --ion-text-color-dark: #262626;
   --ion-text-color-light: #ffffff;
 
-  --custom-border-radius: 10px;
+  --custom-border-radius: 1rem;
 }
 
 /** Ionic Dark Theme **/

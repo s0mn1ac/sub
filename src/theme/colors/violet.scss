@@ -1,0 +1,17 @@
+:root {
+	--ion-color-violet: #5260ff;
+	--ion-color-violet-rgb: 82,96,255;
+	--ion-color-violet-contrast: #ffffff;
+	--ion-color-violet-contrast-rgb: 255,255,255;
+	--ion-color-violet-shade: #4854e0;
+	--ion-color-violet-tint: #6370ff;
+}
+
+.ion-color-violet {
+	--ion-color-base: var(--ion-color-violet);
+	--ion-color-base-rgb: var(--ion-color-violet-rgb);
+	--ion-color-contrast: var(--ion-color-violet-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-violet-contrast-rgb);
+	--ion-color-shade: var(--ion-color-violet-shade);
+	--ion-color-tint: var(--ion-color-violet-tint);
+}
