@@ -1,0 +1,23 @@
+ion-item {
+
+    &.form-item {
+        --border-width: 2px;
+        --border-color: var(--ion-color-secondary);
+        --inner-border-width: 0;
+        --highlight-background: var(--ion-color-primary);
+        padding: 10px 20px;
+    
+        &.logo-selection {
+            cursor: pointer;
+        }
+
+        &.ion-invalid {
+            --highlight-background: var(--highlight-color-invalid);
+        }
+    
+        &::part(native) {
+            border-radius: var(--custom-border-radius);
+            min-height: 56px;
+        }
+    }
+}
