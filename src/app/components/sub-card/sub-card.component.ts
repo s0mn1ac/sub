@@ -31,14 +31,4 @@ export class SubCardComponent {
   @Input() every: number;
   @Input() showMoreInfo: boolean = true;
 
-  public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;
-
-  constructor(
-    private translocoService: TranslocoService
-  ) { }
-
-  get language(): string {
-    return this.translocoService.getActiveLang();
-  }
-
 }

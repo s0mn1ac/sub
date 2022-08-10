@@ -21,6 +21,11 @@ export const setLanguage = createAction(
     props<{ language: LanguageEnum }>()
 );
 
+export const setShowMoreInfo = createAction(
+    StateConstants.USER_DATA_SET_SHOW_MORE_INFO,
+    props<{ showMoreInfo: boolean }>()
+);
+
 export const setTheme = createAction(
     StateConstants.USER_DATA_SET_THEME,
     props<{ theme: ThemeEnum }>()

@@ -13,6 +13,7 @@ import { TranslocoModule } from '@ngneat/transloco';
 /* Components */
 import { ColorSelectorComponent } from 'src/app/components/color-selector/color-selector.component';
 import { LogoSelectorComponent } from 'src/app/components/logo-selector/logo-selector.component';
+import { PriceContainerComponent } from 'src/app/components/price-container/price-container.component';
 import { SubCardComponent } from 'src/app/components/sub-card/sub-card.component';
 import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-skeleton/sub-card-skeleton.component';
 
@@ -20,12 +21,14 @@ import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-
   declarations: [
     ColorSelectorComponent,
     LogoSelectorComponent,
+    PriceContainerComponent,
     SubCardComponent,
     SubCardSkeletonComponent
   ],
   exports: [
     ColorSelectorComponent,
     LogoSelectorComponent,
+    PriceContainerComponent,
     SubCardComponent,
     SubCardSkeletonComponent
   ],

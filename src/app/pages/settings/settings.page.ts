@@ -1,6 +1,26 @@
 /* Angular */
 import { Component, OnInit } from '@angular/core';
 
+/* RxJs */
+import { Observable } from 'rxjs';
+
+/* NgRx */
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/state/app.state';
+import { selectLanguage, selectShowMoreInfo, selectTheme } from 'src/app/state/selectors/user-data.selectors';
+import { setLanguage, setShowMoreInfo, setTheme } from 'src/app/state/actions/user-data.actions';
+
+/* Services */
+import { StorageService } from 'src/app/shared/services/storage.service';
+
+/* Enums */
+import { LanguageEnum } from 'src/app/shared/enums/language.enum';
+import { ThemeEnum } from 'src/app/shared/enums/theme.enum';
+
+/* Constants */
+import { LANGUAGES } from 'src/app/shared/constants/languages.constants';
+import { THEMES } from 'src/app/shared/constants/themes.constants copy';
+
 @Component({
   selector: 'app-settings',
   templateUrl: './settings.page.html',
@@ -8,9 +28,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SettingsPage implements OnInit {
 
-  constructor() { }
+  public language$: Observable<string> = new Observable<string>();
+  public showMoreInfo$: Observable<boolean> = new Observable<boolean>();
+  public theme$: Observable<string> = new Observable<string>();
+
+  public languageOptions: LanguageEnum[] = LANGUAGES;
+  public themeOptions: ThemeEnum[] = THEMES;
+
+  constructor(
+    private store: Store<AppState>,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
+    this.initStoreSelectors();
+  }
+
+  public onChangeLanguage(language: LanguageEnum): void {
+    this.store.dispatch(setLanguage({ language }));
+    this.storageService.setLanguage(language);
+  }
+  
+  public onChangeShowMoreInfo(showMoreInfo: boolean): void {
+    this.store.dispatch(setShowMoreInfo({ showMoreInfo }));
+    this.storageService.setShowMoreInfo(showMoreInfo);
+  }
+
+  public onChangeTheme(theme: ThemeEnum): void {
+    this.store.dispatch(setTheme({ theme }));
+    this.storageService.setTheme(theme);
+  }
+
+  private initStoreSelectors(): void {
+    this.language$ = this.store.select(selectLanguage);
+    this.showMoreInfo$ = this.store.select(selectShowMoreInfo);
+    this.theme$ = this.store.select(selectTheme);
   }
 
 }

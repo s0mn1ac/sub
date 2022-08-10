@@ -14,10 +14,15 @@ export const selectUserData = createSelector(
 
 export const selectLanguage = createSelector(
   selectUserDataState,
-  (state: UserDataState) => state.userData.language
+  (state: UserDataState) => state.userData?.language
+);
+
+export const selectShowMoreInfo = createSelector(
+  selectUserDataState,
+  (state: UserDataState) => state.userData?.showMoreInfo
 );
 
 export const selectTheme = createSelector(
   selectUserDataState,
-  (state: UserDataState) => state.userData.theme
+  (state: UserDataState) => state.userData?.theme
 );

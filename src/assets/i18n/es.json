@@ -2,6 +2,16 @@
     "appName": "Sub",
     "version": "1.0.0",
 
+    "languages": {
+        "en": "Inglés",
+        "es": "Español"
+    },
+
+    "themes": {
+        "dark": "Oscuro",
+        "light": "Claro"
+    },
+
     "buttons": {
         "saveSub": "Guardar suscripción",
         "deleteSub": "Eliminar suscripción",
@@ -47,7 +57,16 @@
     },
 
     "settings": {
-        "title": "Ajustes"
+        "title": "Ajustes",
+        "interfaceSettings": "Ajustes de interfaz",
+        "language": "Idioma",
+        "theme": "Tema",
+        "cardSettings": "Ajustes de tarjeta",
+        "showMoreInfo": "Mostrar más información",
+        "showMoreInfoValues": {
+            "false": "No",
+            "true": "Sí"
+        }
     },
 
     "subscriptionPlatform": {

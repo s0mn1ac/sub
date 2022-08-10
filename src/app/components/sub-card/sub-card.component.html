@@ -14,6 +14,16 @@
             {{ plan?.name ? (t('subscriptionPlatform.plan.' + plan?.name) | uppercase) : t('sub.form.plan') | uppercase }}
           </span>
         </div>
+        <div class="price-container" *ngIf="!showMoreInfo">
+          <app-price-container
+            [showMoreInfo]="showMoreInfo"
+            [type]="type"
+            [price]="price"
+            [currency]="currency"
+            [color]="color"
+            [every]="every">
+          </app-price-container>
+        </div>
       </div>
 
       <div class="card-content" *ngIf="showMoreInfo">
@@ -26,23 +36,14 @@
           </div>
 
           <div class="price-container" [style.border-left]="'1px solid var(--ion-color-' + color + ')'">
-            <span class="price">
-              {{ (price ?? 0) | currency: currency : 'symbol-narrow' : undefined : language }}
-            </span>
-            <div [ngSwitch]="type">
-              <span class="periodicity" *ngSwitchCase="planTypeEnum.daily">
-                {{ t(every < 2 ? 'sub.eachDay' : 'sub.eachMultipleDays', ({ total: every })) | uppercase }}
-              </span>
-              <span class="periodicity" *ngSwitchCase="planTypeEnum.weekly">
-                {{ t(every < 2 ? 'sub.eachWeek' : 'sub.eachMultipleWeeks', ({ total: every })) | uppercase }}
-              </span>
-              <span class="periodicity" *ngSwitchCase="planTypeEnum.monthly">
-                {{ t(every < 2 ? 'sub.eachMonth' : 'sub.eachMultipleMonths', ({ total: every })) | uppercase }}
-              </span>
-              <span class="periodicity" *ngSwitchCase="planTypeEnum.yearly">
-                {{ t(every < 2 ? 'sub.eachYear' : 'sub.eachMultipleYears', ({ total: every })) | uppercase }}
-              </span>
-            </div>
+            <app-price-container
+              [showMoreInfo]="showMoreInfo"
+              [type]="type"
+              [price]="price"
+              [currency]="currency"
+              [color]="color"
+              [every]="every">
+            </app-price-container>
           </div>
 
         </div>

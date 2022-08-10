@@ -15,12 +15,21 @@ ion-item {
             --highlight-background: var(--highlight-color-invalid);
         }
 
-        &.item-has-focus {
-
-            ion-icon.custom-select-icon {
-                transform: translate(0, -50%) rotate(180deg);
-            }
+        &.item-has-focus ion-icon.custom-select-icon {
+            transform: translate(0, -50%) rotate(180deg);
         }
+
+        ion-select {
+            transform: translate3d(0px, -9px, 0px);
+        }
+
+        // &.item-has-value ion-select {
+        //     transform: translate3d(0px, -9px, 0px);
+        // }
+
+        // &:not(.item-has-value) ion-label {
+        //     transform: translate3d(0px, 18px, 0px);
+        // }
     
         &::part(native) {
             border-radius: var(--custom-border-radius);

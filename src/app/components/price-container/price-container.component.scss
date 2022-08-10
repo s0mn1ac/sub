@@ -1,0 +1,19 @@
+div.price-container-layout {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+    span.price {
+        font-weight: bold;
+    }
+
+    div {
+        display: flex;
+
+        span.periodicity {
+            font-size: 12px;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+    }
+}

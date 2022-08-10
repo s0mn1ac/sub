@@ -1,12 +1,58 @@
 <ng-container *transloco="let t">
-
-  <ion-header mode="ios">
-    <ion-toolbar color="primary">
-      <ion-title> {{ t('settings.title') }} </ion-title>
-    </ion-toolbar>
-  </ion-header>
   
-  <ion-content>
+  <ion-content mode="ios">
+
+    <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button size="small" color="secondary" routerLink="/board" mode="ios">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+
+    <ion-list class="interface">
+
+      <ion-list-header>
+        <ion-label> {{ t('settings.interfaceSettings') }} </ion-label>
+      </ion-list-header>
+
+      <ion-item fill="outline" class="form-item" mode="md">
+        <ion-label position="floating"> {{ t('settings.language') }} </ion-label>
+        <ion-select [ngModel]="language$ | async" interface="action-sheet" mode="ios" (ngModelChange)="onChangeLanguage($event)">
+          <ion-select-option [value]="option" *ngFor="let option of languageOptions">
+            {{ t('languages.' + option) }}
+          </ion-select-option>
+        </ion-select>
+        <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
+      </ion-item>
+
+      <ion-item fill="outline" class="form-item" mode="md">
+        <ion-label position="floating"> {{ t('settings.theme') }} </ion-label>
+        <ion-select [ngModel]="theme$ | async" interface="action-sheet" mode="ios" (ngModelChange)="onChangeTheme($event)">
+          <ion-select-option [value]="option" *ngFor="let option of themeOptions">
+            {{ t('themes.' + option) }}
+          </ion-select-option>
+        </ion-select>
+        <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
+      </ion-item>
+      
+    </ion-list>
+
+    <ion-list>
+
+      <ion-list-header>
+        <ion-label> {{ t('settings.cardSettings') }} </ion-label>
+      </ion-list-header>
+
+      <ion-item fill="outline" class="form-item" mode="md">
+        <ion-label position="floating"> {{ t('settings.showMoreInfo') }} </ion-label>
+        <ion-select [ngModel]="showMoreInfo$ | async" interface="action-sheet" mode="ios" (ngModelChange)="onChangeShowMoreInfo($event)">
+          <ion-select-option [value]="option" *ngFor="let option of [true, false]">
+            {{ t('settings.showMoreInfoValues.' + option) }}
+          </ion-select-option>
+        </ion-select>
+        <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
+      </ion-item>
+
+    </ion-list>
   
   </ion-content>
 

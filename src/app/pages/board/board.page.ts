@@ -14,7 +14,6 @@ import { Observable } from 'rxjs';
 /* Models */
 import { Sub } from 'src/app/shared/models/sub.model';
 import { UserData } from 'src/app/shared/models/user-data.model';
-import { TranslocoService } from '@ngneat/transloco';
 
 @Component({
   selector: 'app-board',
@@ -30,8 +29,7 @@ export class BoardPage implements OnInit {
   public userDataLoading$: Observable<boolean> = new Observable<boolean>();
 
   constructor(
-    private store: Store<AppState>,
-    private translocoService: TranslocoService
+    private store: Store<AppState>
   ) { }
 
   ngOnInit(): void {

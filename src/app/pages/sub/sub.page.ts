@@ -155,7 +155,7 @@ export class SubPage implements OnInit, OnDestroy {
           this.setValue('platform', defaultSubscriptionPlatform);
           this.setValue('name', this.translocoService.translate('subscriptionPlatform.newSubscription'));
         }
-      }, 1);
+      }, 10);
     });
   }
 

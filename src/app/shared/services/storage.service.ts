@@ -59,6 +59,14 @@ export class StorageService {
     await this._storage.set(subAppUserData, userData);
   }
 
+  public async setLanguage(language: LanguageEnum): Promise<void> {
+    console.log(language === LanguageEnum.es ? '🇪🇸 App language set to spanish' : '🇬🇧 App language set to english');
+    this.translocoService.setActiveLang(language);
+    const userData: UserData = await this._storage.get(subAppUserData);
+    userData.language = language;
+    await this._storage.set(subAppUserData, userData);
+  }
+
   public async setTheme(theme: ThemeEnum): Promise<void> {
     console.log(theme === ThemeEnum.dark ? '💡 Lights OFF!' : '💡 Lights ON!');
     document.body.classList.toggle('dark', theme === ThemeEnum.dark);
@@ -73,14 +81,11 @@ export class StorageService {
     await this._storage.set(subAppUserData, userData);
   }
 
-  public async setLanguage(language: LanguageEnum): Promise<void> {
-    console.log(language === LanguageEnum.es ? '🇪🇸 App language set to spanish' : '🇬🇧 App language set to english');
-    this.translocoService.setActiveLang(language);
+  public async setShowMoreInfo(showMoreInfo: boolean): Promise<void> {
     const userData: UserData = await this._storage.get(subAppUserData);
-    userData.language = language;
+    userData.showMoreInfo = showMoreInfo;
     await this._storage.set(subAppUserData, userData);
   }
-
 
   // ---- SUBS DATA ------------------------------------------------------------------------------------------------------------------------
 

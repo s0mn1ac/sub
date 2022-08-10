@@ -1,0 +1,23 @@
+<ng-container *transloco="let t">
+
+  <div class="price-container-layout">
+    <span class="price" [style.font-size]="showMoreInfo ? '28px' : '24px'">
+      {{ (price ?? 0) | currency: currency : 'symbol-narrow' : undefined : language }}
+    </span>
+    <div [ngSwitch]="type">
+      <span class="periodicity" *ngSwitchCase="planTypeEnum.daily">
+        {{ t(every < 2 ? 'sub.eachDay' : 'sub.eachMultipleDays', ({ total: every })) | uppercase }}
+      </span>
+      <span class="periodicity" *ngSwitchCase="planTypeEnum.weekly">
+        {{ t(every < 2 ? 'sub.eachWeek' : 'sub.eachMultipleWeeks', ({ total: every })) | uppercase }}
+      </span>
+      <span class="periodicity" *ngSwitchCase="planTypeEnum.monthly">
+        {{ t(every < 2 ? 'sub.eachMonth' : 'sub.eachMultipleMonths', ({ total: every })) | uppercase }}
+      </span>
+      <span class="periodicity" *ngSwitchCase="planTypeEnum.yearly">
+        {{ t(every < 2 ? 'sub.eachYear' : 'sub.eachMultipleYears', ({ total: every })) | uppercase }}
+      </span>
+    </div>
+  </div>
+  
+</ng-container>

@@ -14,6 +14,7 @@ export class StateConstants {
     /* User Data */
     public static USER_DATA_INIT_USER_DATA = '[User Data] Init User Data';
     public static USER_DATA_SET_LANGUAGE = '[User Data] Set Language';
+    public static USER_DATA_SET_SHOW_MORE_INFO = '[User Data] Set Show More Info';
     public static USER_DATA_SET_THEME = '[User Data] Set Theme';
     public static USER_DATA_SET_CURRENCY = '[User Data] Set Currency';
 
