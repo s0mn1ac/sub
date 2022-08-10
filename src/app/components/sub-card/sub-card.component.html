@@ -20,12 +20,12 @@
 
         <div class="flex-row">
 
-          <div class="next-payment-container">
+          <div class="next-payment-container" [style.border-right]="'1px solid var(--ion-color-' + color + ')'">
             <span class="days"> {{ firstPayment | daysUntil: type }} </span>
             <span class="next-payment"> {{ t('sub.nextPayment') | uppercase }} </span>
           </div>
 
-          <div class="price-container">
+          <div class="price-container" [style.border-left]="'1px solid var(--ion-color-' + color + ')'">
             <span class="price">
               {{ (price ?? 0) | currency: currency : 'symbol-narrow' : undefined : language }}
             </span>

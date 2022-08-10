@@ -79,7 +79,7 @@ div.sub-card-layout {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-end;
-                border-left: 1px solid var(--ion-text-color-light);
+                // border-left: 1px solid var(--ion-text-color-light);
                 flex: 1;
 
                 span.price {
@@ -87,8 +87,12 @@ div.sub-card-layout {
                     font-weight: bold;
                 }
 
-                span.periodicity {
-                    font-size: 12px;
+                div {
+                    display: flex;
+
+                    span.periodicity {
+                        font-size: 12px;
+                    }
                 }
             }
         }
