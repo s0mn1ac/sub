@@ -76,6 +76,7 @@
         "hboMax": "HBO Max",
         "disneyPlus": "Disney+",
         "youtubePremium": "YouTube Premium",
+        "xboxGamePass": "Xbox Game Pass",
         "other": "Other",
         "newSubscription": "New subscription",
         "plan": {
@@ -86,6 +87,9 @@
             "family": "Family",
             "monthly": "Monthly",
             "yearly": "Yearly",
+            "pc": "PC",
+            "console": "Console",
+            "ultimate": "Ultimate",
             "other": "Other",
             "type": {
                 "daily": "Daily",

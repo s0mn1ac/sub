@@ -7,5 +7,6 @@ export const ICONS: Icon[] = [
     { name: 'hbo-max', icon: 'logo-hbo-max' },
     { name: 'disney-plus', icon: 'logo-disney' },
     { name: 'youtube-premium', icon: 'logo-youtube' },
-    { name: 'other', icon: 'help-circle-outline' }
+    { name: 'xbox-game-pass', icon: 'logo-xbox' },
+    { name: 'other', icon: 'card-outline' }
 ];

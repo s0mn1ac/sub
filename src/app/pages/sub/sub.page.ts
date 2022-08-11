@@ -182,7 +182,7 @@ export class SubPage implements OnInit, OnDestroy {
       type: new FormControl(PlanTypeEnum.monthly, Validators.compose([Validators.required, Validators.nullValidator])),
       every: new FormControl(1, Validators.compose([Validators.required, Validators.nullValidator, Validators.min(1)])),
       firstPayment: new FormControl(today.format('YYYY-MM-DD'), Validators.compose([Validators.required, Validators.nullValidator])),
-      logo: new FormControl('help-circle-outline'),
+      logo: new FormControl('card-outline'),
       color: new FormControl('violet'),
       textColor: new FormControl('white')
     });

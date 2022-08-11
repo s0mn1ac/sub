@@ -38,7 +38,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
                 id: 200000004,
                 name: 'other',
                 price: 0,
-                isDefault: true,
+                isDefault: false,
                 type: PlanTypeEnum.monthly
             }
         ]
@@ -69,11 +69,42 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
                 id: 200000007,
                 name: 'other',
                 price: 0,
-                isDefault: true,
+                isDefault: false,
                 type: PlanTypeEnum.monthly
             }
         ]
     },
+    // {
+    //     id: 100000003,
+    //     name: 'amazonPrime',
+    //     logo: 'logo-amazon-prime',
+    //     color: '#00A8E1',
+    //     textColor: 'white',
+    //     theme: 'cyan',
+    //     plans: [
+    //         {
+    //             id: 200000008,
+    //             name: 'yearly',
+    //             price: 36,
+    //             isDefault: true,
+    //             type: PlanTypeEnum.yearly
+    //         },
+    //         {
+    //             id: 200000009,
+    //             name: 'monthly',
+    //             price: 3.99,
+    //             isDefault: false,
+    //             type: PlanTypeEnum.monthly
+    //         },
+    //         {
+    //             id: 200000010,
+    //             name: 'other',
+    //             price: 0,
+    //             isDefault: false,
+    //             type: PlanTypeEnum.monthly
+    //         }
+    //     ]
+    // },
     {
         id: 100000004,
         name: 'hboMax',
@@ -100,7 +131,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
                 id: 200000013,
                 name: 'other',
                 price: 0,
-                isDefault: true,
+                isDefault: false,
                 type: PlanTypeEnum.monthly
             }
         ]
@@ -131,7 +162,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
                 id: 200000016,
                 name: 'other',
                 price: 0,
-                isDefault: true,
+                isDefault: false,
                 type: PlanTypeEnum.monthly
             }
         ]
@@ -169,7 +200,45 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
                 id: 200000020,
                 name: 'other',
                 price: 0,
+                isDefault: false,
+                type: PlanTypeEnum.monthly
+            }
+        ]
+    },
+    {
+        id: 100000007,
+        name: 'xboxGamePass',
+        logo: 'logo-xbox',
+        color: '#FF0000',
+        textColor: 'white',
+        theme: 'green',
+        plans: [
+            {
+                id: 200000021,
+                name: 'pc',
+                price: 9.99,
+                isDefault: false,
+                type: PlanTypeEnum.monthly
+            },
+            {
+                id: 200000022,
+                name: 'console',
+                price: 9.99,
+                isDefault: false,
+                type: PlanTypeEnum.monthly
+            },
+            {
+                id: 200000023,
+                name: 'ultimate',
+                price: 12.99,
                 isDefault: true,
+                type: PlanTypeEnum.monthly
+            },
+            {
+                id: 200000024,
+                name: 'other',
+                price: 0,
+                isDefault: false,
                 type: PlanTypeEnum.monthly
             }
         ]
@@ -177,7 +246,7 @@ export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = [
     {
         id: 199999999,
         name: 'other',
-        logo: 'help-circle-outline',
+        logo: 'card-outline',
         color: '#5260ff',
         textColor: 'white',
         theme: 'violet',
