@@ -4,6 +4,7 @@ export const COLORS: string[] = [
     'cyan',
     'green',
     'yellow',
+    'orange',
     'red',
     'black',
     'grey',
