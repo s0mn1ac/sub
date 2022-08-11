@@ -1,11 +1,8 @@
-<ng-container>
+<ng-container *transloco="let t">
 
   <ion-header>
     <ion-toolbar>
-      <ion-title> Modal </ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="closeModal()"> Close </ion-button>
-      </ion-buttons>
+      <ion-title> {{ t('sub.form.selectLogo') }} </ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -13,7 +10,7 @@
     
     <ion-grid>
       <ion-row>
-        <ion-col size="4" *ngFor="let icon of icons">
+        <ion-col size="4" sizeXs="4" sizeSm="3" sizeMd="2" sizeLg="2" sizeXl="1" *ngFor="let icon of icons">
           <div class="icon-container" [ngClass]="{ 'selected': icon.icon === selected }">
             <ion-fab-button color="white" (click)="selectIcon(icon.icon)">
               <ion-icon [name]="icon.icon"></ion-icon>

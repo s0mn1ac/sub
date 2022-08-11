@@ -1,11 +1,8 @@
-<ng-container>
+<ng-container *transloco="let t">
 
   <ion-header>
     <ion-toolbar>
-      <ion-title> Modal </ion-title>
-      <ion-buttons slot="end">
-        <ion-button (click)="closeModal()"> Close </ion-button>
-      </ion-buttons>
+      <ion-title> {{ t('sub.form.selectColor') }} </ion-title>
     </ion-toolbar>
   </ion-header>
 

@@ -51,7 +51,9 @@
             "firstPayment": "First payment",
             "additionalInformation": "Additional information",
             "logo": "Logo",
+            "selectLogo": "Select logo",
             "color": "Color",
+            "selectColor": "Select color",
             "textColor": "Text color"
         }
     },

@@ -51,7 +51,9 @@
             "firstPayment": "Primer pago",
             "additionalInformation": "Información adicional",
             "logo": "Logo",
+            "selectLogo": "Seleccionar logo",
             "color": "Color",
+            "selectColor": "Seleccionar color",
             "textColor": "Color del texto"
         }
     },
