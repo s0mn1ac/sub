@@ -1,0 +1,99 @@
+<ng-container *transloco="let t">
+  
+  <ion-content mode="ios">
+
+    <ion-list>
+
+      <ion-list-header>
+        <ion-label> {{ t('platforms.allPlatforms') }} </ion-label>
+        <ion-button color="primary" mode="ios" (click)="generatePlatformsList()">
+          <ion-icon slot="start" size="small" name="add-circle-outline"></ion-icon>
+          {{ t('platforms.addPlatform') }}
+        </ion-button>
+        <ion-button color="primary" mode="ios" (click)="generatePlatformsList()">
+          <ion-icon slot="start" size="small" name="arrow-redo-outline"></ion-icon>
+          {{ t('platforms.generateJSON') }}
+        </ion-button>
+        <ion-modal #jsonModal class="json-modal" [canDismiss]="true" [isOpen]="isModalOpen" (willDismiss)="isModalOpen = false">
+          <ng-template>
+            <ion-header>
+              <ion-toolbar>
+                <ion-title> {{ t('sub.form.selectColor') }} </ion-title>
+              </ion-toolbar>
+            </ion-header>
+            <ion-content class="ion-padding">
+              {{ subscriptionPlatformsAsJSON }}
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+      </ion-list-header>
+
+      <ion-item lines="full" *ngFor="let platform of subscriptionPlatforms" mode="">
+        <ion-icon slot="start" class="platform-icon" [color]="platform.theme" [name]="platform.logo"></ion-icon>
+        <ion-label>
+          <p> #{{ platform.id }} </p>
+          <h2> {{ t('subscriptionPlatform.' + platform.name) }} </h2>
+          <div class="plans-container">
+            <div *ngFor="let plan of platform.plans"
+              class="plan-container"
+              [style.border]="'2px solid var(--ion-color-' + platform.theme + ')'">
+              <div *ngIf="plan.isDefault" class="icon-container">
+                <ion-icon size="large" color="success" name="checkmark-circle"></ion-icon>
+              </div>
+              <p> #{{ plan.id }} </p>
+              <h2> {{ t('subscriptionPlatform.plan.' + plan.name) }} </h2>
+              <div class="price-container"
+                [style.background]="'var(--ion-color-' + platform.theme + ')'"
+                [style.color]="'var(--ion-color-' + platform.textColor + ')'">
+                <app-price-container
+                  [showMoreInfo]="false"
+                  [type]="plan.type"
+                  [price]="plan.price"
+                  [currency]="'EUR'"
+                  [color]="platform.theme"
+                  [every]="1">
+                </app-price-container>
+              </div>
+            </div>
+          </div>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <form [formGroup]="platformsForm" *ngIf="!((userDataLoading$ | async) && (subsDataLoading$ | async))">
+
+      <div class="buttons-container">
+
+        <!-- <ion-button (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()"
+          color="primary"
+          [disabled]="platformsForm.invalid"
+          mode="ios">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          {{ t('buttons.saveSub') }}
+        </ion-button>
+
+        <ion-button (click)="onClickDeleteSub()"
+          color="danger"
+          [disabled]="platformsForm.invalid"
+          mode="ios"
+          *ngIf="mode === modeEnum.modify">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          {{ t('buttons.deleteSub') }}
+        </ion-button>
+
+        <ion-button routerLink="/board"
+          color="secondary"
+          fill="outline"
+          mode="ios">
+          <ion-icon slot="start" name="close-outline"></ion-icon>
+          {{ t('buttons.discardChanges') }}
+        </ion-button> -->
+
+      </div>
+
+    </form>
+  
+  </ion-content>
+
+</ng-container>

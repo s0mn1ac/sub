@@ -19,6 +19,12 @@
         "cancel": "Cancelar"
     },
 
+    "codes": {
+        "success": {
+            "copiedToClipboard": "JSON copiado al portapapeles"
+        }
+    },
+
     "board": {
         "title": "Tablón"
     },
@@ -56,6 +62,12 @@
             "selectColor": "Seleccionar color",
             "textColor": "Color del texto"
         }
+    },
+
+    "platforms": {
+        "allPlatforms": "Todas las plataformas",
+        "addPlatform": "Añadir plataforma",
+        "generateJSON": "Generar JSON"
     },
 
     "settings": {

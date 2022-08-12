@@ -1,0 +1,103 @@
+ion-content {
+    --plan-container-width: 175px;
+
+    ion-item {
+        cursor: pointer;
+
+        div.plans-container {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: nowrap;
+            overflow: auto;
+            padding: 0.5rem 0 1rem 0;
+    
+            div.plan-container {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 1rem;
+                border-radius: var(--custom-border-radius);
+                background-color: var(--background-color);
+                min-width: var(--plan-container-width);
+                width: var(--plan-container-width);
+                max-width: var(--plan-container-width);
+    
+                div.icon-container {
+                    position: absolute;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    top: -10px;
+                    right: -10px;
+                    background-color: var(--background-color);
+                    border-radius: var(--custom-border-radius);
+                    transition: all 0.2s ease-in-out;
+                }
+    
+                p {
+                    color: rgba(var(--ion-text-color-rgb, 0, 0, 0), 0.4);
+                }
+    
+                h2 {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    max-width: 100%;
+                    text-overflow: ellipsis;
+                }
+    
+                div.price-container {
+                    padding: 1rem;
+                    border-radius: var(--custom-border-radius);
+                    margin-top: 0.5rem;
+                    width: 100%;
+                }
+            }
+        }
+
+        &:hover {
+            --background: rgba(var(--ion-color-grey-rgb), 0.1);
+        }
+    }
+
+    div.buttons-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 1rem;
+        width: 100%;
+    
+        ion-button {
+            width: 100%;
+        }
+    }
+}
+
+::ng-deep ion-item ion-icon.platform-icon {
+    align-self: flex-start;
+    margin-top: 1rem;
+}
+
+:host ::ng-deep app-price-container div.price-container-layout {
+    align-items: center;
+    justify-content: center;
+}
+
+@media (max-width: 767px) {
+
+    div.plans-container {
+
+        div.plan-container {
+            --plan-container-width: 125px;
+            
+            div.price-container {
+                display: none;
+            }
+        }
+    }
+}

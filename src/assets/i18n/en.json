@@ -19,6 +19,12 @@
         "cancel": "Cancel"
     },
 
+    "codes": {
+        "success": {
+            "copiedToClipboard": "JSON copied to clipboard"
+        }
+    },
+
     "board": {
         "title": "Board"
     },
@@ -56,6 +62,12 @@
             "selectColor": "Select color",
             "textColor": "Text color"
         }
+    },
+
+    "platforms": {
+        "allPlatforms": "All platforms",
+        "addPlatform": "Add platform",
+        "generateJSON": "Generate JSON"
     },
 
     "settings": {

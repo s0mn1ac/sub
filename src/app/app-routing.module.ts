@@ -19,6 +19,10 @@ const routes: Routes = [
   {
     path: 'sub',
     loadChildren: () => import('./pages/sub/sub.module').then( m => m.SubPageModule)
+  },
+  {
+    path: 'platforms',
+    loadChildren: () => import('./pages/platforms/platforms.module').then( m => m.PlatformsPageModule)
   }
 ];
 

@@ -17,7 +17,7 @@ import { SubsDataEffects } from './state/effects/subs-data.effects';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { IonicStorageModule } from '@ionic/storage-angular';
 
-/* Other */
+/* Others */
 import { TranslocoRootModule } from './shared/modules/transloco-root.module';
 
 /* App modules */
