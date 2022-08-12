@@ -1,3 +1,27 @@
 ion-modal {
     --border-radius: var(--custom-border-radius);
+
+    &.datetime-selector-modal {
+        --height: 382px;
+        --min-width: 290px;
+        --max-width: 350px;
+
+        ion-datetime {
+            width: auto;
+            max-width: 350px;
+            height: 382px;
+        }
+    }
+    
+    &.logo-selector-modal {
+        --min-height: 382px;
+        --height: calc(100vh - 2rem);
+        --min-width: 290px;
+        --width: calc(100vw - 2rem);
+    }
+    
+    &.color-selector-modal {
+        --height: 344px;
+        --width: 290px;
+    }
 }

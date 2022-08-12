@@ -16,12 +16,21 @@
         "saveSub": "Save subscription",
         "deleteSub": "Delete subscription",
         "discardChanges": "Discard changes",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "addPlatform": "Add platform",
+        "generateJSON": "Generate JSON",
+        "savePlatform": "Save platform",
+        "deletePlatform": "Delete platform",
+        "addNewPlan": "Add new plan",
+        "deletePlan": "Delete plan"
     },
 
     "codes": {
         "success": {
-            "copiedToClipboard": "JSON copied to clipboard"
+            "copiedToClipboard": "JSON copied to clipboard",
+            "newPlatformAdded": "A new platform has been added to the list",
+            "platformDeleted": "Platform has been deleted",
+            "platformModified": "Platform has been modified"
         }
     },
 
@@ -66,8 +75,17 @@
 
     "platforms": {
         "allPlatforms": "All platforms",
-        "addPlatform": "Add platform",
-        "generateJSON": "Generate JSON"
+        "platform": {
+            "addNewPlatform": "Add new platform",
+            "modifyPlatform": "Modify platform",
+            "plans": "Plans",
+            "form": {
+                "name": "Name",
+                "price": "Price",
+                "defaultPlan": "Default plan",
+                "type": "Type"
+            }
+        }
     },
 
     "settings": {

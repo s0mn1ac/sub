@@ -1,9 +1,177 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>platform</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ng-container *transloco="let t">
+  
+  <ion-content mode="ios">
 
-<ion-content>
+    <form [formGroup]="platformForm">
 
-</ion-content>
+      <ion-list>
+
+        <ion-list-header>
+          <ion-label> {{ t('platforms.platform.addNewPlatform') }} </ion-label>
+          <ion-button color="secondary" mode="ios" routerLink="/platforms">
+            <ion-icon slot="start" size="small" name="close-circle-outline"></ion-icon>
+            {{ t('buttons.discardChanges') }}
+          </ion-button>
+          <ion-button color="danger" mode="ios" (click)="deletePlatform()">
+            <ion-icon slot="start" size="small" name="trash-outline"></ion-icon>
+            {{ t('buttons.deletePlatform') }}
+          </ion-button>
+          <ion-button color="primary" mode="ios" [disabled]="platformForm.invalid" (click)="savePlatform()">
+            <ion-icon slot="start" size="small" name="save-outline"></ion-icon>
+            {{ t('buttons.savePlatform') }}
+          </ion-button>
+        </ion-list-header>
+
+        <ion-item lines="none">
+          <ion-label class="id"> #{{ platformForm.get('id').value }} </ion-label>
+        </ion-item>
+
+        <ion-item fill="outline" class="form-item" mode="md">
+          <ion-label position="floating"> {{ t('platforms.platform.form.name') }} </ion-label>
+          <ion-input formControlName="name" inputmode="text" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item fill="outline" class="form-item logo-selection" id="open-logo-selector-modal" mode="md">
+          <ion-label> {{ t('sub.form.logo') }} </ion-label>
+          <ion-fab-button size="small" color="white">
+            <ion-icon [name]="platformForm.value.logo"></ion-icon>
+          </ion-fab-button>
+        </ion-item>
+        <ion-modal #logoSelectorModal trigger="open-logo-selector-modal" class="logo-selector-modal" [canDismiss]="true">
+          <ng-template>
+            <app-logo-selector
+              [modal]="logoSelectorModal"
+              [selected]="platformForm.value.logo"
+              [theme]="platformForm.value.platform?.theme"
+              (onSelectIcon)="onChangeLogo($event)">
+            </app-logo-selector>
+          </ng-template>
+        </ion-modal>
+
+        <ion-item fill="outline" class="form-item color-selection" id="open-color-selector-modal" mode="md">
+          <ion-label> {{ t('sub.form.color') }} </ion-label>
+          <ion-fab-button size="small" [color]="platformForm.value.color"></ion-fab-button>
+        </ion-item>
+        <ion-modal #colorSelectorModal trigger="open-color-selector-modal" class="color-selector-modal" [canDismiss]="true">
+          <ng-template>
+            <app-color-selector
+              [modal]="colorSelectorModal"
+              [selected]="platformForm.value.color"
+              (onSelectColor)="onChangeColor($event)">
+            </app-color-selector>
+          </ng-template>
+        </ion-modal>
+
+        <ion-item fill="outline" class="form-item text-color-selection" id="open-text-color-selector-modal" mode="md">
+          <ion-label> {{ t('sub.form.textColor') }} </ion-label>
+          <ion-fab-button size="small" [color]="platformForm.value.textColor"></ion-fab-button>
+        </ion-item>
+        <ion-modal #textColorSelectorModal trigger="open-text-color-selector-modal" class="color-selector-modal" [canDismiss]="true">
+          <ng-template>
+            <app-color-selector
+              [modal]="textColorSelectorModal"
+              [selected]="platformForm.value.textColor"
+              (onSelectColor)="onChangeTextColor($event)">
+            </app-color-selector>
+          </ng-template>
+        </ion-modal>
+  
+      </ion-list>
+
+      <ion-list>
+
+        <ion-list-header>
+          <ion-label> {{ t('platforms.platform.plans') }} </ion-label>
+          <ion-button color="primary" mode="ios" (click)="addPlan()">
+            <ion-icon slot="start" size="small" name="add-circle-outline"></ion-icon>
+            {{ t('buttons.addNewPlan') }}
+          </ion-button>
+        </ion-list-header>
+
+        <div class="plans-container" formArrayName="plans">
+
+          <div class="plan-container" *ngFor="let plan of plansGroup.controls; let i = index" [formGroupName]="i">
+
+            <ion-item lines="none">
+              <ion-label class="id"> #{{ plan.get('id').value }} </ion-label>
+              <ion-button color="danger" fill="clear" mode="ios" (click)="removePlan(i)">
+                <ion-icon slot="start" size="small" name="trash-outline"></ion-icon>
+                {{ t('buttons.deletePlan') }}
+              </ion-button>
+            </ion-item>
+    
+            <div class="plan-content-container">
+  
+              <ion-item fill="outline" class="form-item" mode="md">
+                <ion-label position="floating"> {{ t('platforms.platform.form.name') }} </ion-label>
+                <ion-input formControlName="name" inputmode="text" type="text"></ion-input>
+              </ion-item>
+
+              <ion-item fill="outline" class="form-item" mode="md">
+                <ion-label position="floating"> {{ t('platforms.platform.form.price') }} </ion-label>
+                <ion-input formControlName="price" inputmode="decimal" type="number" [min]="0"></ion-input>
+              </ion-item>
+
+              <ion-item fill="outline" class="form-item" mode="md">
+                <ion-label position="floating"> {{ t('platforms.platform.form.defaultPlan') }} </ion-label>
+                <ion-select formControlName="isDefault" interface="action-sheet" mode="ios">
+                  <ion-select-option [value]="true"> True </ion-select-option>
+                  <ion-select-option [value]="false"> False </ion-select-option>
+                </ion-select>
+                <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
+              </ion-item>
+              
+              <ion-item fill="outline" class="form-item" mode="md">
+                <ion-label position="floating"> {{ t('platforms.platform.form.type') }} </ion-label>
+                <ion-select formControlName="type" interface="action-sheet" mode="ios">
+                  <ion-select-option [value]="planTypeEnum.daily"> {{ t('subscriptionPlatform.plan.type.daily') }} </ion-select-option>
+                  <ion-select-option [value]="planTypeEnum.weekly"> {{ t('subscriptionPlatform.plan.type.weekly') }} </ion-select-option>
+                  <ion-select-option [value]="planTypeEnum.monthly"> {{ t('subscriptionPlatform.plan.type.monthly') }} </ion-select-option>
+                  <ion-select-option [value]="planTypeEnum.yearly"> {{ t('subscriptionPlatform.plan.type.yearly') }} </ion-select-option>
+                  <ion-select-option [value]="false"> False </ion-select-option>
+                </ion-select>
+                <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
+              </ion-item>
+
+            </div>
+              
+          </div>
+
+        </div>
+  
+      </ion-list>
+
+      <div class="buttons-container">
+
+        <!-- <ion-button (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()"
+          color="primary"
+          [disabled]="platformForm.invalid"
+          mode="ios">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          {{ t('buttons.saveSub') }}
+        </ion-button>
+
+        <ion-button (click)="onClickDeleteSub()"
+          color="danger"
+          [disabled]="platformForm.invalid"
+          mode="ios"
+          *ngIf="mode === modeEnum.modify">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          {{ t('buttons.deleteSub') }}
+        </ion-button>
+
+        <ion-button routerLink="/board"
+          color="secondary"
+          fill="outline"
+          mode="ios">
+          <ion-icon slot="start" name="close-outline"></ion-icon>
+          {{ t('buttons.discardChanges') }}
+        </ion-button> -->
+
+      </div>
+
+    </form>
+  
+  </ion-content>
+
+</ng-container>

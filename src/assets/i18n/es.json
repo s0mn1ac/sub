@@ -16,12 +16,21 @@
         "saveSub": "Guardar suscripción",
         "deleteSub": "Eliminar suscripción",
         "discardChanges": "Descartar cambios",
-        "cancel": "Cancelar"
+        "cancel": "Cancelar",
+        "addPlatform": "Añadir plataforma",
+        "generateJSON": "Generar JSON",
+        "savePlatform": "Guardar plataforma",
+        "deletePlatform": "Eliminar plataforma",
+        "addNewPlan": "Añadir nuevo plan",
+        "deletePlan": "Eliminar plan"
     },
 
     "codes": {
         "success": {
-            "copiedToClipboard": "JSON copiado al portapapeles"
+            "copiedToClipboard": "JSON copiado al portapapeles",
+            "newPlatformAdded": "Se ha añadido una nueva plataforma",
+            "platformDeleted": "Se ha borrado la plataforma",
+            "platformModified": "Se ha modificado la plataforma"
         }
     },
 
@@ -66,8 +75,17 @@
 
     "platforms": {
         "allPlatforms": "Todas las plataformas",
-        "addPlatform": "Añadir plataforma",
-        "generateJSON": "Generar JSON"
+        "platform": {
+            "addNewPlatform": "Añadir nueva plataforma",
+            "modifyPlatform": "Modificar plataforma",
+            "plans": "Planes",
+            "form": {
+                "name": "Nombre",
+                "price": "Precio",
+                "defaultPlan": "Plan por defecto",
+                "type": "Tipo"
+            }
+        }
     },
 
     "settings": {

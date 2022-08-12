@@ -1,0 +1,30 @@
+ion-content {
+
+    ion-list {
+
+        ion-item {
+
+            ion-label.id {
+                opacity: 0.5;
+            }
+        }
+
+        div.plans-container {
+            display: flex;
+            flex-direction: column;
+
+            div.plan-container {
+                display: flex;
+                flex-direction: column;
+                padding: 0.5rem 1rem;
+
+                div.plan-content-container {
+                    border-radius: var(--custom-border-radius);
+                    background: rgba(var(--ion-color-grey-rgb), 0.1);
+                    padding: 1rem 0.5rem;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}

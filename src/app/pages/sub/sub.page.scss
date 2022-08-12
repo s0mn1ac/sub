@@ -33,30 +33,6 @@ div.buttons-container {
     }
 }
 
-ion-modal.datetime-selector-modal {
-    --height: 382px;
-    --min-width: 290px;
-    --max-width: 350px;
-}
-
-ion-modal.logo-selector-modal {
-    --min-height: 382px;
-    --height: calc(100vh - 2rem);
-    --min-width: 290px;
-    --width: calc(100vw - 2rem);
-}
-
-ion-modal.color-selector-modal {
-    --height: 344px;
-    --width: 290px;
-}
-
-ion-modal ion-datetime {
-    width: auto;
-    max-width: 350px;
-    height: 382px;
-}
-
 ion-note {
     padding: 10px 0 10px 0;
     font-size: 16px;
