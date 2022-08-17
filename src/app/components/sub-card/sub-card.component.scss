@@ -6,11 +6,6 @@ div.sub-card-layout {
     &.selectable {
         cursor: pointer;
         transition: transform 0.2s;
-
-        &:hover {
-            transform: scale(1.03);
-            z-index: 99999;
-        }
     }
 
     div.sub-card {
@@ -93,5 +88,13 @@ div.sub-card-layout {
                 flex: 1;
             }
         }
+    }
+}
+
+@media (hover: hover) {
+
+    div.sub-card-layout.selectable:hover {
+        transform: scale(1.03);
+        z-index: 99999;
     }
 }
