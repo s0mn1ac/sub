@@ -61,10 +61,10 @@ export class PlatformsPage {
     const replacePrice: string = _.replace(replacePlans, /'price'/g, 'price');
     const replaceIsDefault: string = _.replace(replacePrice, /'isDefault'/g, 'isDefault');
     const replaceType: string = _.replace(replaceIsDefault, /'type'/g, 'type');
-    const replaceDayly: string = _.replace(replaceType, /type:'dayly'/g, 'PlanTypeEnum.dayly');
-    const replaceWeekly: string = _.replace(replaceDayly, /type:'weekly'/g, 'PlanTypeEnum.weekly');
-    const replaceMonthly: string = _.replace(replaceWeekly, /type:'monthly'/g, 'PlanTypeEnum.monthly');
-    const replaceYearly: string = _.replace(replaceMonthly, /type:'yearly'/g, 'PlanTypeEnum.yearly');
+    const replaceDayly: string = _.replace(replaceType, /type:'dayly'/g, 'type:PlanTypeEnum.dayly');
+    const replaceWeekly: string = _.replace(replaceDayly, /type:'weekly'/g, 'type:PlanTypeEnum.weekly');
+    const replaceMonthly: string = _.replace(replaceWeekly, /type:'monthly'/g, 'type:PlanTypeEnum.monthly');
+    const replaceYearly: string = _.replace(replaceMonthly, /type:'yearly'/g, 'type:PlanTypeEnum.yearly');
     const platformsAsJSON: string = `export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = ${replaceYearly};\n`;
     await navigator.clipboard.writeText(platformsAsJSON);
     this.toastService.throwSuccessToast(copiedToClipboard);

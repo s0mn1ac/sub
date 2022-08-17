@@ -18,5 +18,13 @@ export const ICONS: Icon[] = [
     { name: 'playstation', icon: 'logo-playstation' },
     { name: 'xbox', icon: 'logo-xbox' },
     { name: 'youtube', icon: 'logo-youtube' },
+    { name: 'audible', icon: 'logo-audible' },
+    { name: 'spotify', icon: 'logo-spotify' },
+    { name: 'patreon', icon: 'logo-patreon' },
+    { name: 'ea', icon: 'logo-ea' },
+    { name: 'twitch', icon: 'logo-twitch' },
+    { name: 'deezer', icon: 'logo-deezer' },
+    { name: 'tidal', icon: 'logo-tidal' },
+    { name: 'dazn', icon: 'logo-dazn' },
     { name: 'other', icon: 'card-outline' }
 ];
