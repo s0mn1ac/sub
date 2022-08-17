@@ -1,7 +1,7 @@
 /* Enums */
 import { PlanTypeEnum } from '../enums/plan-type.enum';
 
-export class PlatformPlan {
+export class Plan {
     id: number;
     name: string;
     price: number;

@@ -20,7 +20,7 @@
         <ion-icon slot="start" class="platform-icon" [color]="platform.theme" [name]="platform.logo"></ion-icon>
         <ion-label>
           <p> #{{ platform.id }} </p>
-          <h2> {{ t('subscriptionPlatform.' + platform.name) }} </h2>
+          <h2> {{ t('platform.' + platform.name) }} </h2>
           <div class="plans-container">
             <div *ngFor="let plan of platform.plans"
               class="plan-container"
@@ -29,7 +29,7 @@
                 <ion-icon size="large" color="success" name="checkmark-circle"></ion-icon>
               </div>
               <p> #{{ plan.id }} </p>
-              <h2> {{ t('subscriptionPlatform.plan.' + plan.name) }} </h2>
+              <h2> {{ t('platform.plan.' + plan.name) }} </h2>
               <div class="price-container"
                 [style.background]="'var(--ion-color-' + platform.theme + ')'"
                 [style.color]="'var(--ion-color-' + platform.textColor + ')'">

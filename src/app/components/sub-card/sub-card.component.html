@@ -11,7 +11,7 @@
             {{ name !== null && name !== '' ? name : t('sub.form.name') }}
           </h2>
           <span class="header-sub-title">
-            {{ plan?.name ? (t('subscriptionPlatform.plan.' + plan?.name) | uppercase) : t('sub.form.plan') | uppercase }}
+            {{ plan?.name ? (t('platform.plan.' + plan?.name) | uppercase) : t('sub.form.plan') | uppercase }}
           </span>
         </div>
         <div class="price-container" *ngIf="!showMoreInfo">

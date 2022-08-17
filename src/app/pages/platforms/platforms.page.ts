@@ -8,7 +8,7 @@ import { replace } from 'lodash';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
 /* Models */
-import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platform.model';
+import { Platform } from 'src/app/shared/models/platform.model';
 
 /* Constants */
 import { copiedToClipboard } from 'src/app/shared/constants/codes.constants';
@@ -21,7 +21,7 @@ import { PlatformsService } from 'src/app/shared/services/platforms.service';
 })
 export class PlatformsPage {
 
-  public platforms: SubscriptionPlatform[] = [];
+  public platforms: Platform[] = [];
 
   constructor(
     private platformsService: PlatformsService,
@@ -48,7 +48,7 @@ export class PlatformsPage {
     const replaceWeekly: string = replace(replaceDayly, /type:'weekly'/g, 'type:PlanTypeEnum.weekly');
     const replaceMonthly: string = replace(replaceWeekly, /type:'monthly'/g, 'type:PlanTypeEnum.monthly');
     const replaceYearly: string = replace(replaceMonthly, /type:'yearly'/g, 'type:PlanTypeEnum.yearly');
-    const platformsAsJSON: string = `export const SUBSCRIPTION_PLATFORMS: SubscriptionPlatform[] = ${replaceYearly};\n`;
+    const platformsAsJSON: string = `export const PLATFORMS: Platform[] = ${replaceYearly};\n`;
     await navigator.clipboard.writeText(platformsAsJSON);
     this.toastService.throwSuccessToast(copiedToClipboard);
   }

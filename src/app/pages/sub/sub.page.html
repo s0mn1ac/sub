@@ -33,8 +33,8 @@
         <ion-item fill="outline" class="form-item" mode="md">
           <ion-label position="floating"> {{ t('sub.form.platform') }} </ion-label>
           <ion-select formControlName="platform" interface="action-sheet" mode="ios">
-            <ion-select-option [value]="option" *ngFor="let option of subscriptionPlatforms">
-              {{ t('subscriptionPlatform.' + option.name) }}
+            <ion-select-option [value]="platform" *ngFor="let platform of platforms">
+              {{ t('platform.' + platform.name) }}
             </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
@@ -48,8 +48,8 @@
         <ion-item fill="outline" class="form-item" mode="md">
           <ion-label position="floating"> {{ t('sub.form.plan') }} </ion-label>
           <ion-select formControlName="plan" interface="action-sheet" mode="ios">
-            <ion-select-option [value]="option" *ngFor="let option of platformPlans">
-              {{ t('subscriptionPlatform.plan.' + option.name) }}
+            <ion-select-option [value]="plan" *ngFor="let plan of plans">
+              {{ t('platform.plan.' + plan.name) }}
             </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
@@ -94,10 +94,10 @@
         <ion-item fill="outline" class="form-item" mode="md">
           <ion-label position="floating"> {{ t('sub.form.period') }} </ion-label>
           <ion-select formControlName="type" interface="action-sheet" mode="ios">
-            <ion-select-option [value]="planTypeEnum.daily"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.daily) }} </ion-select-option>
-            <ion-select-option [value]="planTypeEnum.weekly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.weekly) }} </ion-select-option>
-            <ion-select-option [value]="planTypeEnum.monthly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.monthly) }} </ion-select-option>
-            <ion-select-option [value]="planTypeEnum.yearly"> {{ t('subscriptionPlatform.plan.type.' + planTypeEnum.yearly) }} </ion-select-option>
+            <ion-select-option [value]="planTypeEnum.daily"> {{ t('platform.plan.type.' + planTypeEnum.daily) }} </ion-select-option>
+            <ion-select-option [value]="planTypeEnum.weekly"> {{ t('platform.plan.type.' + planTypeEnum.weekly) }} </ion-select-option>
+            <ion-select-option [value]="planTypeEnum.monthly"> {{ t('platform.plan.type.' + planTypeEnum.monthly) }} </ion-select-option>
+            <ion-select-option [value]="planTypeEnum.yearly"> {{ t('platform.plan.type.' + planTypeEnum.yearly) }} </ion-select-option>
           </ion-select>
           <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
         </ion-item>

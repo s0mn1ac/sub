@@ -9,39 +9,39 @@ import * as _ from 'lodash';
 
 /* Services */
 import { TranslocoService } from '@ngneat/transloco';
-import { SUBSCRIPTION_PLATFORMS } from 'src/assets/data/subscription-platforms.constants';
-import { SubscriptionPlatform } from '../models/subscription-platform.model';
-import { PlatformPlan } from '../models/platform-plan.model';
+import { PLATFORMS } from 'src/assets/data/platforms.constants';
+import { Platform } from '../models/platform.model';
+import { Plan } from '../models/plan.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PlatformsService {
 
-  public _platforms: SubscriptionPlatform[] = [];
+  public _platforms: Platform[] = [];
 
   constructor(
     private toastController: ToastController,
     private translocoService: TranslocoService
   ) {
-    this._platforms = SUBSCRIPTION_PLATFORMS;
+    this._platforms = PLATFORMS;
   }
 
   get platforms() {
     return this._platforms;
   }
 
-  set platforms(platforms: SubscriptionPlatform[]) {
+  set platforms(platforms: Platform[]) {
     this._platforms = platforms;
   }
 
-  public addPlatform(platform: SubscriptionPlatform): void {
+  public addPlatform(platform: Platform): void {
     this.platforms.push(platform);
     this.refreshIndex();
   }
 
-  public modifyPlatform(id: number, platform: SubscriptionPlatform): void {
-    const platformFound: SubscriptionPlatform = this.platforms.find((platformToFind: SubscriptionPlatform) => platformToFind.id === id);
+  public modifyPlatform(id: number, platform: Platform): void {
+    const platformFound: Platform = this.platforms.find((platformToFind: Platform) => platformToFind.id === id);
     platformFound.name = platform.name;
     platformFound.logo = platform.logo;
     platformFound.textColor = platform.textColor;
@@ -51,7 +51,7 @@ export class PlatformsService {
   }
 
   public removePlatform(id: number): void {
-    this.platforms = this.platforms.filter((platform: SubscriptionPlatform) => platform.id !== id);
+    this.platforms = this.platforms.filter((platform: Platform) => platform.id !== id);
     this.refreshIndex();
   }
 
@@ -59,13 +59,13 @@ export class PlatformsService {
     let platformIndex: number = 100000001;
     let planIndex: number = 200000001;
     let isAnyDefault: boolean = false;
-    this.platforms.forEach((platform: SubscriptionPlatform) => {
+    this.platforms.forEach((platform: Platform) => {
       isAnyDefault = false;
       if (platform.id !== 199999999) {
         platform.id = platformIndex;
         platformIndex = platformIndex + 1;
       }
-      platform.plans.forEach((plan: PlatformPlan) => {
+      platform.plans.forEach((plan: Plan) => {
         if (plan.id !== 299999999) {
           plan.id = planIndex;
           planIndex = planIndex + 1;

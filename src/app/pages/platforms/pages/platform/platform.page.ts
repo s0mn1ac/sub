@@ -15,8 +15,8 @@ import * as cc from 'currency-codes';
 import { ToastService } from 'src/app/shared/services/toast.service';
 
 /* Models */
-import { PlatformPlan } from 'src/app/shared/models/platform-plan.model';
-import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platform.model';
+import { Plan } from 'src/app/shared/models/plan.model';
+import { Platform } from 'src/app/shared/models/platform.model';
 
 /* Enums */
 import { ModeEnum } from 'src/app/shared/enums/mode.enum';
@@ -35,9 +35,9 @@ export class PlatformPage implements OnInit {
 
   public platformForm: FormGroup;
 
-  public platforms: SubscriptionPlatform[] = [];
-  public subscriptionPlatform: SubscriptionPlatform = new SubscriptionPlatform();
-  public platformPlans: PlatformPlan[] = [];
+  public platforms: Platform[] = [];
+  public platform: Platform = new Platform();
+  public plans: Plan[] = [];
   public currencies: CurrencyCodeRecord[] = [];
 
   public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;
@@ -92,11 +92,11 @@ export class PlatformPage implements OnInit {
 
   public savePlatform(): void {
     if (this.mode === ModeEnum.new) {
-      this.platformsService.addPlatform(new SubscriptionPlatform(this.platformForm.value));
+      this.platformsService.addPlatform(new Platform(this.platformForm.value));
       this.router.navigate(['/platforms']);
       this.toastService.throwSuccessToast(newPlatformAdded);
     } else {
-      this.platformsService.modifyPlatform(this.id, new SubscriptionPlatform(this.platformForm.value));
+      this.platformsService.modifyPlatform(this.id, new Platform(this.platformForm.value));
       this.router.navigate(['/platforms']);
       this.toastService.throwSuccessToast(platformModified);
     }
@@ -126,7 +126,7 @@ export class PlatformPage implements OnInit {
 
   private initPage(id: number | undefined): void {
     this.id = id;
-    const selectedPlatform: SubscriptionPlatform | undefined = this.platforms.find((platform: SubscriptionPlatform) => platform.id === id);
+    const selectedPlatform: Platform | undefined = this.platforms.find((platform: Platform) => platform.id === id);
     this.mode = selectedPlatform === undefined ? ModeEnum.new : ModeEnum.modify;
     this.generateNextPlatformId();
     this.generateNextPlanId();
@@ -134,7 +134,7 @@ export class PlatformPage implements OnInit {
     this.refreshPlansIndex();
   }
 
-  private initForm(platform: SubscriptionPlatform | undefined): void {
+  private initForm(platform: Platform | undefined): void {
     this.platformForm = new FormGroup({
       id: new FormControl(platform ? platform.id : this.nextPlatformId, Validators.compose([Validators.required, Validators.nullValidator])),
       name: new FormControl(platform ? platform.name : null, Validators.compose([Validators.required, Validators.nullValidator, Validators.maxLength(75)])),
@@ -161,7 +161,7 @@ export class PlatformPage implements OnInit {
     if (this.mode === ModeEnum.modify) {
       return;
     }
-    const lastPlatform: SubscriptionPlatform = maxBy(this.platforms.filter(platform => platform.id !== 199999999), 'id');
+    const lastPlatform: Platform = maxBy(this.platforms.filter(platform => platform.id !== 199999999), 'id');
     const lastId: number = maxBy(lastPlatform.plans, 'id').id;
     this.nextPlanId = lastId + 1;
   }
@@ -177,7 +177,7 @@ export class PlatformPage implements OnInit {
     });
   }
 
-  private getPlanAsFormGroup(plan: PlatformPlan | undefined = undefined): FormGroup {
+  private getPlanAsFormGroup(plan: Plan | undefined = undefined): FormGroup {
     return new FormGroup({
       id: new FormControl({ value: plan ? plan.id : new Date().getTime(), disabled: false }, Validators.compose([Validators.required])),
       name: new FormControl({ value: plan ? plan.name : null, disabled: false }, Validators.compose([Validators.required, Validators.nullValidator, Validators.maxLength(75)])),
@@ -187,7 +187,7 @@ export class PlatformPage implements OnInit {
     })
   }
 
-  public addPlan(plan: PlatformPlan | undefined = undefined): void {
+  public addPlan(plan: Plan | undefined = undefined): void {
     this.plansGroup.push(this.getPlanAsFormGroup(plan));
     this.refreshPlansIndex();
   }

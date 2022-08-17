@@ -1,13 +1,13 @@
 /* Models */
-import { PlatformPlan } from './platform-plan.model';
+import { Plan } from './plan.model';
 
-export class SubscriptionPlatform {
+export class Platform {
     id: number;
     name: string;
     logo: string;
     textColor: string;
     theme: string;
-    plans: PlatformPlan[];
+    plans: Plan[];
 
     constructor(formValue: any = null) {
 

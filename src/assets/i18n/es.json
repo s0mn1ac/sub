@@ -101,7 +101,7 @@
         }
     },
 
-    "subscriptionPlatform": {
+    "platform": {
         "netflix": "Netflix",
         "amazonPrime": "Amazon Prime",
         "amazonPrimeVideo": "Amazon Prime Video",

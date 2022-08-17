@@ -1,6 +1,6 @@
 /* Models */
-import { SubscriptionPlatform } from './subscription-platform.model';
-import { PlatformPlan } from './platform-plan.model';
+import { Platform } from './platform.model';
+import { Plan } from './plan.model';
 
 /* Enums */
 import { PlanTypeEnum } from '../enums/plan-type.enum';
@@ -12,8 +12,8 @@ export class Sub {
     logo: string;
     color: string;
     textColor: string;
-    platform: SubscriptionPlatform;
-    plan: PlatformPlan;
+    platform: Platform;
+    plan: Plan;
     type: PlanTypeEnum;
     every: number;
     firstPayment: string;

@@ -26,8 +26,8 @@ import { StorageService } from 'src/app/shared/services/storage.service';
 
 /* Models */
 import { Sub } from 'src/app/shared/models/sub.model';
-import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platform.model';
-import { PlatformPlan } from 'src/app/shared/models/platform-plan.model';
+import { Platform } from 'src/app/shared/models/platform.model';
+import { Plan } from 'src/app/shared/models/plan.model';
 import { UserData } from 'src/app/shared/models/user-data.model';
 
 /* Enums */
@@ -35,7 +35,7 @@ import { ModeEnum } from 'src/app/shared/enums/mode.enum';
 import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 
 /* Data */
-import { DEFAULT_SUBSCRIPTION_PLATFORM_ID, SUBSCRIPTION_PLATFORMS } from 'src/assets/data/subscription-platforms.constants';
+import { DEFAULT_PLATFORM_ID, PLATFORMS } from 'src/assets/data/platforms.constants';
 
 @Component({
   selector: 'app-sub',
@@ -53,8 +53,8 @@ export class SubPage implements OnInit, OnDestroy {
 
   public currencies: CurrencyCodeRecord[] = [];
 
-  public subscriptionPlatforms: SubscriptionPlatform[] = [];
-  public platformPlans: PlatformPlan[] = [];
+  public platforms: Platform[] = [];
+  public plans: Plan[] = [];
 
   public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;
   public modeEnum: typeof ModeEnum = ModeEnum;
@@ -76,7 +76,7 @@ export class SubPage implements OnInit, OnDestroy {
     private storageService: StorageService,
     private store: Store<AppState>
   ) {
-    this.subscriptionPlatforms = SUBSCRIPTION_PLATFORMS;
+    this.platforms = PLATFORMS;
     this.currencies = _.orderBy(cc.data, 'currency');
   }
 
@@ -150,10 +150,10 @@ export class SubPage implements OnInit, OnDestroy {
           const sub: Sub | undefined = subs.find((subToFind: Sub) => subToFind.id === this.id) ?? undefined;
           this.setFormValues(sub);
         } else {
-          const defaultSubscriptionPlatform: SubscriptionPlatform = this.subscriptionPlatforms.find((platform: SubscriptionPlatform) =>
-            platform.id === DEFAULT_SUBSCRIPTION_PLATFORM_ID);
-          this.setValue('platform', defaultSubscriptionPlatform);
-          this.setValue('name', this.translocoService.translate('subscriptionPlatform.newSubscription'));
+          const defaultPlatform: Platform = this.platforms.find((platform: Platform) =>
+            platform.id === DEFAULT_PLATFORM_ID);
+          this.setValue('platform', defaultPlatform);
+          this.setValue('name', this.translocoService.translate('platform.newSubscription'));
         }
       }, 10);
     });
@@ -193,10 +193,10 @@ export class SubPage implements OnInit, OnDestroy {
       return;
     }
     this.sub = sub;
-    const subscriptionPlatform: SubscriptionPlatform = this.subscriptionPlatforms.find(platform => platform.id === sub.platform.id);
-    const platformPlan: PlatformPlan = subscriptionPlatform.plans.find(plan => plan.id === sub.plan.id);
-    this.setValue('platform', subscriptionPlatform);
-    this.setValue('plan', platformPlan);
+    const platform: Platform = this.platforms.find((platformToFind: Platform) => platformToFind.id === sub.platform.id);
+    const plan: Plan = platform.plans.find((planToFind: Plan) => planToFind.id === sub.plan.id);
+    this.setValue('platform', platform);
+    this.setValue('plan', plan);
     this.setValue('type', sub.type);
     this.setValue('every', sub.every);
     this.setValue('type', sub.type);
@@ -212,10 +212,10 @@ export class SubPage implements OnInit, OnDestroy {
   private initFormSubscriptions(): void {
 
     this.platform = this.subForm.get('platform').valueChanges
-      .subscribe((platform: SubscriptionPlatform) => {
-        this.platformPlans = platform.plans;
-        this.setValue('name', this.translocoService.translate(`subscriptionPlatform.${platform.name}`));
-        this.setValue('plan', platform.plans.find((plan: PlatformPlan) => plan.isDefault));
+      .subscribe((platform: Platform) => {
+        this.plans = platform.plans;
+        this.setValue('name', this.translocoService.translate(`platform.${platform.name}`));
+        this.setValue('plan', platform.plans.find((plan: Plan) => plan.isDefault));
         this.setValue('logo', platform.logo);
         this.setValue('color', platform.theme);
         this.setValue('textColor', platform.textColor);
@@ -223,7 +223,7 @@ export class SubPage implements OnInit, OnDestroy {
       });
 
     this.plan = this.subForm.get('plan').valueChanges
-      .subscribe((plan: PlatformPlan) => {
+      .subscribe((plan: Plan) => {
         this.setValue('price', plan.price);
         if (plan.type === PlanTypeEnum.daily
           || plan.type === PlanTypeEnum.weekly

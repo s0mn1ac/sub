@@ -5,8 +5,8 @@ import { Component, Input } from '@angular/core';
 import { TranslocoService } from '@ngneat/transloco';
 
 /* Models */
-import { PlatformPlan } from 'src/app/shared/models/platform-plan.model';
-import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platform.model';
+import { Plan } from 'src/app/shared/models/plan.model';
+import { Platform } from 'src/app/shared/models/platform.model';
 
 /* Enums */
 import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
@@ -19,8 +19,8 @@ import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 export class SubCardComponent {
 
   @Input() name: string;
-  @Input() platform: SubscriptionPlatform;
-  @Input() plan: PlatformPlan;
+  @Input() platform: Platform;
+  @Input() plan: Plan;
   @Input() type: PlanTypeEnum;
   @Input() firstPayment: string;
   @Input() price: number;
