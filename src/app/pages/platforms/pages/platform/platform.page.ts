@@ -4,23 +4,15 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 /* RxJs */
-import { Observable, Subscription } from 'rxjs';
-
-/* NgRx */
-import { AppState } from 'src/app/state/app.state';
-import { selectSubsDataLoading, selectUserDataLoading } from 'src/app/state/selectors/loading.selectors';
-import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
 /* Others */
 import { CurrencyCodeRecord } from 'currency-codes';
-import * as _ from 'lodash';
+import { orderBy, maxBy } from 'lodash';
 import * as cc from 'currency-codes';
-import * as moment from 'moment';
 
 /* Services */
-import { StorageService } from 'src/app/shared/services/storage.service';
 import { ToastService } from 'src/app/shared/services/toast.service';
-import { TranslocoService } from '@ngneat/transloco';
 
 /* Models */
 import { PlatformPlan } from 'src/app/shared/models/platform-plan.model';
@@ -30,8 +22,7 @@ import { SubscriptionPlatform } from 'src/app/shared/models/subscription-platfor
 import { ModeEnum } from 'src/app/shared/enums/mode.enum';
 
 /* Constants */
-import { copiedToClipboard, newPlatformAdded, platformDeleted, platformModified } from 'src/app/shared/constants/codes.constants';
-import { SUBSCRIPTION_PLATFORMS } from 'src/assets/data/subscription-platforms.constants';
+import { newPlatformAdded, platformDeleted, platformModified } from 'src/app/shared/constants/codes.constants';
 import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 import { PlatformsService } from 'src/app/shared/services/platforms.service';
 
@@ -50,13 +41,14 @@ export class PlatformPage implements OnInit {
   public currencies: CurrencyCodeRecord[] = [];
 
   public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;
+  public modeEnum: typeof ModeEnum = ModeEnum;
+
+  public mode: ModeEnum;
 
   public _nextPlatformId: number = 0;
   public _nextPlanId: number = 0;
 
   private params: Subscription;
-
-  private mode: ModeEnum;
 
   private id: number;
 
@@ -64,13 +56,10 @@ export class PlatformPage implements OnInit {
     private platformsService: PlatformsService,
     private router: Router,
     private activatedRoute: ActivatedRoute,
-    private translocoService: TranslocoService,
-    private storageService: StorageService,
-    private store: Store<AppState>,
     private toastService: ToastService
   ) {
     this.platforms = this.platformsService.platforms;
-    this.currencies = _.orderBy(cc.data, 'currency');
+    this.currencies = orderBy(cc.data, 'currency');
   }
 
   get nextPlatformId() {
@@ -164,7 +153,7 @@ export class PlatformPage implements OnInit {
     if (this.mode === ModeEnum.modify) {
       return;
     }
-    const lastId: number = _.maxBy(this.platforms.filter(platform => platform.id !== 199999999), 'id').id;
+    const lastId: number = maxBy(this.platforms.filter(platform => platform.id !== 199999999), 'id').id;
     this.nextPlatformId = lastId + 1;
   }
 
@@ -172,8 +161,8 @@ export class PlatformPage implements OnInit {
     if (this.mode === ModeEnum.modify) {
       return;
     }
-    const lastPlatform: SubscriptionPlatform = _.maxBy(this.platforms.filter(platform => platform.id !== 199999999), 'id');
-    const lastId: number = _.maxBy(lastPlatform.plans, 'id').id;
+    const lastPlatform: SubscriptionPlatform = maxBy(this.platforms.filter(platform => platform.id !== 199999999), 'id');
+    const lastId: number = maxBy(lastPlatform.plans, 'id').id;
     this.nextPlanId = lastId + 1;
   }
 

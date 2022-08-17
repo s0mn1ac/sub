@@ -7,12 +7,12 @@
       <ion-list>
 
         <ion-list-header>
-          <ion-label> {{ t('platforms.platform.addNewPlatform') }} </ion-label>
+          <ion-label> {{ t('platforms.platform.' + (mode === modeEnum.new ? 'addNewPlatform' : 'modifyPlatform')) }} </ion-label>
           <ion-button color="secondary" mode="ios" routerLink="/platforms">
             <ion-icon slot="start" size="small" name="close-circle-outline"></ion-icon>
             {{ t('buttons.discardChanges') }}
           </ion-button>
-          <ion-button color="danger" mode="ios" (click)="deletePlatform()">
+          <ion-button color="danger" mode="ios" (click)="deletePlatform()" *ngIf="mode === modeEnum.modify">
             <ion-icon slot="start" size="small" name="trash-outline"></ion-icon>
             {{ t('buttons.deletePlatform') }}
           </ion-button>
@@ -140,35 +140,6 @@
         </div>
   
       </ion-list>
-
-      <div class="buttons-container">
-
-        <!-- <ion-button (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()"
-          color="primary"
-          [disabled]="platformForm.invalid"
-          mode="ios">
-          <ion-icon slot="start" name="save-outline"></ion-icon>
-          {{ t('buttons.saveSub') }}
-        </ion-button>
-
-        <ion-button (click)="onClickDeleteSub()"
-          color="danger"
-          [disabled]="platformForm.invalid"
-          mode="ios"
-          *ngIf="mode === modeEnum.modify">
-          <ion-icon slot="start" name="trash-outline"></ion-icon>
-          {{ t('buttons.deleteSub') }}
-        </ion-button>
-
-        <ion-button routerLink="/board"
-          color="secondary"
-          fill="outline"
-          mode="ios">
-          <ion-icon slot="start" name="close-outline"></ion-icon>
-          {{ t('buttons.discardChanges') }}
-        </ion-button> -->
-
-      </div>
 
     </form>
   
