@@ -17,7 +17,7 @@ import { Observable, Subscription } from 'rxjs';
 import { Moment } from 'moment';
 import { CurrencyCodeRecord } from 'currency-codes';
 import * as moment from 'moment';
-import * as _ from 'lodash';
+import { orderBy } from 'lodash';
 import * as cc from 'currency-codes';
 
 /* Services */
@@ -76,8 +76,8 @@ export class SubPage implements OnInit, OnDestroy {
     private storageService: StorageService,
     private store: Store<AppState>
   ) {
-    this.platforms = PLATFORMS;
-    this.currencies = _.orderBy(cc.data, 'currency');
+    this.platforms = orderBy(PLATFORMS, 'name');
+    this.currencies = orderBy(cc.data, 'currency');
   }
 
   ngOnInit(): void {
