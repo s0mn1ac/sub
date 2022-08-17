@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
 
-  <div class="sub-card-layout" [style.color]="'var(--ion-color-' + textColor + ')'">
+  <div class="sub-card-layout" [ngClass]="{ 'selectable': selectable}" [style.color]="'var(--ion-color-' + textColor + ')'">
 
     <div class="sub-card" [style.background]="'var(--ion-color-' + color + ')'">
 

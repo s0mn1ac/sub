@@ -18,6 +18,7 @@ import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 })
 export class SubCardComponent {
 
+  @Input() selectable: boolean = false;
   @Input() name: string;
   @Input() platform: Platform;
   @Input() plan: Plan;

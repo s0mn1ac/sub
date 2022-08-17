@@ -7,6 +7,7 @@
         <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="4" *ngFor="let sub of (subs$ | async)">
           <app-sub-card
             [routerLink]="'/sub/' + sub.id"
+            [selectable]="true"
             [name]="sub.name"
             [platform]="sub.platform"
             [plan]="sub.plan"
