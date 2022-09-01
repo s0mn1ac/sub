@@ -2,6 +2,10 @@ div.skeleton-container, div.sub-card-container {
     padding: 1rem;
 }
 
+ion-list.additional-information {
+    padding-bottom: 1rem;
+}
+
 div.icon-container {
     display: flex;
     flex-direction: row;
@@ -25,7 +29,7 @@ div.buttons-container {
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
-    padding: 1rem;
+    padding: 0 1rem;
     width: 100%;
 
     ion-button {

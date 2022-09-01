@@ -24,6 +24,35 @@
         </app-sub-card>
       </div>
 
+      <div class="buttons-container">
+
+        <ion-button (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()"
+          color="primary"
+          [disabled]="subForm.invalid"
+          mode="ios">
+          <ion-icon slot="start" name="save-outline"></ion-icon>
+          {{ t('buttons.saveSub') }}
+        </ion-button>
+
+        <ion-button (click)="onClickDeleteSub()"
+          color="danger"
+          [disabled]="subForm.invalid"
+          mode="ios"
+          *ngIf="mode === modeEnum.modify">
+          <ion-icon slot="start" name="trash-outline"></ion-icon>
+          {{ t('buttons.deleteSub') }}
+        </ion-button>
+
+        <ion-button routerLink="/board"
+          color="secondary"
+          fill="outline"
+          mode="ios">
+          <ion-icon slot="start" name="close-outline"></ion-icon>
+          {{ t('buttons.discardChanges') }}
+        </ion-button>
+
+      </div>
+
       <ion-list>
 
         <ion-list-header>
@@ -123,7 +152,7 @@
 
       </ion-list>
 
-      <ion-list>
+      <ion-list class="additional-information">
 
         <ion-list-header>
           <ion-label> {{ t('sub.form.additionalInformation') }} </ion-label>
@@ -175,35 +204,6 @@
         </ion-modal>
 
       </ion-list>
-
-      <div class="buttons-container">
-
-        <ion-button (click)="mode === modeEnum.new ? onClickAddNewSub() : onClickModifySub()"
-          color="primary"
-          [disabled]="subForm.invalid"
-          mode="ios">
-          <ion-icon slot="start" name="save-outline"></ion-icon>
-          {{ t('buttons.saveSub') }}
-        </ion-button>
-
-        <ion-button (click)="onClickDeleteSub()"
-          color="danger"
-          [disabled]="subForm.invalid"
-          mode="ios"
-          *ngIf="mode === modeEnum.modify">
-          <ion-icon slot="start" name="trash-outline"></ion-icon>
-          {{ t('buttons.deleteSub') }}
-        </ion-button>
-
-        <ion-button routerLink="/board"
-          color="secondary"
-          fill="outline"
-          mode="ios">
-          <ion-icon slot="start" name="close-outline"></ion-icon>
-          {{ t('buttons.discardChanges') }}
-        </ion-button>
-
-      </div>
 
     </form>
   
