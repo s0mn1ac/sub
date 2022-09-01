@@ -3,4 +3,8 @@ ion-content {
     ion-list.interface {
         margin-top: 3rem;
     }
+
+    ion-item.platform-editor-item {
+        cursor: pointer;
+    }
 }
