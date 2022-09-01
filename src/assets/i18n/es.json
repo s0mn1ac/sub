@@ -22,7 +22,8 @@
         "savePlatform": "Guardar plataforma",
         "deletePlatform": "Eliminar plataforma",
         "addNewPlan": "Añadir nuevo plan",
-        "deletePlan": "Eliminar plan"
+        "deletePlan": "Eliminar plan",
+        "goBackToSettings": "Volver a Ajustes"
     },
 
     "codes": {
@@ -98,7 +99,9 @@
         "showMoreInfoValues": {
             "false": "No",
             "true": "Sí"
-        }
+        },
+        "developerSettings": "Optiones de desarrollador",
+        "platformEditor": "Editor de plataformas"
     },
 
     "platform": {
