@@ -4,21 +4,28 @@
 
     <ion-list>
 
-      <ion-list-header>
-        <ion-label> {{ t('platforms.allPlatforms') }} </ion-label>
-        <ion-button color="secondary" mode="ios" routerLink="/settings">
-          <ion-icon slot="start" size="small" name="settings-outline"></ion-icon>
-          {{ t('buttons.goBackToSettings') }}
-        </ion-button>
-        <ion-button color="primary" mode="ios" routerLink="platform/new">
-          <ion-icon slot="start" size="small" name="add-circle-outline"></ion-icon>
-          {{ t('buttons.addPlatform') }}
-        </ion-button>
-        <ion-button color="primary" mode="ios" (click)="generatePlatformsList()">
-          <ion-icon slot="start" size="small" name="arrow-redo-outline"></ion-icon>
-          {{ t('buttons.generateJSON') }}
-        </ion-button>
-      </ion-list-header>
+      <div class="header-container">
+
+        <div class="title-container">
+          <ion-label class="title"> {{ t('platforms.allPlatforms') }} </ion-label>
+        </div>
+
+        <div class="buttons-container">
+          <ion-button color="secondary" mode="ios" fill="clear" routerLink="/settings">
+            <ion-icon slot="start" size="small" name="settings-outline"></ion-icon>
+            {{ t('buttons.goBackToSettings') }}
+          </ion-button>
+          <ion-button color="primary" mode="ios" fill="clear" routerLink="platform/new">
+            <ion-icon slot="start" size="small" name="add-circle-outline"></ion-icon>
+            {{ t('buttons.addPlatform') }}
+          </ion-button>
+          <ion-button color="primary" mode="ios" fill="clear" (click)="generatePlatformsList()">
+            <ion-icon slot="start" size="small" name="arrow-redo-outline"></ion-icon>
+            {{ t('buttons.generateJSON') }}
+          </ion-button>
+        </div>
+
+      </div>
 
       <ion-item lines="full" *ngFor="let platform of platforms" [routerLink]="'platform/' + platform.id" mode="ios">
         <ion-icon slot="start" class="platform-icon" [color]="platform.theme" [name]="platform.logo"></ion-icon>

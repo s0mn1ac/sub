@@ -6,21 +6,28 @@
 
       <ion-list>
 
-        <ion-list-header>
-          <ion-label> {{ t('platforms.platform.' + (mode === modeEnum.new ? 'addNewPlatform' : 'modifyPlatform')) }} </ion-label>
-          <ion-button color="secondary" mode="ios" routerLink="/platforms">
-            <ion-icon slot="start" size="small" name="close-circle-outline"></ion-icon>
-            {{ t('buttons.discardChanges') }}
-          </ion-button>
-          <ion-button color="danger" mode="ios" (click)="deletePlatform()" *ngIf="mode === modeEnum.modify">
-            <ion-icon slot="start" size="small" name="trash-outline"></ion-icon>
-            {{ t('buttons.deletePlatform') }}
-          </ion-button>
-          <ion-button color="primary" mode="ios" [disabled]="platformForm.invalid" (click)="savePlatform()">
-            <ion-icon slot="start" size="small" name="save-outline"></ion-icon>
-            {{ t('buttons.savePlatform') }}
-          </ion-button>
-        </ion-list-header>
+        <div class="header-container">
+
+          <div class="title-container">
+            <ion-label class="title"> {{ t('platforms.platform.' + (mode === modeEnum.new ? 'addNewPlatform' : 'modifyPlatform')) }} </ion-label>
+          </div>
+  
+          <div class="buttons-container">
+            <ion-button color="secondary" mode="ios" fill="clear" routerLink="/platforms">
+              <ion-icon slot="start" size="small" name="close-circle-outline"></ion-icon>
+              {{ t('buttons.discardChanges') }}
+            </ion-button>
+            <ion-button color="danger" mode="ios" fill="clear" (click)="deletePlatform()" *ngIf="mode === modeEnum.modify">
+              <ion-icon slot="start" size="small" name="trash-outline"></ion-icon>
+              {{ t('buttons.deletePlatform') }}
+            </ion-button>
+            <ion-button color="primary" mode="ios" fill="clear" [disabled]="platformForm.invalid" (click)="savePlatform()">
+              <ion-icon slot="start" size="small" name="save-outline"></ion-icon>
+              {{ t('buttons.savePlatform') }}
+            </ion-button>
+          </div>
+  
+        </div>
 
         <ion-item lines="none">
           <ion-label class="id"> #{{ platformForm.get('id').value }} </ion-label>

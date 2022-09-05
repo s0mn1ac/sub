@@ -1,6 +1,42 @@
 ion-content {
     --plan-container-width: 175px;
 
+    div.header-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding-inline-start: calc(var(--ion-safe-area-left, 0px) + 20px);
+        margin: 29px 0 6px;
+
+        div.title-container {
+            display: flex;
+            flex-direction: row;
+            flex-grow: 1;
+            align-items: center;
+            height: 56px;
+
+            ion-label.title {
+                font-size: 22px;
+                font-weight: 700;
+                white-space: nowrap;
+            }
+        }
+
+        div.buttons-container {
+            display: flex;
+            flex-direction: row;
+            gap: 0.5rem;
+            justify-content: space-between;
+            align-items: center;
+            min-height: 56px;
+
+            ion-button {
+                width: 200px;
+            }
+        }
+    }
+
     ion-item {
         cursor: pointer;
 
@@ -60,20 +96,6 @@ ion-content {
 
         &:hover {
             --background: rgba(var(--ion-color-grey-rgb), 0.1);
-        }
-    }
-
-    div.buttons-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 1rem;
-        width: 100%;
-    
-        ion-button {
-            width: 100%;
         }
     }
 }

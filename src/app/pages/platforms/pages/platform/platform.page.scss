@@ -9,6 +9,42 @@ ion-content {
             }
         }
 
+        div.header-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding-inline-start: calc(var(--ion-safe-area-left, 0px) + 20px);
+            margin: 29px 0 6px;
+    
+            div.title-container {
+                display: flex;
+                flex-direction: row;
+                flex-grow: 1;
+                align-items: center;
+                height: 56px;
+    
+                ion-label.title {
+                    font-size: 22px;
+                    font-weight: 700;
+                    white-space: nowrap;
+                }
+            }
+    
+            div.buttons-container {
+                display: flex;
+                flex-direction: row;
+                gap: 0.5rem;
+                justify-content: space-between;
+                align-items: center;
+                min-height: 56px;
+    
+                ion-button {
+                    width: 200px;
+                }
+            }
+        }
+
         div.plans-container {
             display: flex;
             flex-direction: column;
