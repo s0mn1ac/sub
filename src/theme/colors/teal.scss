@@ -1,0 +1,81 @@
+:root {
+	--ion-color-teal-lighter: #4db6ac;
+	--ion-color-teal-lighter-rgb: 77,182,172;
+	--ion-color-teal-lighter-contrast: #000000;
+	--ion-color-teal-lighter-contrast-rgb: 0,0,0;
+	--ion-color-teal-lighter-shade: #44a097;
+	--ion-color-teal-lighter-tint: #5fbdb4;
+
+	--ion-color-teal-light: #26a69a;
+	--ion-color-teal-light-rgb: 38,166,154;
+	--ion-color-teal-light-contrast: #ffffff;
+	--ion-color-teal-light-contrast-rgb: 255,255,255;
+	--ion-color-teal-light-shade: #219288;
+	--ion-color-teal-light-tint: #3cafa4;
+
+	--ion-color-teal: #009688;
+	--ion-color-teal-rgb: 0,150,136;
+	--ion-color-teal-contrast: #ffffff;
+	--ion-color-teal-contrast-rgb: 255,255,255;
+	--ion-color-teal-shade: #008478;
+	--ion-color-teal-tint: #1aa194;
+
+	--ion-color-teal-dark: #00897b;
+	--ion-color-teal-dark-rgb: 0,137,123;
+	--ion-color-teal-dark-contrast: #ffffff;
+	--ion-color-teal-dark-contrast-rgb: 255,255,255;
+	--ion-color-teal-dark-shade: #00796c;
+	--ion-color-teal-dark-tint: #1a9588;
+
+	--ion-color-teal-darker: #00796b;
+	--ion-color-teal-darker-rgb: 0,121,107;
+	--ion-color-teal-darker-contrast: #ffffff;
+	--ion-color-teal-darker-contrast-rgb: 255,255,255;
+	--ion-color-teal-darker-shade: #006a5e;
+	--ion-color-teal-darker-tint: #1a867a;
+}
+
+.ion-color-teal-lighter {
+	--ion-color-base: var(--ion-color-teal-lighter);
+	--ion-color-base-rgb: var(--ion-color-teal-lighter-rgb);
+	--ion-color-contrast: var(--ion-color-teal-lighter-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-teal-lighter-contrast-rgb);
+	--ion-color-shade: var(--ion-color-teal-lighter-shade);
+	--ion-color-tint: var(--ion-color-teal-lighter-tint);
+}
+
+.ion-color-teal-light {
+	--ion-color-base: var(--ion-color-teal-light);
+	--ion-color-base-rgb: var(--ion-color-teal-light-rgb);
+	--ion-color-contrast: var(--ion-color-teal-light-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-teal-light-contrast-rgb);
+	--ion-color-shade: var(--ion-color-teal-light-shade);
+	--ion-color-tint: var(--ion-color-teal-light-tint);
+}
+
+.ion-color-teal {
+	--ion-color-base: var(--ion-color-teal);
+	--ion-color-base-rgb: var(--ion-color-teal-rgb);
+	--ion-color-contrast: var(--ion-color-teal-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-teal-contrast-rgb);
+	--ion-color-shade: var(--ion-color-teal-shade);
+	--ion-color-tint: var(--ion-color-teal-tint);
+}
+
+.ion-color-teal-dark {
+	--ion-color-base: var(--ion-color-teal-dark);
+	--ion-color-base-rgb: var(--ion-color-teal-dark-rgb);
+	--ion-color-contrast: var(--ion-color-teal-dark-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-teal-dark-contrast-rgb);
+	--ion-color-shade: var(--ion-color-teal-dark-shade);
+	--ion-color-tint: var(--ion-color-teal-dark-tint);
+}
+
+.ion-color-teal-darker {
+	--ion-color-base: var(--ion-color-teal-darker);
+	--ion-color-base-rgb: var(--ion-color-teal-darker-rgb);
+	--ion-color-contrast: var(--ion-color-teal-darker-contrast);
+	--ion-color-contrast-rgb: var(--ion-color-teal-darker-contrast-rgb);
+	--ion-color-shade: var(--ion-color-teal-darker-shade);
+	--ion-color-tint: var(--ion-color-teal-darker-tint);
+}
