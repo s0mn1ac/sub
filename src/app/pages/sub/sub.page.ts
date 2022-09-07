@@ -149,7 +149,6 @@ export class SubPage implements OnInit, OnDestroy {
         const sub: Sub | undefined = subs.find((subToFind: Sub) => subToFind.id === this.id) ?? undefined;
         this.setFormValues(sub);
       } else {
-        console.log('INIT')
         const defaultPlatform: Platform = this.platforms.find((platform: Platform) =>
           platform.id === DEFAULT_PLATFORM_ID);
         this.setValue('platform', defaultPlatform);
