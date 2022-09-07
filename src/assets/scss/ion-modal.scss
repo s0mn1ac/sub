@@ -15,13 +15,15 @@ ion-modal {
     
     &.logo-selector-modal {
         --min-height: 382px;
-        --height: calc(100vh - 2rem);
+        --height: calc(100vh - 4rem);
         --min-width: 290px;
-        --width: calc(100vw - 2rem);
+        --width: calc(100vw - 4rem);
     }
     
     &.color-selector-modal {
-        --height: 344px;
+        --min-height: 382px;
+        --height: calc(100vh - 4rem);
+        --max-height: 918px;
         --width: 290px;
     }
 }
