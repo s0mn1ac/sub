@@ -13,7 +13,7 @@ import { addSub, deleteSub, modifySub } from 'src/app/state/actions/subs-data.ac
 import { setCurrency } from 'src/app/state/actions/user-data.actions';
 
 /* Others */
-import { Observable, Subscription } from 'rxjs';
+import { lastValueFrom, Observable, Subscription, take } from 'rxjs';
 import { Moment } from 'moment';
 import { CurrencyCodeRecord } from 'currency-codes';
 import * as moment from 'moment';
@@ -145,17 +145,17 @@ export class SubPage implements OnInit, OnDestroy {
     });
 
     this.subsData = this.store.select(selectSubs).subscribe((subs: Sub[]) => {
-      setTimeout(() => {
-        if (this.id !== undefined) {
-          const sub: Sub | undefined = subs.find((subToFind: Sub) => subToFind.id === this.id) ?? undefined;
-          this.setFormValues(sub);
-        } else {
-          const defaultPlatform: Platform = this.platforms.find((platform: Platform) =>
-            platform.id === DEFAULT_PLATFORM_ID);
-          this.setValue('platform', defaultPlatform);
-          this.setValue('name', this.translocoService.translate('platform.newSubscription'));
-        }
-      }, 10);
+      if (this.id !== undefined) {
+        const sub: Sub | undefined = subs.find((subToFind: Sub) => subToFind.id === this.id) ?? undefined;
+        this.setFormValues(sub);
+      } else {
+        const defaultPlatform: Platform = this.platforms.find((platform: Platform) =>
+          platform.id === DEFAULT_PLATFORM_ID);
+        this.setValue('platform', defaultPlatform);
+        this.translocoService.selectTranslate('platform.newSubscription')
+          .pipe(take(1))
+          .subscribe((name: string) => this.setValue('name', name));
+      }
     });
   }
 
@@ -214,7 +214,9 @@ export class SubPage implements OnInit, OnDestroy {
     this.platform = this.subForm.get('platform').valueChanges
       .subscribe((platform: Platform) => {
         this.plans = platform.plans;
-        this.setValue('name', this.translocoService.translate(`platform.${platform.name}`));
+        this.translocoService.selectTranslate(`platform.${platform.name}`)
+          .pipe(take(1))
+          .subscribe((name: string) => this.setValue('name', name));
         this.setValue('plan', platform.plans.find((plan: Plan) => plan.isDefault));
         this.setValue('logo', platform.logo);
         this.setValue('color', platform.theme);
