@@ -2,6 +2,8 @@
   
   <ion-content mode="ios">
 
+    <app-modal #modal></app-modal>
+
     <div class="skeleton-container" *ngIf="(userDataLoading$ | async) && (subsDataLoading$ | async)">
       <app-sub-card-skeleton></app-sub-card-skeleton>
     </div>
@@ -34,7 +36,7 @@
           {{ t('buttons.saveSub') }}
         </ion-button>
 
-        <ion-button (click)="onClickDeleteSub()"
+        <ion-button (click)="onClickShowModal(deleteSubModalOptions)"
           color="danger"
           [disabled]="subForm.invalid"
           mode="ios"

@@ -1,5 +1,5 @@
 /* Angular */
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
@@ -24,11 +24,15 @@ import * as cc from 'currency-codes';
 import { TranslocoService } from '@ngneat/transloco';
 import { StorageService } from 'src/app/shared/services/storage.service';
 
+/* Components */
+import { ModalComponent } from 'src/app/components/modal/modal.component';
+
 /* Models */
 import { Sub } from 'src/app/shared/models/sub.model';
 import { Platform } from 'src/app/shared/models/platform.model';
 import { Plan } from 'src/app/shared/models/plan.model';
 import { UserData } from 'src/app/shared/models/user-data.model';
+import { ModalOptions } from 'src/app/shared/models/modal-options.model';
 
 /* Enums */
 import { ModeEnum } from 'src/app/shared/enums/mode.enum';
@@ -36,6 +40,8 @@ import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 
 /* Data */
 import { DEFAULT_PLATFORM_ID, PLATFORMS } from 'src/assets/data/platforms.constants';
+import { ToastService } from 'src/app/shared/services/toast.service';
+import { platformDeleted } from 'src/app/shared/constants/codes.constants';
 
 @Component({
   selector: 'app-sub',
@@ -43,6 +49,8 @@ import { DEFAULT_PLATFORM_ID, PLATFORMS } from 'src/assets/data/platforms.consta
   styleUrls: ['./sub.page.scss'],
 })
 export class SubPage implements OnInit, OnDestroy {
+
+  @ViewChild('modal') modal: ModalComponent;
 
   public subsDataLoading$: Observable<boolean> = new Observable<boolean>();
   public userDataLoading$: Observable<boolean> = new Observable<boolean>();
@@ -61,6 +69,8 @@ export class SubPage implements OnInit, OnDestroy {
 
   public mode: ModeEnum;
 
+  public deleteSubModalOptions: ModalOptions;
+
   private params: Subscription;
   private plan: Subscription;
   private platform: Subscription;
@@ -72,6 +82,7 @@ export class SubPage implements OnInit, OnDestroy {
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,
+    private toastService: ToastService,
     private translocoService: TranslocoService,
     private storageService: StorageService,
     private store: Store<AppState>
@@ -81,6 +92,7 @@ export class SubPage implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.initOptions();
     this.initStoreSelectors();
     this.initParamsSubscription();
   }
@@ -129,6 +141,23 @@ export class SubPage implements OnInit, OnDestroy {
     this.store.dispatch(deleteSub({ id: this.id }))
     this.storageService.deleteSub(this.id);
     this.router.navigate(['/board']);
+    this.toastService.throwSuccessToast(platformDeleted);
+  }
+
+  public onClickShowModal(modalOptions: ModalOptions): void {
+    this.modal.show(modalOptions);
+  }
+
+  private initOptions(): void {
+
+    this.deleteSubModalOptions = {
+      icon: 'trash-outline',
+      title: 'deleteSubTitle',
+      description: 'deleteSubDescription',
+      buttonColor: 'danger',
+      buttonName: 'delete',
+      command: () => this.onClickDeleteSub()
+    };
   }
 
   private initStoreSelectors(): void {

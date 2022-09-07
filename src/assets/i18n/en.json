@@ -23,7 +23,13 @@
         "deletePlatform": "Delete platform",
         "addNewPlan": "Add new plan",
         "deletePlan": "Delete plan",
-        "goBackToSettings": "Go back to Settings"
+        "goBackToSettings": "Go back to Settings",
+        "delete": "Delete"
+    },
+
+    "modal": {
+        "deleteSubTitle": "Do you want to delete the subscription selected?",
+        "deleteSubDescription": "Keep in mind that this change is irreversible. Once you do it, there is no going back!"
     },
 
     "codes": {
@@ -31,7 +37,8 @@
             "copiedToClipboard": "JSON copied to clipboard",
             "newPlatformAdded": "A new platform has been added to the list",
             "platformDeleted": "Platform has been deleted",
-            "platformModified": "Platform has been modified"
+            "platformModified": "Platform has been modified",
+            "subDeleted": "Subscription has been deleted"
         }
     },
 
