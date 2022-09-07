@@ -149,6 +149,7 @@ export class SubPage implements OnInit, OnDestroy {
         const sub: Sub | undefined = subs.find((subToFind: Sub) => subToFind.id === this.id) ?? undefined;
         this.setFormValues(sub);
       } else {
+        console.log('INIT')
         const defaultPlatform: Platform = this.platforms.find((platform: Platform) =>
           platform.id === DEFAULT_PLATFORM_ID);
         this.setValue('platform', defaultPlatform);
@@ -194,9 +195,10 @@ export class SubPage implements OnInit, OnDestroy {
     }
     this.sub = sub;
     const platform: Platform = this.platforms.find((platformToFind: Platform) => platformToFind.id === sub.platform.id);
+    this.plans = platform.plans;
     const plan: Plan = platform.plans.find((planToFind: Plan) => planToFind.id === sub.plan.id);
-    this.setValue('platform', platform);
-    this.setValue('plan', plan);
+    this.setValue('platform', platform, false);
+    this.setValue('plan', plan, false);
     this.setValue('type', sub.type);
     this.setValue('every', sub.every);
     this.setValue('type', sub.type);
@@ -207,6 +209,7 @@ export class SubPage implements OnInit, OnDestroy {
     this.setValue('logo', sub.logo);
     this.setValue('color', sub.color);
     this.setValue('textColor', sub.textColor);
+    this.setDisabledState('plan', false);
   }
 
   private initFormSubscriptions(): void {
@@ -216,7 +219,8 @@ export class SubPage implements OnInit, OnDestroy {
         this.plans = platform.plans;
         this.translocoService.selectTranslate(`platform.${platform.name}`)
           .pipe(take(1))
-          .subscribe((name: string) => this.setValue('name', name));
+          .subscribe((name: string) => {
+            this.setValue('name', name)});
         this.setValue('plan', platform.plans.find((plan: Plan) => plan.isDefault));
         this.setValue('logo', platform.logo);
         this.setValue('color', platform.theme);
@@ -236,8 +240,8 @@ export class SubPage implements OnInit, OnDestroy {
       });
   }
 
-  private setValue(name: string, value: any): void {
-    this.subForm.get(name).setValue(value);
+  private setValue(name: string, value: any, emitEvent: boolean = true): void {
+    this.subForm.get(name).setValue(value,  { emitEvent });
   }
 
   private setDisabledState(name: string, isDisabled: boolean): void {
