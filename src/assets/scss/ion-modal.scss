@@ -18,12 +18,15 @@ ion-modal {
         --height: calc(100vh - 4rem);
         --min-width: 290px;
         --width: calc(100vw - 4rem);
+        --max-width: 1248px;
     }
     
     &.color-selector-modal {
         --min-height: 382px;
         --height: calc(100vh - 4rem);
         --max-height: 918px;
-        --width: 290px;
+        --min-width: 290px;
+        --width: calc(100vw - 4rem);
+        --max-width: 393px;
     }
 }
