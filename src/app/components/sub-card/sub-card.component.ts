@@ -1,8 +1,5 @@
 /* Angular */
-import { Component, Input } from '@angular/core';
-
-/* Services */
-import { TranslocoService } from '@ngneat/transloco';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 
 /* Models */
 import { Plan } from 'src/app/shared/models/plan.model';
@@ -16,8 +13,10 @@ import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
   templateUrl: './sub-card.component.html',
   styleUrls: ['./sub-card.component.scss'],
 })
-export class SubCardComponent {
+export class SubCardComponent implements AfterViewInit {
 
+  @Input() index: number = 1;
+  @Input() origin: string;
   @Input() selectable: boolean = false;
   @Input() name: string;
   @Input() platform: Platform;
@@ -31,5 +30,19 @@ export class SubCardComponent {
   @Input() textColor: string;
   @Input() every: number;
   @Input() showMoreInfo: boolean = true;
+
+  ngAfterViewInit(): void {
+    this.toggleAnimation();
+  }
+
+  public getAnimationDelay(index: number): string {
+    return `${index * 0.1}s`;
+  }
+
+  public toggleAnimation(): void {
+    const subCard: HTMLElement = document.getElementById(`${this.origin}SubCardLayout${this.index}`);
+    setTimeout(() => subCard.classList.remove('visible'), (this.index * 100) + 600);
+    console.log('LOAD')
+  }
 
 }

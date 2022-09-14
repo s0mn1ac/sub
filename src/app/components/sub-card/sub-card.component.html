@@ -1,6 +1,10 @@
 <ng-container *transloco="let t">
 
-  <div class="sub-card-layout" [ngClass]="{ 'selectable': selectable}" [style.color]="'var(--ion-color-' + textColor + ')'">
+  <div [id]="origin + 'SubCardLayout' + index"
+    class="sub-card-layout visible"
+    [ngClass]="{ 'selectable': selectable }"
+    [ngStyle]="{'animation-delay': getAnimationDelay(index)}"
+    [style.color]="'var(--ion-color-' + textColor + ')'">
 
     <div class="sub-card" [style.background]="'var(--ion-color-' + color + ')'">
 

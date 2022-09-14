@@ -2,6 +2,15 @@ div.sub-card-layout {
     width: 100%;
     height: 100%;
     cursor: default;
+    
+    &.visible {
+        opacity: 0;
+        -webkit-animation-name: bounceIn;
+        animation-name: bounceIn;
+        animation-duration: 0.5s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
 
     &.selectable {
         cursor: pointer;
