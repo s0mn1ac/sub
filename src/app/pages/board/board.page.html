@@ -1,11 +1,11 @@
 <ng-container *transloco="let t">
 
-  <ion-content>
+  <ion-content [scrollEvents]="true" (ionScroll)="getYPosition($event)">
 
     <ion-grid class="board-grid" *ngIf="!((userDataLoading$ | async) && (subsDataLoading$ | async))">
       <ion-row>
         <ion-col size="12" size-sm="12" size-md="6" size-lg="6" size-xl="4" *ngFor="let sub of (subs$ | async)">
-          <app-sub-card
+          <app-sub-card class="board-sub-card visible"
             [routerLink]="'/sub/' + sub.id"
             [selectable]="true"
             [name]="sub.name"

@@ -43,4 +43,25 @@ export class BoardPage implements OnInit {
     this.userDataLoading$ = this.store.select(selectUserDataLoading);
   }
 
+  public getYPosition(event: any): void {
+
+    const subCards: NodeListOf<Element> = document.querySelectorAll(".board-sub-card");
+
+    subCards?.forEach((subCard: Element) => {
+      var windowHeight = window.innerHeight;
+      var elementTop = subCard.getBoundingClientRect().top;
+      var elementVisible = 50;
+
+      if (elementTop < windowHeight) {
+        subCard.classList.remove("visible");
+        subCard.classList.add("hidden");
+      }
+  
+      if (elementTop < windowHeight - elementVisible) {
+        subCard.classList.add("visible");
+        subCard.classList.remove("hidden");
+      }
+    })
+  }
+
 }
