@@ -1,0 +1,41 @@
+<ng-container *transloco="let t">
+
+  <div class="total-counter-layout">
+
+    <div class="total-container">
+
+      <ion-button class="change-button" shape="round" fill="clear" size="small" (click)="onChangeTotalPeriod()">
+        <ion-icon slot="icon-only" name="swap-vertical-outline"></ion-icon>
+      </ion-button>
+  
+      <div class="price-container">
+  
+        <app-price-container
+          [showMoreInfo]="false"
+          [type]="(totalPeriod$ | async)"
+          [price]="((totalPeriod$ | async) === planTypeEnum.monthly ? totalPerMonth : totalPerYear)"
+          [currency]="(currency$ | async)"
+          [every]="1"
+          (click)="onChangeTotalPeriod()">
+        </app-price-container>
+  
+      </div>
+
+    </div>
+
+    <div class="buttons-container">
+
+      <ion-fab-button mode="ios" color="secondary" routerLink="/settings">
+        <ion-icon name="settings-outline"></ion-icon>
+      </ion-fab-button>
+
+      <ion-fab-button mode="ios" color="primary" routerLink="/sub/new">
+        <ion-icon name="add-sub"></ion-icon>
+      </ion-fab-button>
+
+    </div>
+
+  </div>
+
+</ng-container>
+

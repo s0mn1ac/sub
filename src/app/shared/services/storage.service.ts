@@ -22,6 +22,7 @@ import { subAppSubsData, subAppUserData } from '../constants/database.constants'
 /* Enums */
 import { ThemeEnum } from '../enums/theme.enum';
 import { LanguageEnum } from '../enums/language.enum';
+import { PlanTypeEnum } from '../enums/plan-type.enum';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +85,18 @@ export class StorageService {
   public async setShowMoreInfo(showMoreInfo: boolean): Promise<void> {
     const userData: UserData = await this._storage.get(subAppUserData);
     userData.showMoreInfo = showMoreInfo;
+    await this._storage.set(subAppUserData, userData);
+  }
+
+  public async setTotalPeriod(type: PlanTypeEnum): Promise<void> {
+    const userData: UserData = await this._storage.get(subAppUserData);
+    userData.totalPeriod = type;
+    await this._storage.set(subAppUserData, userData);
+  }
+
+  public async setDefaultCurrency(currency: string): Promise<void> {
+    const userData: UserData = await this._storage.get(subAppUserData);
+    userData.currency = currency;
     await this._storage.set(subAppUserData, userData);
   }
 

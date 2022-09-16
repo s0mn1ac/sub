@@ -17,12 +17,22 @@ export const selectLanguage = createSelector(
   (state: UserDataState) => state.userData?.language
 );
 
+export const selectTheme = createSelector(
+  selectUserDataState,
+  (state: UserDataState) => state.userData?.theme
+);
+
+export const selectCurrency = createSelector(
+  selectUserDataState,
+  (state: UserDataState) => state.userData?.currency
+);
+
 export const selectShowMoreInfo = createSelector(
   selectUserDataState,
   (state: UserDataState) => state.userData?.showMoreInfo
 );
 
-export const selectTheme = createSelector(
+export const selectTotalPeriod = createSelector(
   selectUserDataState,
-  (state: UserDataState) => state.userData?.theme
+  (state: UserDataState) => state.userData?.totalPeriod
 );

@@ -1,6 +1,6 @@
 /* NgRx */
 import { createReducer, on } from '@ngrx/store';
-import { initUserData, setCurrency, setLanguage, setShowMoreInfo, setTheme } from '../actions/user-data.actions';
+import { initUserData, setCurrency, setLanguage, setShowMoreInfo, setTheme, setTotalPeriod } from '../actions/user-data.actions';
 
 /* Interfaces */
 import { UserDataState } from 'src/app/shared/interfaces/user-data-state.interface';
@@ -25,5 +25,8 @@ export const userDataReducer = createReducer(
   }),
   on(setCurrency, (state, action) => {
     return { ...state, userData: { ...state.userData, currency: action.currency }, loading: false };
+  }),
+  on(setTotalPeriod, (state, action) => {
+    return { ...state, userData: { ...state.userData, totalPeriod: action.totalPeriod }, loading: false };
   })
 );

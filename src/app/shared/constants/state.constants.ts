@@ -17,5 +17,6 @@ export class StateConstants {
     public static USER_DATA_SET_SHOW_MORE_INFO = '[User Data] Set Show More Info';
     public static USER_DATA_SET_THEME = '[User Data] Set Theme';
     public static USER_DATA_SET_CURRENCY = '[User Data] Set Currency';
+    public static USER_DATA_SET_TOTAL_PERIOD = '[User Data] Set Total Period';
 
 }

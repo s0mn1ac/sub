@@ -25,26 +25,12 @@
       </ion-row>
     </ion-grid>
 
-    <ion-fab vertical="bottom" horizontal="center" slot="fixed">
-      <ion-fab-button>
-        <ion-icon name="sub"></ion-icon>
-      </ion-fab-button>
-      <ion-fab-list side="start">
-        <ion-fab-button mode="ios" color="primary">
-          <ion-icon name="information-circle-outline"></ion-icon>
-        </ion-fab-button>
-      </ion-fab-list>
-      <ion-fab-list side="top">
-        <ion-fab-button mode="ios" color="primary" routerLink="/sub/new">
-          <ion-icon name="add-sub"></ion-icon>
-        </ion-fab-button>
-      </ion-fab-list>
-      <ion-fab-list side="end">
-        <ion-fab-button mode="ios" color="secondary" routerLink="/settings">
-          <ion-icon name="settings-outline"></ion-icon>
-        </ion-fab-button>
-      </ion-fab-list>
-    </ion-fab>
+    <div class="total-counter-container">
+      <app-total-counter
+        [totalPerMonth]="totalPerMonth"
+        [totalPerYear]="totalPerYear">
+      </app-total-counter>
+    </div>
 
   </ion-content>
 

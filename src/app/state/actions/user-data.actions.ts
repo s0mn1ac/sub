@@ -7,6 +7,7 @@ import { UserData } from 'src/app/shared/models/user-data.model';
 /* Enums */
 import { LanguageEnum } from 'src/app/shared/enums/language.enum';
 import { ThemeEnum } from 'src/app/shared/enums/theme.enum';
+import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 
 /* Constants */
 import { StateConstants } from 'src/app/shared/constants/state.constants';
@@ -34,4 +35,9 @@ export const setTheme = createAction(
 export const setCurrency = createAction(
     StateConstants.USER_DATA_SET_CURRENCY,
     props<{ currency: string }>()
+);
+
+export const setTotalPeriod = createAction(
+    StateConstants.USER_DATA_SET_TOTAL_PERIOD,
+    props<{ totalPeriod: PlanTypeEnum }>()
 );

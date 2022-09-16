@@ -18,7 +18,6 @@ export class PriceContainerComponent {
   @Input() type: PlanTypeEnum;
   @Input() price: number;
   @Input() currency: string;
-  @Input() color: string;
   @Input() every: number;
 
   public planTypeEnum: typeof PlanTypeEnum = PlanTypeEnum;

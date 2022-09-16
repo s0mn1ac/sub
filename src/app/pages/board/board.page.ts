@@ -16,6 +16,8 @@ import { Moment } from 'moment';
 /* Models */
 import { Sub } from 'src/app/shared/models/sub.model';
 import { UserData } from 'src/app/shared/models/user-data.model';
+
+/* Enums */
 import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 
 @Component({
@@ -31,7 +33,8 @@ export class BoardPage implements OnInit {
   public subsDataLoading$: Observable<boolean> = new Observable<boolean>();
   public userDataLoading$: Observable<boolean> = new Observable<boolean>();
 
-  public total: number = 0;
+  public totalPerMonth: number = 0;
+  public totalPerYear: number = 0;
 
   constructor(
     private store: Store<AppState>
@@ -63,11 +66,10 @@ export class BoardPage implements OnInit {
     subs?.forEach((sub: Sub) => {
       switch (sub.type) {
         case PlanTypeEnum.daily:
-          this.total = total + (sub.price * daysInMonth / sub.every);
+          total = total + (sub.price * daysInMonth / sub.every);
           break;
         case PlanTypeEnum.weekly:
-          console.log(total + (sub.price * daysInMonth / (7 * sub.every)))
-          this.total = total + (sub.price * daysInMonth / (7 * sub.every));
+          total = total + (sub.price * daysInMonth / (7 * sub.every));
           break;
         case PlanTypeEnum.monthly:
           total = total + sub.price;
@@ -80,7 +82,8 @@ export class BoardPage implements OnInit {
       }
     });
 
-    this.total = total;
+    this.totalPerMonth = total;
+    this.totalPerYear = total * 12;
   }
 
 }

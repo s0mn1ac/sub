@@ -1,9 +1,6 @@
 /* Angular */
 import { Component, Input } from '@angular/core';
 
-/* Services */
-import { TranslocoService } from '@ngneat/transloco';
-
 /* Models */
 import { Plan } from 'src/app/shared/models/plan.model';
 import { Platform } from 'src/app/shared/models/platform.model';

@@ -6,3 +6,15 @@ ion-header ion-toolbar ion-title ion-icon {
 app-sub-card {
     width: 100%;
 }
+
+ion-grid {
+    margin-bottom: 96px;
+}
+
+div.total-counter-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    padding: 8px;
+    width: calc(100vw);
+}

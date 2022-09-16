@@ -17,6 +17,7 @@ import { ModalComponent } from 'src/app/components/modal/modal.component';
 import { PriceContainerComponent } from 'src/app/components/price-container/price-container.component';
 import { SubCardComponent } from 'src/app/components/sub-card/sub-card.component';
 import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-skeleton/sub-card-skeleton.component';
+import { TotalCounterComponent } from 'src/app/components/total-counter/total-counter.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-
     ModalComponent,
     PriceContainerComponent,
     SubCardComponent,
+    TotalCounterComponent,
     SubCardSkeletonComponent
   ],
   exports: [
@@ -33,6 +35,7 @@ import { SubCardSkeletonComponent } from 'src/app/components/skeletons/sub-card-
     ModalComponent,
     PriceContainerComponent,
     SubCardComponent,
+    TotalCounterComponent,
     SubCardSkeletonComponent
   ],
   imports: [
