@@ -23,15 +23,35 @@
 
     </div>
 
-    <div class="buttons-container">
+    <div id="navBarButtonsContainer" class="buttons-container">
 
-      <ion-fab-button mode="ios" color="secondary" routerLink="/settings">
-        <ion-icon name="settings-outline"></ion-icon>
-      </ion-fab-button>
+      <div class="dual-buttons">
+        <ion-fab-button mode="ios" color="secondary" routerLink="/settings">
+          <ion-icon name="settings-outline"></ion-icon>
+        </ion-fab-button>
+        <ion-fab-button mode="ios" color="primary" routerLink="/sub/new">
+          <ion-icon name="add-sub"></ion-icon>
+        </ion-fab-button>
+      </div>
 
-      <ion-fab-button mode="ios" color="primary" routerLink="/sub/new">
-        <ion-icon name="add-sub"></ion-icon>
-      </ion-fab-button>
+      <div class="single-button">
+        <ion-fab>
+          <ion-fab-button>
+            <ion-icon name="sub"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-list side="top">
+            <ion-fab-button mode="ios" color="primary">
+              <ion-icon name="information-circle-outline"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button mode="ios" color="primary" routerLink="/sub/new">
+              <ion-icon name="add-sub"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-button mode="ios" color="secondary" routerLink="/settings">
+              <ion-icon name="settings-outline"></ion-icon>
+            </ion-fab-button>
+          </ion-fab-list>
+        </ion-fab>
+      </div>
 
     </div>
 

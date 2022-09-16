@@ -19,10 +19,47 @@ div.total-counter-layout {
     }
 
     div.buttons-container {
+        position: relative;
         display: flex;
         flex-direction: row;
+        justify-content: flex-end;
         align-items: center;
         gap: 1rem;
+        width: 100%;
+
+        div.dual-buttons {
+            position: relative;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        div.single-button {
+            position: relative;
+            display: none;
+            flex-direction: row;
+            align-items: center;
+
+            ion-fab {
+                position: relative;
+            }
+        }
+
+        &.fab-group {
+
+            div.dual-buttons {
+                display: none;
+            }
+
+            div.single-button {
+                display: flex;
+
+                ion-fab {
+                    display: contents;
+                }
+            }
+        }
     }
 }
 
