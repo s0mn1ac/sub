@@ -28,7 +28,8 @@ export class DaysUntilPipe implements PipeTransform {
   }
 
   private getDefaultNextPaymentDate(firstPayment: Moment, today: Moment, period: PlanTypeEnum): Moment {
-    const firstPaymentDay: string = firstPayment.format('DD');
+    let whileCounter: number = 5;
+    let firstPaymentDay: string = firstPayment.format('DD');
     const firstPaymentMonth: string = firstPayment.format('MM');
     const todayMonth: string = today.format('MM');
     const todayYear: string = today.format('YYYY');
@@ -39,14 +40,29 @@ export class DaysUntilPipe implements PipeTransform {
         break;
       case PlanTypeEnum.weekly:
         nextPayment = moment(`${firstPaymentDay}/${todayMonth}/${todayYear}`, 'DD/MM/YYYY');
+        while (!nextPayment.isValid() || whileCounter === 0) {
+          firstPaymentDay = (parseInt(firstPaymentDay, 10) - 1).toString();
+          nextPayment = moment(`${firstPaymentDay}/${todayMonth}/${todayYear}`, 'DD/MM/YYYY');
+          whileCounter = whileCounter - 1;
+        }
         break;
       case PlanTypeEnum.monthly:
         nextPayment = moment(`${firstPaymentDay}/${todayMonth}/${todayYear}`, 'DD/MM/YYYY');
+        while (!nextPayment.isValid() || whileCounter === 0) {
+          firstPaymentDay = (parseInt(firstPaymentDay, 10) - 1).toString();
+          nextPayment = moment(`${firstPaymentDay}/${todayMonth}/${todayYear}`, 'DD/MM/YYYY');
+          whileCounter = whileCounter - 1;
+        }
         break;
       case PlanTypeEnum.yearly:
         nextPayment = moment(`${firstPaymentDay}/${firstPaymentMonth}/${todayYear}`, 'DD/MM/YYYY');
+        while (!nextPayment.isValid() || whileCounter === 0) {
+          firstPaymentDay = (parseInt(firstPaymentDay, 10) - 1).toString();
+          nextPayment = moment(`${firstPaymentDay}/${firstPaymentMonth}/${todayYear}`, 'DD/MM/YYYY');
+          whileCounter = whileCounter - 1;
+        }
         break;
-    }
+    }    
     return nextPayment;
   }
 
