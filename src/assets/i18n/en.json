@@ -77,7 +77,8 @@
             "selectLogo": "Select logo",
             "color": "Color",
             "selectColor": "Select color",
-            "textColor": "Text color"
+            "textColor": "Text color",
+            "searchLogo": "Search logo..."
         }
     },
 

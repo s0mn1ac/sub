@@ -7,10 +7,17 @@
   </ion-header>
 
   <ion-content class="ion-padding">
+
+    <ion-searchbar
+      [placeholder]="t('sub.form.searchLogo')"
+      [debounce]="0"
+      mode="ios"
+      (ionChange)="onSearch($event)">
+    </ion-searchbar>
     
     <ion-grid>
       <ion-row>
-        <ion-col size="4" sizeXs="4" sizeSm="3" sizeMd="2" sizeLg="2" sizeXl="1" *ngFor="let icon of icons">
+        <ion-col size="4" sizeXs="4" sizeSm="3" sizeMd="2" sizeLg="2" sizeXl="1" *ngFor="let icon of displayedIcons">
           <div class="icon-container" [ngClass]="{ 'selected': icon.icon === selected }">
             <ion-fab-button color="white" (click)="selectIcon(icon.icon)">
               <ion-icon [name]="icon.icon"></ion-icon>

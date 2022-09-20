@@ -21,7 +21,13 @@ export class LogoSelectorComponent {
 
   @Output() onSelectIcon: EventEmitter<string> = new EventEmitter<string>();
 
-  public icons: Icon[] = ICONS;
+  public availableIcons: Icon[] = ICONS;
+  public displayedIcons: Icon[] = ICONS;
+
+  public onSearch(event: any): void {
+    const value: string = event.detail.value;
+    this.displayedIcons = value === '' ? this.availableIcons : this.availableIcons.filter((icon: Icon) => icon.name.includes(value));
+  }
 
   public selectIcon(icon: string): void {
     this.onSelectIcon.emit(icon);
