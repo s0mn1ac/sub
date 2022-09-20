@@ -37,10 +37,10 @@ export class TotalCounterComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private totalPeriod: PlanTypeEnum;
 
-  @HostListener('window:resize')
-  onResize() {
-    this.updateNavBarVisibility();
-  }
+  // @HostListener('window:resize')
+  // onResize() {
+  //   this.updateNavBarVisibility();
+  // }
 
   constructor(
     private storageService: StorageService,
@@ -53,7 +53,7 @@ export class TotalCounterComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.updateNavBarVisibility();
+    // this.updateNavBarVisibility();
   }
 
   ngOnDestroy(): void {
@@ -78,16 +78,16 @@ export class TotalCounterComponent implements OnInit, OnDestroy, AfterViewInit {
       .subscribe((totalPeriod: PlanTypeEnum) => this.totalPeriod = totalPeriod);
   }
 
-  private updateNavBarVisibility(): void {
-    const buttonsContainer: HTMLElement | null = document.getElementById('navBarButtonsContainer');
-    if (buttonsContainer === null) {
-      return
-    }
-    if (buttonsContainer.offsetWidth <= 130 && !buttonsContainer.classList.contains('fab-group')) {
-      buttonsContainer.classList.add('fab-group');
-    } else if (buttonsContainer.offsetWidth > 130 && buttonsContainer.classList.contains('fab-group')) {
-      buttonsContainer.classList.remove('fab-group');
-    }
-  }
+  // private updateNavBarVisibility(): void {
+  //   const buttonsContainer: HTMLElement | null = document.getElementById('navBarButtonsContainer');
+  //   if (buttonsContainer === null) {
+  //     return
+  //   }
+  //   if (buttonsContainer.offsetWidth <= 130 && !buttonsContainer.classList.contains('fab-group')) {
+  //     buttonsContainer.classList.add('fab-group');
+  //   } else if (buttonsContainer.offsetWidth > 130 && buttonsContainer.classList.contains('fab-group')) {
+  //     buttonsContainer.classList.remove('fab-group');
+  //   }
+  // }
 
 }
