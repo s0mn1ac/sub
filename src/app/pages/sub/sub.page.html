@@ -101,7 +101,7 @@
 
         <ion-item fill="outline" class="form-item" mode="md">
           <ion-label position="floating"> {{ t('sub.form.currency') }} </ion-label>
-          <ion-select formControlName="currency" interface="action-sheet" (ionChange)="onChangeCurrency($event)" mode="ios">
+          <ion-select formControlName="currency" interface="action-sheet" mode="ios">
             <ion-select-option [value]="currency.code" *ngFor="let currency of currencies">
               {{ currency.currency }}
             </ion-select-option>

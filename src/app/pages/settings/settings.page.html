@@ -57,6 +57,24 @@
     <ion-list>
 
       <ion-list-header>
+        <ion-label> {{ t('settings.otherSettings') }} </ion-label>
+      </ion-list-header>
+
+      <ion-item fill="outline" class="form-item" mode="md">
+        <ion-label position="floating"> {{ t('settings.defaultCurrency') }} </ion-label>
+        <ion-select [ngModel]="currency$ | async" interface="action-sheet" (ionChange)="onChangeCurrency($event)" mode="ios">
+          <ion-select-option [value]="currency.code" *ngFor="let currency of currencies">
+            {{ currency.currency }}
+          </ion-select-option>
+        </ion-select>
+        <ion-icon name="chevron-down-outline" class="custom-select-icon"></ion-icon>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-list>
+
+      <ion-list-header>
         <ion-label> {{ t('settings.developerSettings') }} </ion-label>
       </ion-list-header>
 

@@ -107,6 +107,8 @@
             "false": "No",
             "true": "Yes"
         },
+        "otherSettings": "Other settings",
+        "defaultCurrency": "Default currency",
         "developerSettings": "Developer settings",
         "platformEditor": "Platform editor"
     },

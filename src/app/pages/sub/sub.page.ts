@@ -3,6 +3,9 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+/* RxJs */
+import { Observable, Subscription, take } from 'rxjs';
+
 /* NgRx */
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/state/app.state';
@@ -10,19 +13,18 @@ import { selectUserData } from 'src/app/state/selectors/user-data.selectors';
 import { selectSubs } from 'src/app/state/selectors/subs-data.selectors';
 import { selectSubsDataLoading, selectUserDataLoading } from 'src/app/state/selectors/loading.selectors';
 import { addSub, deleteSub, modifySub } from 'src/app/state/actions/subs-data.actions';
-import { setCurrency } from 'src/app/state/actions/user-data.actions';
 
 /* Others */
-import { lastValueFrom, Observable, Subscription, take } from 'rxjs';
-import { Moment } from 'moment';
 import { CurrencyCodeRecord } from 'currency-codes';
-import * as moment from 'moment';
 import { orderBy } from 'lodash';
+import { Moment } from 'moment';
+import * as moment from 'moment';
 import * as cc from 'currency-codes';
 
 /* Services */
 import { TranslocoService } from '@ngneat/transloco';
 import { StorageService } from 'src/app/shared/services/storage.service';
+import { ToastService } from 'src/app/shared/services/toast.service';
 
 /* Components */
 import { ModalComponent } from 'src/app/components/modal/modal.component';
@@ -38,9 +40,8 @@ import { ModalOptions } from 'src/app/shared/models/modal-options.model';
 import { ModeEnum } from 'src/app/shared/enums/mode.enum';
 import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
 
-/* Data */
+/* Constants */
 import { DEFAULT_PLATFORM_ID, PLATFORMS } from 'src/assets/data/platforms.constants';
-import { ToastService } from 'src/app/shared/services/toast.service';
 import { platformDeleted } from 'src/app/shared/constants/codes.constants';
 
 @Component({
@@ -103,12 +104,6 @@ export class SubPage implements OnInit, OnDestroy {
     this.platform?.unsubscribe();
     this.subsData?.unsubscribe();
     this.userData?.unsubscribe();
-  }
-
-  public onChangeCurrency(event: any): void {
-    const currency: string = event.detail.value;
-    this.store.dispatch(setCurrency({ currency }))
-    this.storageService.setCurrency(currency);
   }
 
   public onChangeLogo(icon: string): void {
