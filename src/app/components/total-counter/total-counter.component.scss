@@ -45,25 +45,28 @@ div.total-counter-layout {
                 position: relative;
             }
         }
-
-        &.fab-group {
-
-            div.dual-buttons {
-                display: none;
-            }
-
-            div.single-button {
-                display: flex;
-
-                ion-fab {
-                    display: contents;
-                }
-            }
-        }
     }
 }
 
 ion-button.change-button {
     --padding-start: 2px;
     --padding-end: 2px;
+}
+
+@media (max-width: 374px) {
+
+    div.buttons-container {
+
+        div.dual-buttons {
+            display: none !important;
+        }
+    
+        div.single-button {
+            display: flex !important;
+    
+            ion-fab {
+                display: contents !important;
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 /* Angular */
-import { AfterViewInit, Component, HostListener, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 
 /* RxJs */
 import { Observable, Subject, takeUntil } from 'rxjs';
@@ -23,7 +23,7 @@ import { PlanTypeEnum } from 'src/app/shared/enums/plan-type.enum';
   templateUrl: './total-counter.component.html',
   styleUrls: ['./total-counter.component.scss'],
 })
-export class TotalCounterComponent implements OnInit, OnDestroy, AfterViewInit {
+export class TotalCounterComponent implements OnInit, OnDestroy {
 
   @Input() totalPerMonth: number;
   @Input() totalPerYear: number;
@@ -37,11 +37,6 @@ export class TotalCounterComponent implements OnInit, OnDestroy, AfterViewInit {
 
   private totalPeriod: PlanTypeEnum;
 
-  // @HostListener('window:resize')
-  // onResize() {
-  //   this.updateNavBarVisibility();
-  // }
-
   constructor(
     private storageService: StorageService,
     private store: Store<AppState>
@@ -50,10 +45,6 @@ export class TotalCounterComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     this.initStoreSelectors();
     this.initStoreSubscriptions();
-  }
-
-  ngAfterViewInit(): void {
-    // this.updateNavBarVisibility();
   }
 
   ngOnDestroy(): void {
@@ -77,17 +68,5 @@ export class TotalCounterComponent implements OnInit, OnDestroy, AfterViewInit {
       .pipe(takeUntil(this.destroy$))
       .subscribe((totalPeriod: PlanTypeEnum) => this.totalPeriod = totalPeriod);
   }
-
-  // private updateNavBarVisibility(): void {
-  //   const buttonsContainer: HTMLElement | null = document.getElementById('navBarButtonsContainer');
-  //   if (buttonsContainer === null) {
-  //     return
-  //   }
-  //   if (buttonsContainer.offsetWidth <= 130 && !buttonsContainer.classList.contains('fab-group')) {
-  //     buttonsContainer.classList.add('fab-group');
-  //   } else if (buttonsContainer.offsetWidth > 130 && buttonsContainer.classList.contains('fab-group')) {
-  //     buttonsContainer.classList.remove('fab-group');
-  //   }
-  // }
 
 }
